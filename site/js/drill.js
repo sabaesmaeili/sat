@@ -3,22 +3,57 @@
    rebuilds. DATA and CONF are written into each page by tools/build.py. */
 (function(){
   var KEY=CONF.key, LKEY=CONF.key+'-labels';
-  var st={}; try{ st=JSON.parse(localStorage.getItem(KEY)||'{}')||{} }catch(e){ st={} }
+  /* Saved progress: an object of records by question id. Anything else is dropped; each record keeps only fields of
+     the right type, so an old or damaged record can't stop the page (Start over always works). */
+  function record(r){
+    if(!r || typeof r!=='object' || Array.isArray(r)) return null;
+    var o={};
+    if(typeof r.tries==='number' && isFinite(r.tries) && r.tries>=0) o.tries=Math.floor(r.tries);
+    if(typeof r.ok==='boolean') o.ok=r.ok;
+    if(typeof r.first==='string') o.first=r.first;
+    if(typeof r.last==='string') o.last=r.last;
+    if(r.solved===true) o.solved=true;
+    if(r.revealed===true) o.revealed=true;
+    if(Array.isArray(r.wrong)) o.wrong=r.wrong.filter(function(x){ return typeof x==='string' });
+    return o;
+  }
+  function load(){
+    var raw; try{ raw=JSON.parse(localStorage.getItem(KEY)||'{}') }catch(e){ return {} }
+    if(!raw || typeof raw!=='object' || Array.isArray(raw)) return {};
+    var out={}; Object.keys(raw).forEach(function(id){ var r=record(raw[id]); if(r) out[id]=r });
+    return out;
+  }
+  var st=load();
   function save(){ try{ localStorage.setItem(KEY, JSON.stringify(st)) }catch(e){} }
   var byId={}; DATA.forEach(function(q){ byId[q.id]=q });
   var activeCards=[], status='all';
-  function num(s){ s=String(s).trim().replace(/\s+/g,'').replace(/−/g,'-'); if(/^-?\d{1,3}(,\d{3})+(\.\d+)?$/.test(s)) s=s.replace(/,/g,''); if(!s) return null;
-    var m=s.match(/^(-?)(\d*\.?\d+)\/(\d*\.?\d+)$/); if(m){ var v=parseFloat(m[2])/parseFloat(m[3]); return m[1]?-v:v }
-    if(/^-?\d*\.?\d+$/.test(s)) return parseFloat(s); return null }
   function accepted(q){ return q.acc || q.answer.split(/,\s+/).map(function(a){return a.trim()}) }
-  function check(q,g){ g=String(g).trim(); if(!g) return null; var acc=accepted(q);
-    for(var i=0;i<acc.length;i++){ if(g.toUpperCase()===acc[i].toUpperCase()) return true;
-      var a=num(acc[i]), b=num(g); if(a!==null&&b!==null&&Math.abs(a-b)<=Math.max(0.001,Math.abs(a)*0.0006)) return true }
-    return false }
+  /* A letter for multiple choice; a typed answer is graded exactly against the accepted values (js/grade.js). */
+  function check(q,g){ g=String(g).trim(); if(!g) return null;
+    return q.mc ? g.toUpperCase()===q.answer : SATGrade.check(accepted(q), g) }
   function el(id){ return document.getElementById('q-'+id) }
-  /* Hints and explanations are typeset when first opened (they carry the class mj-wait, which MathJax skips). */
-  function typeset(node){ if(!node.classList.contains('mj-wait')) return; node.classList.remove('mj-wait');
-    if(CONF.mathjax && window.MathJax && MathJax.typesetPromise){ MathJax.typesetPromise([node]).catch(function(){}) } }
+
+  /* MathJax. Hints and explanations carry the class mj-wait, which MathJax's first pass skips; each is typeset when
+     first opened. Calls wait for MathJax's startup and run one after another; a failure puts mj-wait back, so opening
+     the panel again retries. */
+  var mjQueue=null;
+  function mathjaxReady(){
+    return new Promise(function(resolve,reject){ var tries=0;
+      (function poll(){ var M=window.MathJax;
+        if(M && M.startup && M.startup.promise && M.typesetPromise) return resolve(M.startup.promise);
+        if(++tries>300) return reject(new Error('MathJax did not load'));
+        setTimeout(poll,100) })() });
+  }
+  function typeset(node){
+    if(!node.classList.contains('mj-wait') || node.getAttribute('data-mj')==='busy') return;
+    if(!CONF.mathjax){ node.classList.remove('mj-wait'); return }
+    node.setAttribute('data-mj','busy');
+    var run=function(){ return mathjaxReady().then(function(){ node.classList.remove('mj-wait'); return MathJax.typesetPromise([node]) }) };
+    mjQueue=(mjQueue||Promise.resolve()).then(run).then(
+      function(){ node.removeAttribute('data-mj') },
+      function(){ node.removeAttribute('data-mj'); node.classList.add('mj-wait');
+        try{ if(window.MathJax && MathJax.typesetClear) MathJax.typesetClear([node]) }catch(e){} });
+  }
 
   function paint(id){
     var q=byId[id], c=el(id), s=st[id]||{};
