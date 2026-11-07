@@ -62,6 +62,8 @@ body.labels .q { border-left-color: var(--k); }
 .lbl b { color: var(--k); }
 .lbl:hover { color: var(--ink); text-decoration: underline; }
 body.labels .lbl { display: inline-flex; }
+/* An extra tag (+ 6 · verb form): another card the question also drills, in that card's colour (its own kkN). */
+.lbl.xtag { gap: 4px; padding: 3px 8px; white-space: nowrap; max-width: 100%; }
 .mark { margin-left: auto; font-weight: var(--weight-strong); font-size: var(--text-sm); }
 .q.right .mark { color: var(--ok); } .q.wrong .mark { color: var(--bad); }
 

@@ -5,7 +5,9 @@
 
 1. bank/original/<section>.json against bank/README.md (format, text, media files, references).
 2. bank/annotations/<section>.json: every bank item has an annotation with its card; card names
-   agree; every anchor (the card link's, the hint's) exists on that section's cheat sheet.
+   agree; every anchor (the card link's, the hint's, the tags') exists on that section's cheat sheet;
+   tags are distinct, not the item's own anchor, and each sits inside a card there (its card is read
+   from the page, never from a list).
 3. site/css/tokens.css matches the website's tokens (skipped when the Website repo is absent, as in
    CI) and site/css/palette.css is current and passes its contrast and distance checks.
 4. The drills' grading of typed answers (tools/test_grading.js, with node; skipped without it).
@@ -23,11 +25,12 @@ from pathlib import Path
 from urllib.parse import urldefrag, urlparse
 
 from bank import FORBIDDEN_TEX, MATH, ROOT, SECTIONS, bank_errors, bank_path, load, load_annotations
+from build import read_sheet
 
 TOOLS = ROOT / "tools"
 SITE = ROOT / "site"
 EXTERNAL_HOSTS = {"cdnjs.cloudflare.com"}
-ANNOTATION_KEYS = {"card", "card_name", "anchor", "label", "hint", "by", "date"}
+ANNOTATION_KEYS = {"card", "card_name", "anchor", "label", "hint", "tags", "by", "date"}
 HINT_KEYS = {"tag", "title", "text", "anchor"}
 
 
@@ -75,10 +78,11 @@ def check_annotations():
             continue
         sheet = SITE / section / "cheat-sheet" / "index.html"
         anchors = parse(sheet).ids if sheet.exists() else set()
+        card_of = read_sheet(section).card if sheet.exists() else {}  # anchor → the card holding it, from the page
         names = {}
         for iid, a in notes["items"].items():
             if not isinstance(a, dict) or not set(a) <= ANNOTATION_KEYS or not {"card", "card_name", "anchor", "label"} <= set(a):
-                errs.append(f"{where}: {iid}: needs card, card_name, anchor, label (optional hint, by, date), nothing else")
+                errs.append(f"{where}: {iid}: needs card, card_name, anchor, label (optional hint, tags, by, date), nothing else")
                 continue
             if not isinstance(a["card"], int) or not 1 <= a["card"] <= 7:
                 errs.append(f"{where}: {iid}: card must be 1 to 7")
@@ -86,6 +90,19 @@ def check_annotations():
                 errs.append(f"{where}: {iid}: card {a['card']} is named {a['card_name']!r} here and {names[a['card']]!r} elsewhere")
             if a["anchor"] not in anchors:
                 errs.append(f"{where}: {iid}: #{a['anchor']} isn't on {sheet.relative_to(ROOT)}")
+            tags = a.get("tags", [])
+            if not isinstance(tags, list) or not all(isinstance(x, str) and x for x in tags):
+                errs.append(f"{where}: {iid}: tags must be a list of anchors")
+            else:
+                if len(set(tags)) != len(tags):
+                    errs.append(f"{where}: {iid}: tags repeat an anchor")
+                if a["anchor"] in tags:
+                    errs.append(f"{where}: {iid}: tag #{a['anchor']} is the item's own anchor")
+                for x in tags:
+                    if x not in anchors:
+                        errs.append(f"{where}: {iid}: tag #{x} isn't on {sheet.relative_to(ROOT)}")
+                    elif card_of.get(x) is None:
+                        errs.append(f"{where}: {iid}: tag #{x} isn't inside a card (<section class=\"card kN\">) on {sheet.relative_to(ROOT)}")
             h = a.get("hint")
             if h is not None:
                 if not isinstance(h, dict) or not {"tag", "title", "text"} <= set(h) or not set(h) <= HINT_KEYS or not all(isinstance(h[k], str) and h[k].strip() for k in h):

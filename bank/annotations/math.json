@@ -27,7 +27,10 @@
     "text": "Use \\(\\sin=\\dfrac{\\text{opp}}{\\text{hyp}}\\) to find one leg. Then \\(a^2+b^2=c^2\\) for the other leg.",
     "anchor": "m-trig"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-pyth"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
    "date": "2026-11-06"
   },
   "a54753ca": {
@@ -41,7 +44,10 @@
     "text": "A horizontal line meets a parabola exactly once only at the vertex. Complete the square to get vertex form; you want the vertex's y-value.",
     "anchor": "m-disc"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-forms"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
    "date": "2026-11-06"
   },
   "58c26db8": {
@@ -153,7 +159,10 @@
     "text": "Slope of the radius (center → touching point), then flip and negate for the tangent. Which point makes that slope with the touching point?",
     "anchor": "m-tan"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-slope"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
    "date": "2026-11-06"
   },
   "0393ba15": {
@@ -321,7 +330,11 @@
     "text": "Total = mean × count. The median is the middle value (find its position). Range = biggest − smallest. You get two equations—add them.",
     "anchor": "m-mean"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-median",
+    "m-combo"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
    "date": "2026-11-06"
   },
   "3a84f885": {
@@ -433,7 +446,10 @@
     "text": "'Increase in fat for every 1 gram of protein' = the slope of the line. Pick two points ON the line, compute rise ÷ run.",
     "anchor": "m-scatter"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-slope"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
    "date": "2026-11-06"
   },
   "e6c557f9": {
@@ -503,7 +519,11 @@
     "text": "Matching angles in similar triangles have the same tan. Use \\(\\tan=\\dfrac{\\text{opp}}{\\text{adj}}\\) in the second triangle.",
     "anchor": "m-sim"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-trig",
+    "m-special"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
    "date": "2026-11-06"
   },
   "590d662d": {
@@ -587,7 +607,10 @@
     "text": "Minimum = vertex. Find the two zeros from the factors and take their midpoint, or complete the square.",
     "anchor": "m-cts"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-forms"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
    "date": "2026-11-06"
   },
   "6d99b141": {
@@ -643,7 +666,10 @@
     "text": "The figure has three similar right triangles, so matching angles have the same tangent. Use \\(\\tan=\\dfrac{\\text{opp}}{\\text{adj}}\\) where you know a side.",
     "anchor": "m-trig"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-sim"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
    "date": "2026-11-06"
   },
   "fc3d783a": {
@@ -727,7 +753,10 @@
     "text": "Find the slope of the radius from the center to the touching point, then flip and negate it.",
     "anchor": "m-tan"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-slope"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
    "date": "2026-11-06"
   },
   "0121a235": {
@@ -811,7 +840,10 @@
     "text": "Complete the square on x and on y. The number left on the right side is \\(r^2\\). Set it equal to (given radius)\\(^2\\) and solve.",
     "anchor": "m-circ"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-cts"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
    "date": "2026-11-06"
   },
   "2992ac30": {
@@ -951,7 +983,10 @@
     "text": "Find the middle position before and after adding the new value. A value bigger than the mean pulls the mean up—does the middle value change?",
     "anchor": "m-median"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-mean"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
    "date": "2026-11-06"
   },
   "1baffbcf": {
@@ -979,7 +1014,10 @@
     "text": "\\(\\tan=\\dfrac{\\text{opp}}{\\text{adj}}\\) gives the missing leg. Then \\(a^2+b^2=c^2\\) for the hypotenuse. Perimeter = all three sides added.",
     "anchor": "m-trig"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-pyth"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
    "date": "2026-11-06"
   },
   "6fca0144": {
@@ -1049,7 +1087,10 @@
     "text": "Both segments from the center are radii (equal). Find the radius with the distance formula. A right angle between two radii → hypotenuse \\(=r\\sqrt2\\).",
     "anchor": "m-circ"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-pyth"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
    "date": "2026-11-06"
   },
   "9d0396d4": {
@@ -1091,7 +1132,10 @@
     "text": "Symmetric plots: the median is the middle value. For SD, which plot has more dots far from the center?",
     "anchor": "m-spread"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-median"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
    "date": "2026-11-06"
   },
   "27d075d8": {

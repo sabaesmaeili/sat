@@ -111,8 +111,10 @@
   document.querySelectorAll('[data-status]').forEach(function(b){ b.addEventListener('click',function(){ status=b.getAttribute('data-status');
     document.querySelectorAll('[data-status]').forEach(function(x){ x.setAttribute('aria-pressed', String(x===b)) }); refresh() }) });
 
+  /* q.cards: the item's main card and its tags' cards (tools/build.py); a card's chip and progress row count them all. */
+  function cardsOf(q){ return q.cards || [q.card] }
   function vis(q){ var s=st[q.id];
-    if(activeCards.length && activeCards.indexOf(q.card)<0) return false;
+    if(activeCards.length && !cardsOf(q).some(function(k){ return activeCards.indexOf(k)>=0 })) return false;
     if(status==='todo') return !s || (!s.tries && !s.revealed);
     if(status==='missed') return !!s && s.ok===false;
     if(status==='right') return !!s && s.ok===true;
@@ -120,8 +122,9 @@
   function refresh(){
     var shown=0, done=0, right=0, per={};
     DATA.forEach(function(q){ var v=vis(q); el(q.id).hidden=!v; if(v) shown++;
-      var s=st[q.id]; per[q.card]=per[q.card]||{n:0,d:0,r:0}; per[q.card].n++;
-      if(s && (s.tries||s.revealed)){ done++; per[q.card].d++; if(s.ok===true){ right++; per[q.card].r++ } } });
+      var s=st[q.id], seen=!!(s && (s.tries||s.revealed)), first=seen && s.ok===true;
+      if(seen){ done++; if(first) right++ }
+      cardsOf(q).forEach(function(k){ var p=per[k]=per[k]||{n:0,d:0,r:0}; p.n++; if(seen){ p.d++; if(first) p.r++ } }) });
     document.getElementById('empty').hidden = shown>0;
     document.getElementById('shown').textContent='Showing '+shown+' of '+DATA.length;
     document.getElementById('score').firstChild.nodeValue = right+' / '+done+' ';

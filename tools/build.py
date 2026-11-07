@@ -11,11 +11,13 @@ _site/ is site/ with every {{…}} filled in. The site is one folder tree (the F
 {{header}} (the mark, the address with a link per segment, and, inside a section, the menu of its
 cheat sheet and drill). The drills (<section>/drill/index.html) get their questions from
 bank/original/<section>.json, in `number` order, and our card links and hints from
-bank/annotations/<section>.json; the list pages get the drills' question counts. Only the figures
+bank/annotations/<section>.json (an item's extra tags count it under each tag's card too, the card that holds
+that anchor on the cheat sheet); the list pages get the drills' question counts. Only the figures
 the pages use are copied (into media/<section>/); the screenshots in img/ are not.
 """
 import argparse
 import html
+import html.parser
 import json
 import re
 import shutil
@@ -43,6 +45,81 @@ MEDIA = re.compile(r"\[\[media:(\d+)\]\]")
 
 class BuildError(Exception):
     pass
+
+
+class Sheet(html.parser.HTMLParser):
+    """A cheat sheet's anchors: for each id, the card (<section class="card kN">) that contains it and its title (the
+    text of its first h2, h3 or b), read from the page itself, so moving a sub-test to another card needs no other edit."""
+    VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
+
+    def __init__(self):
+        super().__init__()
+        self.card, self.title, self.text, self.card_id = {}, {}, {}, {}  # card_id: card number → its section's id
+        self.stack, self.into, self.depth = [], None, 0  # open elements as (tag, id, card); the id whose title is being read
+
+    def handle_starttag(self, tag, attrs):
+        if tag in self.VOID:
+            return
+        a = dict(attrs)
+        m = re.search(r"\bcard k(\d+)\b", a.get("class") or "") if tag == "section" else None
+        card = int(m.group(1)) if m else next((c for _, _, c in reversed(self.stack) if c), None)
+        iid = a.get("id")
+        if iid:
+            self.card[iid], self.text[iid] = card, ""
+            if m:
+                self.card_id.setdefault(card, iid)
+        if tag in ("h2", "h3", "b") and self.into is None:
+            owner = next((i for _, i, _ in reversed(self.stack) if i), None)
+            if owner and owner not in self.title:
+                self.into, self.depth = owner, len(self.stack)
+                self.title[owner] = ""
+        self.stack.append((tag, iid, card))
+
+    def handle_endtag(self, tag):
+        if tag in self.VOID or all(t != tag for t, _, _ in self.stack):
+            return
+        while self.stack and self.stack.pop()[0] != tag:
+            pass
+        if self.into and len(self.stack) <= self.depth:
+            self.into = None
+
+    def handle_data(self, data):
+        if self.into:
+            self.title[self.into] += data
+        for _, iid, _ in self.stack:
+            if iid:
+                self.text[iid] += data
+
+
+def read_sheet(section):
+    """The section's cheat sheet (site/<section>/cheat-sheet/index.html), parsed: Sheet.card, .title, .text by id."""
+    sheet = Sheet()
+    sheet.feed((SITE / section / "cheat-sheet" / "index.html").read_text(encoding="utf-8"))
+    return sheet
+
+
+# Short tag labels where the cheat-sheet title doesn't shorten well (anchor → label); see tag_labels.
+TAG_LABEL = {"w-form": "verb form", "m-pyth": "3-4-5 triples"}
+
+
+def tag_labels(notes, sheet):
+    """A short label for every anchor, for the extra card links (tags): the label an annotation already gives that
+    anchor (the most used one), else TAG_LABEL, else the anchor's title on the cheat sheet, shortened (before a colon,
+    without a trailing "test", lower case unless it is all capitals), else its text."""
+    used = {}
+    for a in notes.values():
+        used.setdefault(a["anchor"], []).append(a["label"])
+    out = {}
+    for iid in sheet.card:
+        if iid in used:
+            out[iid] = max(used[iid], key=used[iid].count)
+        elif iid in TAG_LABEL:
+            out[iid] = TAG_LABEL[iid]
+        else:
+            plain = lambda s: " ".join(re.sub(r"\\[()\[\]]", "", s).split())  # no TeX delimiters in a label
+            t = re.sub(r"\s+test$", "", plain(sheet.title.get(iid) or "").split(":")[0], flags=re.I).strip()
+            out[iid] = (t if t.isupper() else t.lower()) if t else plain(sheet.text[iid])[:24].strip() or iid
+    return out
 
 
 def esc(s):
@@ -113,11 +190,15 @@ def has_math(s):
     return "\\(" in s or "\\[" in s
 
 
-def render_item(item, stimulus, ann, pos, section, used, bank):
+def render_item(item, stimulus, ann, pos, section, used, bank, tags=()):
+    """One question. tags: its extra card links, as (anchor, card, card name, label), each a small link after the main one."""
     iid, mc = item["id"], item["format"] == "mcq"
     playbook = "../cheat-sheet/"
     label = (f'<a class="lbl" href="{playbook}#{esc(ann["anchor"])}" target="_blank" rel="noopener">'
              f'<b>{ann["card"]} · {esc(ann["card_name"])}</b> → {esc(ann["label"])}</a>')
+    label += "".join(f'<a class="lbl xtag kk{k}" href="{playbook}#{esc(anchor)}" target="_blank" rel="noopener" '
+                     f'title="Also card {k} · {esc(name)} → {esc(words)}"><b>+ {k}</b> · {esc(words)}</a>'
+                     for anchor, k, name, words in tags)
     parts = [f'<article class="q kk{ann["card"]}" id="q-{iid}">',
              f'<div class="qh"><span class="qn">Q{pos}</span>{label}<span class="mark"></span></div>',
              '<div class="qbody content">']
@@ -161,19 +242,31 @@ def render_drill(section, bank, used):
     missing = [it["id"] for it in items if it["id"] not in notes or "card" not in notes[it["id"]]]
     if missing:
         raise BuildError(f"{section}: no annotation (card) for {', '.join(missing)}")
-    cards = {}
+    # An item counts under its main card and under each tag's card: the cheat-sheet card that holds the tag's anchor,
+    # read from the page, so a sub-test moved to another card moves its tagged items with it.
+    sheet, cards, sets = read_sheet(section), {}, {}
+    words = tag_labels(notes, sheet)
     for it in items:
         a = notes[it["id"]]
-        cards.setdefault(a["card"], {"name": a["card_name"], "n": 0})["n"] += 1
+        cards.setdefault(a["card"], {"name": a["card_name"], "n": 0})
+    for it in items:
+        a = notes[it["id"]]
+        for anchor in a.get("tags") or []:
+            if sheet.card.get(anchor) is None:
+                raise BuildError(f"{section}: {it['id']}: tag #{anchor} isn't inside a card on the cheat sheet")
+        sets[it["id"]] = sorted({a["card"], *(sheet.card[t] for t in a.get("tags") or [])})
+        for k in sets[it["id"]]:  # a card that only tags reach is named by its title on the cheat sheet
+            cards.setdefault(k, {"name": " ".join(sheet.title.get(sheet.card_id.get(k), "").split()) or f"Card {k}", "n": 0})["n"] += 1
     order = sorted(cards)
     blocks, js, math = [], [], False
     for pos, it in enumerate(items, 1):
         st = data["stimuli"].get(it["stimulus"]) if it["stimulus"] else None
         a = notes[it["id"]]
-        blocks.append(render_item(it, st, a, pos, section, used, bank))
+        tags = [(t, sheet.card[t], cards[sheet.card[t]]["name"], words[t]) for t in a.get("tags") or []]
+        blocks.append(render_item(it, st, a, pos, section, used, bank, tags))
         texts = [it["question"], *(it["options"] or {}).values(), *it["rationale"], (st or {}).get("text", ""), (a.get("hint") or {}).get("text", "")]
         math = math or any(has_math(t) for t in texts)
-        row = {"id": it["id"], "card": a["card"], "answer": it["answer"], "mc": it["format"] == "mcq"}
+        row = {"id": it["id"], "card": a["card"], "cards": sets[it["id"]], "answer": it["answer"], "mc": it["format"] == "mcq"}
         if it["format"] == "spr":
             row["acc"] = it["accepted"]
         js.append(row)
