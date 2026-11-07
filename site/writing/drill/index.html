@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>SAT Writing Drill</title>
+<!-- Source page: tools/build.py fills in the placeholders from bank/original/writing.json and bank/annotations/writing.json. -->
+<link rel="stylesheet" href="{{root}}css/tokens.css">
+<link rel="stylesheet" href="{{root}}css/tool-tokens.css">
+<link rel="stylesheet" href="{{root}}css/palette.css">
+<link rel="stylesheet" href="{{root}}css/site.css">
+<link rel="stylesheet" href="{{root}}css/drill.css">
+{{mathjax}}
+</head>
+<body class="writing">
+{{header}}
+<main class="frame">
+<header>
+  <p class="prompt"><span class="sym">$</span> open drill</p>
+  <h1 class="page-title">SAT Writing Drill</h1>
+  <p class="lead">{{count_hard}} from the College Board question bank. &quot;Q12&quot; always means the same question, even after shuffling.</p>
+  <p class="toplinks">Stuck? Open a <b>Hint</b> (it uses the cheat sheet), or the <a href="../cheat-sheet/" target="_blank" rel="noopener">SAT Writing Playbook</a>.</p>
+</header>
+
+{{bar}}
+
+<div id="list">
+{{questions}}
+</div>
+<div class="empty" id="empty" hidden>No questions match these filters.</div>
+
+{{summary}}
+<div class="foot">
+  <p>The score counts first tries only (opening &quot;Show answer&quot; before trying counts as a miss). Progress is saved in this browser.</p>
+  <p class="credit">Questions and rationales: College Board SAT Suite Question Bank.</p>
+</div>
+</main>
+<script>
+{{data}}
+</script>
+<script src="{{root}}js/drill.js"></script>
+</body>
+</html>

@@ -2,47 +2,30 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SAT Prep</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@700;800&family=Barlow:wght@500;600;700&display=swap">
-<style>
-:root{--paper:#F3F5F8;--card:#FFFFFF;--ink:#18202B;--muted:#627080;--line:#DCE2EA;--w:#6A2C8F;--m:#1F5FBF}
-@media (prefers-color-scheme: dark){:root{--paper:#10151C;--card:#19212B;--ink:#EAEFF5;--muted:#A0ADBC;--line:#2C3644;--w:#C08BE6;--m:#7FB0FF;color-scheme:dark}}
-*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:"Barlow","Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.45}
-.wrap{max-width:900px;margin:0 auto;padding:40px max(16px,env(safe-area-inset-right,0px)) 60px max(16px,env(safe-area-inset-left,0px))}
-h1{font-family:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;font-size:44px;font-weight:800;margin:0;line-height:1}
-.sub{color:var(--muted);font-weight:600;margin:8px 0 28px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-h2{font-family:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;font-size:24px;margin:0 0 10px;color:var(--k)}
-.col{display:grid;gap:12px;align-content:start}
-a.c{display:block;background:var(--card);border:1px solid var(--line);border-top:6px solid var(--k);border-radius:14px;padding:16px 18px;color:var(--ink);text-decoration:none;transition:transform .12s}
-a.c:hover{transform:translateY(-2px)} a.c:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
-a.c b{display:block;font-size:20px} a.c span{color:var(--muted);font-weight:600}
-.w{--k:var(--w)} .m{--k:var(--m)}
-.how{margin-top:28px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
-.how h3{margin:0 0 6px;font-family:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;font-size:20px}
-.how ol{margin:0;padding-left:20px} .how li{margin:4px 0}
-@media (max-width:600px){.grid{grid-template-columns:1fr} h1{font-size:34px}}
-@media (prefers-reduced-motion:reduce){a.c{transition:none}}
-</style>
+<meta name="description" content="SAT cheat sheets and drills built from hard College Board question-bank items.">
+<link rel="stylesheet" href="{{root}}css/tokens.css">
+<link rel="stylesheet" href="{{root}}css/tool-tokens.css">
+<link rel="stylesheet" href="{{root}}css/palette.css">
+<link rel="stylesheet" href="{{root}}css/site.css">
 </head>
 <body>
-<div class="wrap">
-<h1>SAT Prep</h1>
-<p class="sub">Two cheat sheets and two 80-question drills built from hard College Board question-bank items.</p>
-<div class="grid">
-  <div class="col w"><h2>Reading &amp; Writing</h2>
-    <a class="c w" href="writing-playbook.html"><b>Writing cheat sheet</b><span>5 cards · a test for each one</span></a>
-    <a class="c w" href="writing-drill.html"><b>Writing drill</b><span>80 questions · hints · official explanations</span></a></div>
-  <div class="col m"><h2>Math</h2>
-    <a class="c m" href="math-playbook.html"><b>Math cheat sheet</b><span>7 cards · trigger words → the move</span></a>
-    <a class="c m" href="math-drill.html"><b>Math drill</b><span>80 questions · formula hints · official explanations</span></a></div>
-</div>
-<div class="how"><h3>How to practice</h3><ol>
-  <li>Pick a subject with the filter buttons, or do them all in order.</li>
-  <li>Try it on your own first. Stuck? Open the <b>Hint</b>; it points to the matching rule on the cheat sheet.</li>
-  <li>Use <b>Missed</b> to redo only the ones you got wrong on the first try.</li>
-</ol></div>
-</div>
+{{header}}
+<main class="frame">
+  <p class="prompt"><span class="sym">$</span> tree</p>
+  <h1 class="page-title">SAT prep</h1>
+  <p class="lead">Cheat sheets and drills built from hard College Board question-bank items.</p>
+
+  <ul class="tree">
+    <li class="tr"><span class="lft"><span class="br" aria-hidden="true">├──</span><a class="k" href="writing/">writing</a></span><span class="rt"></span></li>
+    <li class="tr"><span class="lft"><span class="br" aria-hidden="true">│   ├──</span><a class="k" href="writing/cheat-sheet/">cheat sheet</a></span><span class="rt">{{cards:writing}} · a test for each one</span></li>
+    <li class="tr"><span class="lft"><span class="br" aria-hidden="true">│   └──</span><a class="k" href="writing/drill/">drill</a></span><span class="rt">{{count:writing}} · hints · official explanations</span></li>
+    <li class="tr"><span class="lft"><span class="br" aria-hidden="true">└──</span><a class="k" href="math/">math</a></span><span class="rt"></span></li>
+    <li class="tr"><span class="lft"><span class="br" aria-hidden="true">    ├──</span><a class="k" href="math/cheat-sheet/">cheat sheet</a></span><span class="rt">{{cards:math}} · trigger words → the move</span></li>
+    <li class="tr"><span class="lft"><span class="br" aria-hidden="true">    └──</span><a class="k" href="math/drill/">drill</a></span><span class="rt">{{count:math}} · formula hints · official explanations</span></li>
+  </ul>
+</main>
 </body>
 </html>
