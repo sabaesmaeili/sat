@@ -1,0 +1,99 @@
+/* COPIED FILE. Never edit it by hand: it is the French tool's _Workspace/tool/tool-tokens.css, copied by
+   tools/sync_tokens.py (its --check fails when this copy has drifted). Everything below is that file. */
+
+/*
+  The TCF tool's own tokens, defined on top of the website's (tokens.css, synced, never edited).
+  Hand-edited. Each one is a recorded tool exception (DESIGN.md §2, "Tokens"); a value the website
+  also needs moves to the website's global.css and arrives through tokens.css instead.
+  The player loads this file after tokens.css; sync_tokens.py copies it into the prototypes.
+*/
+
+:root {
+  /* The serif reading face for material (DESIGN.md §1, §2). */
+  --font-serif: "Iowan Old Style", Charter, "Charter BT", Georgia, "Noto Serif", "Times New Roman", serif;
+  --content-size: 1.125rem;
+  --content-leading: 1.65;
+  --content-measure: 58ch;
+  /* The site's 64ch measure for leads and notes (design-system.xml typography rules, no token there). */
+  --measure: 64ch;
+  /* Touch target for exercise choices, blanks, transport and command lines; the site's controls are --control-height. */
+  --control: 44px;
+  /* The stateSquare's side, and the gap between the squares of a strip or a grid. */
+  --square: 12px;
+  --square-gap: 3px;
+  /* The spacing scale (DESIGN.md 2, N-23): one body line, and a serif line's extra half-leading (negative), taken off
+     material so its ink sits where a body line's would. */
+  --line: calc(var(--leading) * 1rem);
+  --serif-trim: calc((var(--line) - var(--content-size) * var(--content-leading)) / 2);
+  /* Two website tokens set ahead of the website (owner, 2026-10-31, N-23 Q2, Q3): rows 40px apart, sections two lines.
+     Delete both once the website's global.css carries them and sync_tokens.py has copied them into tokens.css
+     (prototypes/spacing/APPLIED.md, "The website"). */
+  --row-pad: 8px;
+  --gap-section: 48px;
+  /* A navigation strip's tap slot on a coarse pointer (decision 44): each 12px square sits in a 44px square. */
+  --strip-slot-touch: var(--control);
+  /* Long writing fields: a surface between surface-2 and line (dark), or surface-2 and the canvas (light). */
+  --color-entry: color-mix(in srgb, var(--color-surface-2) 30%, var(--color-line));
+  /* Squares are opaque (decisions 62, 64). Dark mode (the default here): every coloured square keeps its hue's full
+     chroma and varies only lightness, OKLCH values precomputed from the website's dark green #69ff47 (oklch 0.885 0.253
+     140.4), pink #ff3ea5 (0.682 0.241 353.2) and blue #00b1d2 (0.702 0.126 217.5): lightness × k. Recompute them if
+     those tokens change. Measures' heat steps (DESIGN.md 3): k 0.62, 0.74, 0.86; full green is the token. */
+  /* The prototypes' alpha heat (prototypes only; the player uses the colours below). */
+  --heat-1: 0.3;
+  --heat-2: 0.55;
+  --heat-3: 0.8;
+  --color-square-heat-1: oklch(0.549 0.253 140.4);
+  --color-square-heat-2: oklch(0.655 0.253 140.4);
+  --color-square-heat-3: oklch(0.761 0.253 140.4);
+  /* Single-answer squares (decisions 58, 64), dark: right the green token; near a darker green (k 0.78); wrong the pink
+     token; a chosen or untouched current square the blue token. The current square once answered is a lighter step of
+     its own colour: near k 0.874, right k 1.08 (the green is near the top: only about 1 L* lighter), wrong k 1.15. */
+  --color-square-near: oklch(0.690 0.253 140.4);
+  --color-square-near-current: oklch(0.773 0.253 140.4);
+  --color-square-right: var(--color-square-done);
+  --color-square-right-current: oklch(0.956 0.253 140.4);
+  --color-square-wrong-mark: var(--color-square-wrong);
+  --color-square-wrong-current: oklch(0.784 0.241 353.2);
+  --color-square-chosen: var(--color-square-current);
+  /* A missing letter or word in a difference: a small solid pink block, not a tint. */
+  --tint-missing: 0.55;
+  /* Text fields' quiet corners (and a document picture's). */
+  --radius-field: 2px;
+  /* The play mark at rest, and the screen while an answer is graded. */
+  --opacity-say: 0.7;
+  --opacity-pending: 0.65;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --color-entry: color-mix(in srgb, var(--color-surface-2) 55%, var(--color-bg));
+    /* Light mode (decision 62): solid mixes toward the empty-square grey; percentages set so neighbouring steps
+       sit at least about 6 CIELAB L* apart (DESIGN.md 3). */
+    --color-square-heat-1: color-mix(in srgb, var(--color-square-done) 30%, var(--color-square-idle));
+    --color-square-heat-2: color-mix(in srgb, var(--color-square-done) 50%, var(--color-square-idle));
+    --color-square-heat-3: color-mix(in srgb, var(--color-square-done) 72%, var(--color-square-idle));
+    --color-square-near: color-mix(in srgb, var(--color-square-done) 50%, var(--color-square-idle));
+    --color-square-near-current: color-mix(in srgb, var(--color-square-done) 83%, var(--color-square-idle));
+    --color-square-right: color-mix(in srgb, var(--color-square-done) 67%, var(--color-square-idle));
+    --color-square-right-current: var(--color-square-done);
+    --color-square-wrong-mark: color-mix(in srgb, var(--color-square-wrong) 60%, var(--color-square-idle));
+    --color-square-wrong-current: var(--color-square-wrong);
+    --color-square-chosen: color-mix(in srgb, var(--color-square-current) 75%, var(--color-square-idle));
+  }
+}
+
+:root[data-theme="light"] {
+  --color-entry: color-mix(in srgb, var(--color-surface-2) 55%, var(--color-bg));
+  /* Light mode (decision 62): solid mixes toward the empty-square grey; percentages set so neighbouring steps
+     sit at least about 6 CIELAB L* apart (DESIGN.md 3). */
+  --color-square-heat-1: color-mix(in srgb, var(--color-square-done) 30%, var(--color-square-idle));
+  --color-square-heat-2: color-mix(in srgb, var(--color-square-done) 50%, var(--color-square-idle));
+  --color-square-heat-3: color-mix(in srgb, var(--color-square-done) 72%, var(--color-square-idle));
+  --color-square-near: color-mix(in srgb, var(--color-square-done) 50%, var(--color-square-idle));
+  --color-square-near-current: color-mix(in srgb, var(--color-square-done) 83%, var(--color-square-idle));
+  --color-square-right: color-mix(in srgb, var(--color-square-done) 67%, var(--color-square-idle));
+  --color-square-right-current: var(--color-square-done);
+  --color-square-wrong-mark: color-mix(in srgb, var(--color-square-wrong) 60%, var(--color-square-idle));
+  --color-square-wrong-current: var(--color-square-wrong);
+  --color-square-chosen: color-mix(in srgb, var(--color-square-current) 75%, var(--color-square-idle));
+}

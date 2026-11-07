@@ -1,0 +1,80 @@
+/*
+  GENERATED FILE. Never edit it by hand: edit tools/palette.py, then run it.
+  The website's palette (tokens.css) extended with more hues, built as the website builds its own: light, each
+  OKLCH hue at the highest chroma, darkened to exactly 4.5:1 on the canvas; dark, at Blue Atoll's lightness
+  (0.702) and the highest chroma in gamut (cap 0.25). Hues: violet 300, teal 175, orange 50, magenta 322, indigo 265, red 20.
+  One value per hue per mode, --color-<hue>, and --color-<hue>-rgb for tints. Roles map onto hues at the end.
+  Values and checks: README.md, Palette.
+  Load after tokens.css. The light block appears twice, so data-theme on <html> can force either mode.
+*/
+
+:root {
+  --color-violet: #b27fff;
+  --color-violet-rgb: 178, 127, 255;
+  --color-teal: #00b99a;
+  --color-teal-rgb: 0, 185, 154;
+  --color-orange: #f67400;
+  --color-orange-rgb: 246, 116, 0;
+  --color-magenta: #e358f8;
+  --color-magenta-rgb: 227, 88, 248;
+  --color-indigo: #8bafff;
+  --color-indigo-rgb: 139, 175, 255;
+  --color-red: #ff636c;
+  --color-red-rgb: 255, 99, 108;
+
+  /* Roles */
+  --color-k1: var(--color-violet);
+  --color-k1-rgb: var(--color-violet-rgb);
+  --color-k2: var(--color-blue);
+  --color-k2-rgb: var(--color-blue-rgb);
+  --color-k3: var(--color-teal);
+  --color-k3-rgb: var(--color-teal-rgb);
+  --color-k4: var(--color-orange);
+  --color-k4-rgb: var(--color-orange-rgb);
+  --color-k5: var(--color-magenta);
+  --color-k5-rgb: var(--color-magenta-rgb);
+  --color-k6: var(--color-indigo);
+  --color-k6-rgb: var(--color-indigo-rgb);
+  --color-k7: var(--color-red);
+  --color-k7-rgb: var(--color-red-rgb);
+  --color-writing: var(--color-violet);
+  --color-writing-rgb: var(--color-violet-rgb);
+  --color-math: var(--color-blue);
+  --color-math-rgb: var(--color-blue-rgb);
+  --color-right: var(--color-green);
+  --color-right-rgb: var(--color-green-rgb);
+  --color-wrong: var(--color-pink);
+  --color-wrong-rgb: var(--color-pink-rgb);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --color-violet: #943ef2;
+    --color-violet-rgb: 148, 62, 242;
+    --color-teal: #007f69;
+    --color-teal-rgb: 0, 127, 105;
+    --color-orange: #b55400;
+    --color-orange-rgb: 181, 84, 0;
+    --color-magenta: #b926ce;
+    --color-magenta-rgb: 185, 38, 206;
+    --color-indigo: #2c60ff;
+    --color-indigo-rgb: 44, 96, 255;
+    --color-red: #e0003a;
+    --color-red-rgb: 224, 0, 58;
+  }
+}
+
+:root[data-theme="light"] {
+  --color-violet: #943ef2;
+  --color-violet-rgb: 148, 62, 242;
+  --color-teal: #007f69;
+  --color-teal-rgb: 0, 127, 105;
+  --color-orange: #b55400;
+  --color-orange-rgb: 181, 84, 0;
+  --color-magenta: #b926ce;
+  --color-magenta-rgb: 185, 38, 206;
+  --color-indigo: #2c60ff;
+  --color-indigo-rgb: 44, 96, 255;
+  --color-red: #e0003a;
+  --color-red-rgb: 224, 0, 58;
+}
