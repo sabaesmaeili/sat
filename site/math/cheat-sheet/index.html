@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="{{root}}css/palette.css">
 <link rel="stylesheet" href="{{root}}css/site.css">
 <style>
-/* Layout: a "which card?" picker keyed to trigger words, then 7 numbered cards. Card 1 (quadratics) is full width with the discriminant drawn as traffic lights; the rest sit in a 2-column grid. Formulas are typeset with MathJax. */
+/* Layout: a "which card?" picker keyed to trigger words (its label a heading line above it), then 7 numbered cards. Card 1 (quadratics) is full width with the discriminant drawn as traffic lights; the rest sit in a 2-column grid. Formulas are typeset with MathJax. */
 /* Colours: the website's tokens (css/tokens.css) and the extended palette (css/palette.css); both modes come from there.
    Category k colours: --kc (one value per mode); text on a --kc fill is --card (the canvas). */
 :root{
@@ -36,7 +36,8 @@ mjx-container{font-size:106% !important}
 
 /* picker */
 .picker{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.picker .lab{font-family:var(--display);font-weight:var(--weight-strong);font-size:var(--text-sm);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);line-height:1.15;align-self:center;padding:4px}
+.picker .lab{grid-column:1/-1}
+.picker .lab{font-family:var(--display);font-weight:var(--weight-strong);font-size:var(--text-sm);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);line-height:1.15;padding:0}
 .pick{display:flex;gap:10px;align-items:center;background:var(--card);border:2px solid var(--kc);border-radius:10px;padding:9px 12px;text-decoration:none;color:var(--ink);min-width:0;transition:transform .12s}
 .pick:hover{color:var(--ink)}
 .pick:hover{transform:translateY(-2px)}
@@ -57,8 +58,8 @@ mjx-container{font-size:106% !important}
 .big{font-family:var(--display);font-size:var(--text-xl);font-weight:var(--weight-strong);line-height:var(--leading-tight);margin:2px 0 10px}
 .big em{font-style:normal;color:var(--kc)}
 .tip{font-size:var(--text-sm);color:var(--muted);margin-top:6px}
-.fx{display:inline-block;max-width:100%;overflow-x:auto;font-size:20px;background:var(--chip);border-left:4px solid var(--kc);padding:6px 14px;border-radius:0 8px 8px 0;margin:2px 0 6px}
-.ex{background:var(--chip);border-radius:8px;padding:7px 12px;font-size:var(--text-base);margin-top:8px;overflow-x:auto}
+.fx{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;font-size:20px;background:var(--chip);border-left:4px solid var(--kc);padding:6px 14px;border-radius:0 8px 8px 0;margin:2px 0 6px}
+.ex{background:var(--chip);border-radius:8px;padding:7px 12px;font-size:var(--text-base);margin-top:8px;overflow-x:auto;overflow-y:hidden}
 .ex b{font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;font-size:.75rem;color:var(--kc);margin-right:6px}
 .hl{background:var(--hi);color:var(--hi-fg);border-radius:5px;padding:0 .25em;font-weight:var(--weight-strong)}
 
@@ -81,12 +82,12 @@ svg .sl{fill:var(--kc);opacity:.35;stroke:none}
 .tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
 .tile{border:2px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
 .tile h3{font-size:var(--text-sm);text-transform:uppercase;letter-spacing:.06em;color:var(--kc)}
-.tile .f{font-size:19px;margin:4px 0 6px;overflow-x:auto}
+.tile .f{font-size:19px;margin:4px 0 6px;padding-block:2px;overflow-x:auto;overflow-y:hidden}
 .tile ul{margin:0;padding-left:18px;font-size:var(--text-base)}
 .rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px}
 .rules.two{grid-template-columns:repeat(2,minmax(0,1fr))}
 .rules.three{grid-template-columns:repeat(3,minmax(0,1fr))}
-.rule{background:var(--chip);border-radius:10px;padding:10px 12px;min-width:0;overflow-x:auto}
+.rule{background:var(--chip);border-radius:10px;padding:10px 12px;min-width:0;overflow-x:auto;overflow-y:hidden}
 .rule h3{font-size:var(--text-sm);text-transform:uppercase;letter-spacing:.05em;color:var(--kc)}
 .rule p{margin:4px 0 0;font-size:var(--text-base)}
 
@@ -152,8 +153,6 @@ svg .sl{fill:var(--kc);opacity:.35;stroke:none}
   .card,.light,.rule,.num,.hl,.tr .h,.ex,.soh div,.fx{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .pick:hover{transform:none}
 }
-.practice{display:inline-block;margin-top:12px;font-weight:var(--weight-strong);font-size:var(--text-sm);color:var(--ink);background:var(--card);border:1px solid var(--color-math);border-radius:999px;padding:6px 14px;text-decoration:none}
-.practice:hover{color:var(--ink);border-color:var(--ink)}
 </style>
 <script>
 window.MathJax={tex:{inlineMath:[['\\(','\\)']]},svg:{fontCache:'global'}};
@@ -177,11 +176,10 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']]},svg:{fontCache:'global'}};
   <p class="prompt"><span class="sym">$</span> cat cheat-sheet.md</p>
   <h1 class="page-title">SAT Math Playbook</h1>
   <div class="sub">Find the trigger words in the question. They tell you which card to use.</div>
-  <a class="practice" href="../drill/" target="_blank" rel="noopener">Practice with the SAT Math Drill: 80 questions with hints →</a>
 </header>
 
 <nav class="picker" aria-label="Pick a card">
-  <div class="lab">The question<br>says…</div>
+  <div class="lab">The question says…</div>
   <a class="pick k1" href="#m-disc"><span class="num">1</span><span><b>Quadratics</b><small>vertex · exactly one solution · k is a constant</small></span></a>
   <a class="pick k2" href="#m-sys"><span class="num">2</span><span><b>Lines &amp; systems</b><small>slope · no solution · infinitely many · x + y</small></span></a>
   <a class="pick k3" href="#m-exp"><span class="num">3</span><span><b>Growth &amp; percent</b><small>% each year · doubles · original price</small></span></a>

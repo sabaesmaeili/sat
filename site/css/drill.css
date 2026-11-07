@@ -71,9 +71,11 @@ body.labels .lbl { display: inline-flex; }
 .passage { margin-bottom: 0.9em; }
 .stem p:last-child { margin-bottom: 0.4em; }
 .blank { display: inline-block; width: 4.5em; border-bottom: 1px solid currentColor; vertical-align: baseline; margin: 0 0.1em; height: 1em; }
-.disp { overflow-x: auto; overflow-y: hidden; margin: 0 0 0.6em; text-align: center; }
+/* Sideways scrolling only where something can be too wide; overflow-y: hidden, or overflow-x: auto alone makes it auto
+   and a pixel of line-box overflow shows a vertical scrollbar. The padding keeps descenders, math and borders unclipped. */
+.disp { overflow-x: auto; overflow-y: hidden; padding-block: 2px; margin: 0 0 0.6em; text-align: center; }
 .disp mjx-container[display="true"] { margin: 0.2em 0 !important; }
-.tbl { overflow-x: auto; margin: 0 0 0.9em; }
+.tbl { overflow-x: auto; overflow-y: hidden; padding-block: 2px; margin: 0 0 0.9em; }
 .content table { border-collapse: collapse; margin: 0 auto; font-size: var(--text-base); line-height: 1.4; }
 .mc .ot table { margin: 0; }
 .content caption { font-weight: var(--weight-strong); padding: 0 0 6px; }
@@ -87,7 +89,7 @@ body.labels .lbl { display: inline-flex; }
 .opts { display: grid; gap: 8px; padding: 6px 16px 14px; }
 .mc { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: 12px; align-items: center; text-align: left; padding: 8px 12px 8px 8px; min-height: 48px; font-weight: var(--weight-regular); }
 .mc .L { display: inline-flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: var(--radius); border: 1px solid var(--line); font-weight: var(--weight-strong); font-size: var(--text-base); }
-.mc .ot { font-size: var(--content-size); line-height: 1.45; min-width: 0; overflow-x: auto; }
+.mc .ot { font-size: var(--content-size); line-height: 1.45; min-width: 0; overflow-x: auto; overflow-y: hidden; padding-block: 3px; }
 .mc .ot .figure-panel { width: fit-content; max-width: min(100%, 360px); }
 .mc:hover:not(:disabled) { border-color: var(--color-muted); }
 .mc:hover:not(:disabled) .L { border-color: var(--color-muted); }

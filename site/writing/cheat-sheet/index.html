@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="{{root}}css/palette.css">
 <link rel="stylesheet" href="{{root}}css/site.css">
 <style>
-/* Layout: a "which card?" picker on top, then 5 numbered cards. Each card leads with a named TEST you run in your head (split, take-out, cover the middle…). Card 1 is drawn as traffic lights. Few words, big marks. */
+/* Layout: a "which card?" picker on top (its label a heading line above it), then 6 numbered cards. Each card leads with a named TEST you run in your head (split, take-out, cover the middle…). Card 1 is drawn as traffic lights. Few words, big marks. */
 /* Colours: the website's tokens (css/tokens.css) and the extended palette (css/palette.css); both modes come from there.
    Category k colours: --kc (one value per mode); text on a --kc fill is --card (the canvas). */
 :root{
@@ -42,9 +42,9 @@ s{color:var(--muted);text-decoration-thickness:2px}
 .tip{font-size:var(--text-sm);color:var(--muted);margin-top:6px}
 
 /* picker */
-.picker{display:grid;grid-template-columns:auto repeat(3,minmax(0,1fr));gap:8px;align-items:stretch}
-.picker .lab{grid-row:span 2}
-.picker .lab{font-family:var(--display);font-weight:var(--weight-strong);font-size:var(--text-sm);text-transform:uppercase;letter-spacing:.06em;align-self:center;color:var(--muted);line-height:1.1}
+.picker{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-items:stretch}
+.picker .lab{grid-column:1/-1}
+.picker .lab{font-family:var(--display);font-weight:var(--weight-strong);font-size:var(--text-sm);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);line-height:1.1}
 .pick{display:flex;gap:10px;align-items:center;background:var(--card);border:2px solid var(--kc);border-radius:10px;padding:10px 12px;text-decoration:none;color:var(--ink);min-width:0;transition:transform .12s}
 .pick:hover{color:var(--ink)}
 .pick:hover{transform:translateY(-2px)}
@@ -122,7 +122,7 @@ s{color:var(--muted);text-decoration-thickness:2px}
 .bucket b{display:block;font-family:var(--display);font-size:var(--text-sm);text-transform:uppercase;letter-spacing:.05em;color:var(--kc)}
 
 @media (max-width:900px){
-  .picker{grid-template-columns:repeat(2,minmax(0,1fr))} .picker .lab{grid-column:1/-1;grid-row:auto}
+  .picker{grid-template-columns:repeat(2,minmax(0,1fr))} .picker .lab{grid-column:1/-1}
   .lights,.rules{grid-template-columns:repeat(2,minmax(0,1fr))} .grid2{grid-template-columns:1fr}
   .buckets{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
@@ -132,8 +132,6 @@ s{color:var(--muted);text-decoration-thickness:2px}
   .ch .q{display:none}
 }
 @media (prefers-reduced-motion:reduce){.pick{transition:none}}
-.practice{display:inline-block;margin-top:12px;font-weight:var(--weight-strong);font-size:var(--text-sm);color:var(--ink);background:var(--card);border:1px solid var(--color-writing);border-radius:999px;padding:6px 14px;text-decoration:none}
-.practice:hover{color:var(--ink);border-color:var(--ink)}
 </style>
 </head>
 <body>
@@ -145,11 +143,10 @@ s{color:var(--muted);text-decoration-thickness:2px}
   <p class="prompt"><span class="sym">$</span> cat cheat-sheet.md</p>
   <h1 class="page-title">SAT Writing Playbook</h1>
   <div class="sub">Step 1: read the 4 answer choices. What changes between them tells you which card. Step 2: run that card's <b>TEST</b> in your head.</div>
-  <a class="practice" href="../drill/" target="_blank" rel="noopener">Practice with the SAT Writing Drill: 80 questions with hints →</a>
 </header>
 
 <nav class="picker" aria-label="Pick a card">
-  <div class="lab">The choices<br>change the…</div>
+  <div class="lab">The choices change the…</div>
   <a class="pick k1" href="#w-engine"><span class="num">1</span><span><b>Punctuation</b><small>. ; : , —</small></span></a>
   <a class="pick k2" href="#w-verb"><span class="num">2</span><span><b>Verb</b><small>is / are / being</small></span></a>
   <a class="pick k3" href="#w-apos"><span class="num">3</span><span><b>Apostrophe</b><small>'s / s' / its / their</small></span></a>
