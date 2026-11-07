@@ -1,0 +1,52 @@
+# Publishes the SAT pages to https://sabaesmaeili.github.io/sat/ on every push to main.
+# The check must pass first; only the built _site/ is published. The same build is then copied
+# into sat/ in the tutoringwithsaba repo, which serves https://tutoringwithsaba.ca/sat/.
+name: Publish the SAT pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/check.py
+      - run: python3 tools/build.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deploy
+        uses: actions/deploy-pages@v4
+      # Needs the secret MIRROR_DEPLOY_KEY: the private half of a deploy key with write access on the
+      # tutoringwithsaba repo. Without it the copy is skipped and the Pages site still publishes.
+      # Only sat/ is touched there.
+      - name: Copy the build to tutoringwithsaba.ca/sat/
+        env:
+          KEY: ${{ secrets.MIRROR_DEPLOY_KEY }}
+        run: |
+          if [ -z "$KEY" ]; then echo "No MIRROR_DEPLOY_KEY secret: skipping the copy."; exit 0; fi
+          mkdir -p ~/.ssh && printf '%s\n' "$KEY" > ~/.ssh/mirror && chmod 600 ~/.ssh/mirror
+          export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/mirror -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
+          git clone -q --depth 1 git@github.com:sabaesmaeili/tutoringwithsaba.git mirror
+          rm -rf mirror/sat && cp -R _site mirror/sat && touch mirror/.nojekyll
+          cd mirror && git add -A sat .nojekyll
+          if git diff --cached --quiet; then echo "The copy is already up to date."; exit 0; fi
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "Copy the SAT pages from sat ${GITHUB_SHA::7}"
+          git push -q
