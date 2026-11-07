@@ -4,7 +4,7 @@ Two cheat sheets and two drills for the SAT, built from hard College Board quest
 
 ## Layout
 
-The site is one folder tree, the French tool's way: every prefix of an address is a page, and the header shows the address (`sat/writing/drill`), one link per segment.
+The site is one folder tree, the French tool's way: every prefix of an address is a page, and the header shows the address (`sat/writing/drill`), one link per segment. Inside a subject the header's menu offers its cheat sheet and drill, then the subject toggle, drawn like the French tool's `fr`/`en` switch: it shows the current subject (`english` or `math`) and switches to the same page of the other one (`writing/drill/` ⇄ `math/drill/`, `writing/` ⇄ `math/`). The root list has no toggle.
 
 | Address | Page | Source |
 | --- | --- | --- |
@@ -13,23 +13,26 @@ The site is one folder tree, the French tool's way: every prefix of an address i
 | `/<section>/cheat-sheet/` | the cheat sheet, cards with anchors (`#w-pairs`, `#m-disc`) | `site/<section>/cheat-sheet/index.html` |
 | `/<section>/drill/` | the drill, built from the bank (not indexed by search engines) | `site/<section>/drill/index.html` (a template) |
 
-- `site/`: the pages and their shared files: `css/tokens.css` (generated from the website), `css/tool-tokens.css` (copied from the French tool), `css/palette.css` (generated, below), `css/site.css` (header, prompt, type rule, tree rows), `css/drill.css`, `js/drill.js`. Every `{{…}}` in a page is filled by the build: `{{root}}` (the relative path to the site's root), `{{header}}`, the drills' questions, and the counts on the list pages. All links are relative, so the same build works under any path.
+- `site/`: the pages and their shared files: `css/tokens.css` (generated from the website), `css/tool-tokens.css` (copied from the French tool), `css/palette.css` (generated, below), `css/site.css` (header, prompt, type rule, tree rows), `css/drill.css`, `js/grade.js` (grading typed answers), `js/drill.js`. Every `{{…}}` in a page is filled by the build: `{{root}}` (the relative path to the site's root), `{{header}}`, the drills' questions, and the counts on the list pages. All links are relative, so the same build works under any path.
 - `bank/`: the questions as data. `original/<section>.json` holds the College Board's text verbatim; `annotations/<section>.json` holds ours (each item's card, card link and optional hint); `media/<section>/` the figure crops. Format: `bank/README.md`.
 - `img/<section>/`: the screenshots the items were typed from (`<id>-q.png`, `<id>-a.png`). They are not published.
 - `tools/`: the scripts below (Python 3, standard library only).
 
-The drills keep the original pages' behaviour: first-try scoring, retries, hints, Show answer with the rationale and "Correct answer: X", filters by card and status, shuffle, start over, and progress saved in the browser under `sat-drill80-writing` / `sat-drill80-math`, keyed by question id (the keys of the first version, so saved progress carries over). A drill shows exactly the items in its bank file, in `number` order, numbered Q1, Q2, … by position.
+The drills keep the original pages' behaviour: first-try scoring, retries, hints, Show answer with the rationale and "Correct answer: X", filters by card and status, shuffle, start over, and progress saved in the browser under `sat-drill80-writing` / `sat-drill80-math`, keyed by question id (the keys of the first version, so saved progress carries over). Saved progress is read defensively: a damaged record is dropped on its own, and Start over always works. A drill shows exactly the items in its bank file, in `number` order, numbered Q1, Q2, … by position.
+
+A typed answer is right when it is one of the item's accepted values, or exactly the same number: decimals and fractions are compared as exact rationals (`0.0177` = `.0177`, `8/450` = `4/225`, `1,677` = `1677`), so a near value is wrong (`0.017`, `17.51`, `1676`). `tools/test_grading.js` tests this on every typed-answer item.
 
 ## Commands
 
 ```
-python3 tools/check.py                              # check the bank, annotations, tokens, palette and the built site; run before every commit
+python3 tools/check.py                              # check the bank, annotations, tokens, palette, grading and the built site; run before every commit
 python3 tools/build.py                              # build the site into _site/ (never committed)
 python3 tools/build.py --serve                      # build, then preview at http://localhost:8000
 python3 tools/import_staging.py <section> <dir>     # merge typed items (<dir>/<id>.json) into bank/original/<section>.json
 python3 tools/sync_tokens.py                        # refresh css/tokens.css and css/tool-tokens.css from the website and the French tool
 python3 tools/palette.py                            # regenerate css/palette.css; --report prints the tables below
 python3 tools/bands.py img/math/<id>-q.png          # find a figure's rows in a screenshot (--crop to cut it)
+node tools/test_grading.js                          # test the grading of typed answers (check.py runs it when node is installed)
 ```
 
 ## Add a question
@@ -48,6 +51,11 @@ The pages follow the esaba.ca design system (`~/Documents/GitHub/Website/docs/de
 - **Greys and panels**: only the website's and French tool's tokens. Cards and panels are the canvas (`--color-bg`) with a 1px `--color-line` border, as the French tool draws its panels; inner fills are `--color-surface-2`. Light and dark follow the system setting; `data-theme="light"` or `"dark"` on `<html>` forces a mode.
 - **Recorded exceptions** (in `css/site.css` and the cheat sheets): the cards keep their original layout, borders, radii and size hierarchy, so they add `--text-xl` (1.5rem) and `--text-2xl` (2rem) for card and page titles, `.75rem` for the tags and pattern labels inside diagrams, and a wider frame (`--frame-wide`, 70rem; drills `--frame-drill`, 61.25rem). The drills keep their bordered buttons. On phones the card pages use a 1rem gutter. Figures are scans on white: multiplied onto the page in light mode and onto a `--color-text` panel in dark mode.
 - **Hints** are neutral toggles (the French tool's convention for anything that opens in place); right is green, wrong pink (state words in the website's `--color-pink-text`).
+- **The cheat sheets** open with the card picker, its label ("The choices change the…") a heading line above the buttons; the header's menu leads to the drill.
+
+## What reaches a page
+
+Bank text is checked and rebuilt, never pasted. `tools/bank.py` parses each text value's HTML and math together: only the tags `bank/README.md` allows, without attributes; no comments or declarations; math only inside text, never inside a tag; inside math no `<` that could open a tag (write `\lt`, or `<` with spaces); no TeX that makes links, styles or ids or loads code (`\href`, `\url`, `\class`, `\style`, `\cssId`, `\require`, `\unicode`, `\data`). Typed answers (`answer`, `accepted`) must be numbers. `tools/build.py` then writes each value from that parse: the allowed tags, escaped text, and the TeX with `&`, `<`, `>` escaped. MathJax (3.2.2, cdnjs) runs with `ui/safe` allowing no URLs, classes, ids or styles, and without its html extension. Hints and explanations are typeset when first opened, one after another behind MathJax's startup; a failure leaves them ready to retry.
 
 ## Palette
 

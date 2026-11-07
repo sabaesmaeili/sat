@@ -11,7 +11,7 @@ Read `README.md` (layout, commands, design, palette, publishing) and `bank/READM
 
 ## Before committing
 
-- Run `python3 tools/check.py`; it must pass. It validates the bank, the annotations (every item has a card; every anchor exists on its cheat sheet), the token copies, the palette, and every link and anchor in a fresh build.
+- Run `python3 tools/check.py`; it must pass. It validates the bank (including the HTML and math rules in README, "What reaches a page"), the annotations (every item has a card; every anchor exists on its cheat sheet), the token copies, the palette, the grading of typed answers (`tools/test_grading.js`, with node), and every link and anchor in a fresh build.
 - `_site/` is generated; never commit it. Stage only the paths you changed (no `git add -A`).
 
 ## Design sources
