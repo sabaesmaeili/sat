@@ -8,19 +8,21 @@
    agree; every anchor (the card link's, the hint's) exists on that section's cheat sheet.
 3. site/css/tokens.css matches the website's tokens (skipped when the Website repo is absent, as in
    CI) and site/css/palette.css is current and passes its contrast and distance checks.
-4. The site, built into a temporary folder: no placeholder left; every internal link, stylesheet,
+4. The drills' grading of typed answers (tools/test_grading.js, with node; skipped without it).
+5. The site, built into a temporary folder: no placeholder left; every internal link, stylesheet,
    script and image resolves, with its #anchor; external resources (stylesheets, scripts, images) only from cdnjs (MathJax);
    the drill pages, and only they, carry <meta name="robots" content="noindex">.
 Standard library only.
 """
 import html.parser
+import shutil
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
 from urllib.parse import urldefrag, urlparse
 
-from bank import ROOT, SECTIONS, bank_errors, bank_path, load, load_annotations
+from bank import FORBIDDEN_TEX, MATH, ROOT, SECTIONS, bank_errors, bank_path, load, load_annotations
 
 TOOLS = ROOT / "tools"
 SITE = ROOT / "site"
@@ -90,6 +92,11 @@ def check_annotations():
                     errs.append(f"{where}: {iid}: hint must be {{tag, title, text}} (optional anchor), all non-empty")
                 elif h.get("anchor") and h["anchor"] not in anchors:
                     errs.append(f"{where}: {iid}: hint #{h['anchor']} isn't on {sheet.relative_to(ROOT)}")
+                else:
+                    for tex in MATH.findall(h["text"] + " " + h["title"]):
+                        m = FORBIDDEN_TEX.search(tex)
+                        if m:
+                            errs.append(f"{where}: {iid}: hint math uses \\{m.group(1)}, which is not allowed")
         if bank_path(section).exists():
             for it in load(section)["items"]:
                 if it.get("id") not in notes["items"]:
@@ -106,6 +113,15 @@ def check_design():
         elif "skipping" in r.stdout:
             print(r.stdout.strip())
     return errs
+
+
+def check_grading():
+    node = shutil.which("node")
+    if not node:
+        print("grading: node isn't installed; skipping tools/test_grading.js.")
+        return []
+    r = subprocess.run([node, str(TOOLS / "test_grading.js")], capture_output=True, text=True)
+    return [line for line in (r.stderr or r.stdout).strip().splitlines() if line] if r.returncode else []
 
 
 def check_site():
@@ -154,7 +170,7 @@ def check_site():
 
 def main():
     problems = []
-    for name, fn in (("bank", check_bank), ("annotations", check_annotations), ("design", check_design), ("site", check_site)):
+    for name, fn in (("bank", check_bank), ("annotations", check_annotations), ("design", check_design), ("grading", check_grading), ("site", check_site)):
         errs = fn()
         print(f"{name}: {'ok' if not errs else f'{len(errs)} problem(s)'}")
         problems += errs

@@ -24,7 +24,7 @@ from pathlib import Path
 from bank import BANK, SECTIONS, bank_errors, bank_path, dump, item_errors, load
 
 
-def read_staged(path, section):
+def read_staged(path, section, bank):
     """(item, stimulus) from a staging file, or raise ValueError with the problems."""
     try:
         rec = json.loads(path.read_text(encoding="utf-8"))
@@ -33,7 +33,7 @@ def read_staged(path, section):
     if not isinstance(rec, dict) or set(rec) != {"stimulus", "item"}:
         raise ValueError(["the file must be {stimulus, item}"])
     it, st = rec["item"], rec["stimulus"]
-    errs = item_errors(it, st, section)
+    errs = item_errors(it, st, section, bank=bank)
     if isinstance(it, dict) and path.stem != it.get("id"):
         errs.append(f"file name doesn't match the id {it.get('id')!r}")
     if errs:
@@ -76,12 +76,14 @@ def main():
     staged, skipped = [], {}
     for path in files:
         try:
-            staged.append(read_staged(path, args.section))
+            staged.append(read_staged(path, args.section, args.bank))
         except ValueError as e:
             skipped[path.name] = e.args[0]
+        except Exception as e:  # noqa: BLE001  one bad file is skipped and listed, never the whole import
+            skipped[path.name] = [f"could not be checked: {type(e).__name__}: {e}"]
     data = load(args.section, args.bank)
     merged, added, replaced = merge(data, staged)
-    errs = bank_errors(merged, args.section)
+    errs = bank_errors(merged, args.section, args.bank)
     numbers = {}
     for it in merged["items"]:
         numbers.setdefault(it["number"], []).append(it["id"])

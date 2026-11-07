@@ -25,12 +25,17 @@ from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
-from bank import BANK, ROOT, SECTIONS, load, load_annotations
+from bank import BANK, ROOT, SECTIONS, load, load_annotations, parse_text
 
 SITE = ROOT / "site"
 OUT = ROOT / "_site"
 STORAGE_KEY = {"writing": "sat-drill80-writing", "math": "sat-drill80-math"}  # the original pages' keys: saved progress survives
-MATHJAX = ('<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]]},svg:{fontCache:"global"},options:{ignoreHtmlClass:"mj-wait"}};</script>\n'
+# MathJax 3.2.2 from cdnjs, locked down: ui/safe with no URLs, classes, ids or styles; the html extension (\\href,
+# \\class, \\style, \\cssId, \\data) removed and not autoloaded, nor \\unicode; bank.py rejects those macros too.
+MATHJAX = ('<script>window.MathJax={loader:{load:["ui/safe"]},'
+           'tex:{inlineMath:[["\\\\(","\\\\)"]],packages:{"[-]":["html"]},autoload:{html:[],unicode:[]}},'
+           'svg:{fontCache:"global"},'
+           'options:{ignoreHtmlClass:"mj-wait",safeOptions:{allow:{URLs:"none",classes:"none",cssIDs:"none",styles:"none"}}}};</script>\n'
            '<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js" async></script>')
 MATH = re.compile(r"(\\\(.*?\\\)|\\\[.*?\\\])", re.S)
 MEDIA = re.compile(r"\[\[media:(\d+)\]\]")
@@ -52,24 +57,32 @@ def png_size(path):
 
 
 def inline(s):
-    """A text value's inline HTML: prose passes through (bank/README.md allows only plain markup there), a blank becomes
-    a drawn line, \\$ in prose a dollar sign; math keeps its TeX for MathJax, with <, > and & escaped for HTML."""
+    """A text value's inline HTML, serialized from its parse (bank.parse_text): only the allowed tags, without
+    attributes; text escaped, with a blank drawn as a line and \\$ as a dollar sign; math kept as TeX for MathJax,
+    with &, < and > escaped. Anything bank.py rejects raises, so nothing unchecked reaches a page."""
+    tokens, errs = parse_text(s)
+    if errs:
+        raise BuildError(f"invalid text ({'; '.join(errs)}): {s[:60]!r}")
     out = []
-    for i, part in enumerate(MATH.split(s)):
-        if i % 2:
-            out.append(part.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
+    for kind, value in tokens:
+        if kind == "start":
+            out.append(f"<{value}>")
+        elif kind == "end":
+            out.append(f"</{value}>")
+        elif kind == "math":
+            out.append(value.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
         else:
-            part = part.replace("\\$", "$")
-            out.append(part.replace("______", '<span class="blank"><span class="vh">blank</span></span>'))
+            text = html.escape(value, quote=False).replace("\\$", "$")
+            out.append(text.replace("______", '<span class="blank"><span class="vh">blank</span></span>'))
     return "".join(out)
 
 
-def figure(item, n, section, used, cls="fig"):
+def figure(item, n, section, used, bank, cls="fig"):
     media = item["media"]
     if not 1 <= n <= len(media):
         raise BuildError(f"{item['id']}: [[media:{n}]] has no media entry")
     md = media[n - 1]
-    src = BANK / md["file"]
+    src = Path(bank) / md["file"]
     if not src.is_file():
         raise BuildError(f"{item['id']}: bank/{md['file']} doesn't exist")
     used.add(md["file"])
@@ -79,12 +92,12 @@ def figure(item, n, section, used, cls="fig"):
     return f'<figure class="{cls} figure-panel">{img}</figure>' if cls else f'<span class="figure-panel">{img}</span>'
 
 
-def paragraphs(s, item, section, used):
+def paragraphs(s, item, section, used, bank):
     out = []
     for para in s.split("\n\n"):
         m = MEDIA.fullmatch(para)
         if m:
-            out.append(figure(item, int(m.group(1)), section, used))
+            out.append(figure(item, int(m.group(1)), section, used, bank))
         elif para.startswith("<table>"):
             out.append(f'<div class="tbl">{inline(para)}</div>')
         elif para.startswith("<ul>"):
@@ -100,7 +113,7 @@ def has_math(s):
     return "\\(" in s or "\\[" in s
 
 
-def render_item(item, stimulus, ann, pos, section, used):
+def render_item(item, stimulus, ann, pos, section, used, bank):
     iid, mc = item["id"], item["format"] == "mcq"
     playbook = "../cheat-sheet/"
     label = (f'<a class="lbl" href="{playbook}#{esc(ann["anchor"])}" target="_blank" rel="noopener">'
@@ -109,14 +122,14 @@ def render_item(item, stimulus, ann, pos, section, used):
              f'<div class="qh"><span class="qn">Q{pos}</span>{label}<span class="mark"></span></div>',
              '<div class="qbody content">']
     if stimulus:
-        parts.append(f'<div class="passage">\n{paragraphs(stimulus["text"], item, section, used)}\n</div>')
-    parts.append(f'<div class="stem">\n{paragraphs(item["question"], item, section, used)}\n</div>')
+        parts.append(f'<div class="passage">\n{paragraphs(stimulus["text"], item, section, used, bank)}\n</div>')
+    parts.append(f'<div class="stem">\n{paragraphs(item["question"], item, section, used, bank)}\n</div>')
     parts.append("</div>")
     if mc:
         opts = []
         for letter, text in item["options"].items():
             m = MEDIA.fullmatch(text)
-            body = figure(item, int(m.group(1)), section, used, cls=None) if m else inline(text)
+            body = figure(item, int(m.group(1)), section, used, bank, cls=None) if m else inline(text)
             opts.append(f'<button class="mc" data-c="{letter}"><span class="L">{letter}</span><span class="ot content">{body}</span></button>')
         parts.append('<div class="opts" role="group" aria-label="Choices for Q%d">%s</div>' % (pos, "".join(opts)))
         entry = ""
@@ -131,8 +144,8 @@ def render_item(item, stimulus, ann, pos, section, used):
         anchor = hint.get("anchor") or ann["anchor"]
         parts.append(f'<div class="hint mj-wait" hidden><span class="t">{esc(hint["tag"])}</span><b>{esc(hint["title"])}</b>'
                      f'<p>{esc(hint["text"])}</p><a href="{playbook}#{esc(anchor)}" target="_blank" rel="noopener">See it on the cheat sheet →</a></div>')
-    rationale = paragraphs("\n\n".join(item["rationale"]), item, section, used)
-    parts.append(f'<div class="rat mj-wait" hidden><p class="ca">Correct answer: {inline(item["answer"])}</p>'
+    rationale = paragraphs("\n\n".join(item["rationale"]), item, section, used, bank)
+    parts.append(f'<div class="rat mj-wait" hidden><p class="ca">Correct answer: {esc(item["answer"])}</p>'
                  f'<div class="content">\n{rationale}\n</div></div>')
     parts.append("</article>")
     return "\n".join(parts)
@@ -157,7 +170,7 @@ def render_drill(section, bank, used):
     for pos, it in enumerate(items, 1):
         st = data["stimuli"].get(it["stimulus"]) if it["stimulus"] else None
         a = notes[it["id"]]
-        blocks.append(render_item(it, st, a, pos, section, used))
+        blocks.append(render_item(it, st, a, pos, section, used, bank))
         texts = [it["question"], *(it["options"] or {}).values(), *it["rationale"], (st or {}).get("text", ""), (a.get("hint") or {}).get("text", "")]
         math = math or any(has_math(t) for t in texts)
         row = {"id": it["id"], "card": a["card"], "answer": it["answer"], "mc": it["format"] == "mcq"}
@@ -205,11 +218,14 @@ def fill(text, values, where):
 
 
 MENU = (("cheat-sheet", "cheat sheet"), ("drill", "drill"))
+SUBJECT = {"writing": "english", "math": "math"}  # the subject toggle's words (the owner's); the folders stay writing/, math/
 
 
 def header(rel):
     """The website's header for the page at rel (a path under site/): the mark (the root), one link per segment of the
-    address, the current one marked; inside a section, its menu: the cheat sheet and the drill."""
+    address, the current one marked; inside a section, its menu (the cheat sheet and the drill) and the subject
+    toggle, drawn like the French tool's language switch: the current subject, which switches to the same page of the
+    other subject (writing/drill/ to math/drill/, writing/ to math/)."""
     segs = rel.parent.parts
     current = ' aria-current="page"'
 
@@ -223,7 +239,10 @@ def header(rel):
         base = "../" if len(segs) > 1 else ""
         links = "".join('<a href="%s"%s>%s</a>' % ("./" if key == here else base + key + "/", current if key == here else "", name)
                         for key, name in MENU)
-        nav = '\n  <nav class="nav" aria-label="%s pages">%s</nav>' % (segs[0], links)
+        other = next(x for x in SUBJECT if x != segs[0])
+        toggle = '<a class="lang" href="%s" title="switch to %s" aria-label="subject: %s; switch to %s">%s</a>' % (
+            up(len(segs)) + "/".join((other,) + segs[1:]) + "/", SUBJECT[other], SUBJECT[segs[0]], SUBJECT[other], SUBJECT[segs[0]])
+        nav = '\n  <nav class="nav" aria-label="%s pages">%s%s</nav>' % (segs[0], links, toggle)
     return ('<header class="top frame">\n  <a class="mark" href="%s"%s>sat</a><span class="address">%s</span>%s\n</header>'
             % (up(len(segs)), "" if segs else current, crumbs, nav))
 
@@ -248,7 +267,7 @@ def build(bank=BANK, out=OUT, quiet=False):
     for rel in sorted(used):
         dest = out / rel
         dest.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(bank / rel if (bank / rel).is_file() else BANK / rel, dest)
+        shutil.copy2(bank / rel, dest)
     if not quiet:
         print(f"Built {out}: writing {counts['writing']} questions, math {counts['math']} questions, {len(used)} figures.")
     return counts

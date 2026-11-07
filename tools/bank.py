@@ -18,19 +18,31 @@ TAGS = {"i", "b", "u", "sup", "sub", "ul", "li", "table", "caption", "tr", "th",
 LOCATOR = "College Board SAT Suite Question Bank › {id} › {part}"
 MEDIA_TOKEN = re.compile(r"\[\[media:(\d+)\]\]")
 MATH = re.compile(r"\\\(.*?\\\)|\\\[.*?\\\]", re.S)
+MATH_SPLIT = re.compile(r"(\\\(.*?\\\)|\\\[.*?\\\])", re.S)  # the same, keeping the segments
 
 
-class _Tags(html.parser.HTMLParser):
-    def __init__(self):
-        super().__init__(convert_charrefs=False)
-        self.errs, self.stack = [], []
+NUMBER = re.compile(r"-?(?:\d+(?:\.\d+)?|\.\d+)(?:/\d+)?")  # an SPR value: integer, decimal (leading point allowed) or fraction
+# TeX that could make MathJax produce links, styles, ids or load code; none of it is needed for these questions.
+FORBIDDEN_TEX = re.compile(r"\\(href|url|class|style|cssId|require|unicode|data|html|mathtip|texttip|toggle)(?![A-Za-z])")
+MASK = "\ue000"  # a private-use character standing for a math segment while the HTML is parsed
+
+
+class _Parser(html.parser.HTMLParser):
+    """Parse a text value with its math masked: allowed tags without attributes, text, and the math segments, which may
+    only sit in text. Comments, declarations and processing instructions are errors."""
+
+    def __init__(self, maths):
+        super().__init__(convert_charrefs=True)
+        self.maths, self.seen = maths, []
+        self.errs, self.stack, self.tokens = [], [], []
 
     def handle_starttag(self, tag, attrs):
         if tag not in TAGS:
             self.errs.append(f"tag <{tag}> not allowed")
         if attrs:
-            self.errs.append(f"<{tag}> has attributes")
+            self.errs.append(f"<{tag}> has attributes (or math inside a tag)")
         self.stack.append(tag)
+        self.tokens.append(("start", tag))
 
     def handle_startendtag(self, tag, attrs):
         self.errs.append(f"<{tag}/> not allowed")
@@ -40,6 +52,58 @@ class _Tags(html.parser.HTMLParser):
             self.errs.append(f"</{tag}> doesn't close {self.stack[-1:] or 'anything'}")
         else:
             self.stack.pop()
+        self.tokens.append(("end", tag))
+
+    def handle_data(self, data):
+        for i, part in enumerate(re.split(MASK + r"(\d+)" + MASK, data)):
+            if i % 2:
+                self.seen.append(int(part))
+                self.tokens.append(("math", self.maths[int(part)]))
+            elif part:
+                if MASK in part:
+                    self.errs.append("a math segment is cut by markup")
+                self.tokens.append(("text", part))
+
+    def handle_comment(self, data):
+        self.errs.append("an HTML comment is not allowed")
+
+    def handle_decl(self, decl):
+        self.errs.append("an HTML declaration is not allowed")
+
+    def unknown_decl(self, data):
+        self.errs.append("an HTML declaration is not allowed")
+
+    def handle_pi(self, data):
+        self.errs.append("a processing instruction is not allowed")
+
+
+def parse_text(s):
+    """(tokens, errors) for one text value: tokens are ("start", tag), ("end", tag), ("text", plain text) and
+    ("math", TeX with its delimiters), in order. The build serializes only these."""
+    parts = MATH_SPLIT.split(s)
+    maths = parts[1::2]
+    errs = []
+    if MASK in s:
+        errs.append("contains the private-use character U+E000")
+    masked = "".join(part if i % 2 == 0 else f"{MASK}{i // 2}{MASK}" for i, part in enumerate(parts))
+    p = _Parser(maths)
+    try:
+        p.feed(masked)
+        p.close()
+    except Exception as e:  # noqa: BLE001
+        errs.append(f"HTML parse error {e}")
+    errs += p.errs
+    if p.stack:
+        errs.append(f"unclosed {p.stack}")
+    if sorted(p.seen) != list(range(len(maths))):
+        errs.append("math may only sit in text, never inside a tag, comment or declaration")
+    for tex in maths:
+        if re.search(r"<(?!\s)", tex):
+            errs.append(f"in math, write \\lt (or < with spaces): {tex[:40]!r}")
+        m = FORBIDDEN_TEX.search(tex)
+        if m:
+            errs.append(f"in math, \\{m.group(1)} is not allowed")
+    return p.tokens, errs
 
 
 def text_errors(s, where):
@@ -61,15 +125,6 @@ def text_errors(s, where):
     for m in re.finditer(r"_+", prose):
         if len(m.group()) != 6:
             errs.append(f"{where}: underscore run of {len(m.group())} (a blank is exactly ______)")
-    p = _Tags()
-    try:
-        p.feed(prose)
-        p.close()
-    except Exception as e:  # noqa: BLE001
-        errs.append(f"{where}: HTML parse error {e}")
-    errs += [f"{where}: {e}" for e in p.errs]
-    if p.stack:
-        errs.append(f"{where}: unclosed {p.stack}")
     if re.search(r"&(?![a-zA-Z]+;|#\d+;|#x[0-9a-fA-F]+;)", prose):
         errs.append(f"{where}: bare & (write &amp;)")
     for para in s.split("\n\n"):
@@ -79,11 +134,41 @@ def text_errors(s, where):
             errs.append(f"{where}: a bulleted list must be a whole paragraph")
         if "[[media:" in para and not re.fullmatch(r"\[\[media:\d+\]\]", para):
             errs.append(f"{where}: [[media:N]] must be a whole paragraph or a whole option")
+        _, perrs = parse_text(para)
+        errs += [f"{where}: {e}" for e in perrs]
     return errs
 
 
-def item_errors(it, stimulus, section, stimuli_ids=None):
-    """Problems with one item (and the passage it points to, when given). README, "Item fields"."""
+def type_errors(it, stimulus):
+    """Wrong types in the fields the later checks read; those checks run only when this is empty."""
+    errs = []
+    if not isinstance(it.get("question"), str):
+        errs.append("question must be a string")
+    o = it.get("options")
+    if o is not None and not (isinstance(o, dict) and all(isinstance(k, str) and isinstance(v, str) for k, v in o.items())):
+        errs.append("options must be null or an object of strings")
+    r = it.get("rationale")
+    if not (isinstance(r, list) and all(isinstance(x, str) for x in r)):
+        errs.append("rationale must be a list of strings")
+    m = it.get("media")
+    if not (isinstance(m, list) and all(isinstance(x, dict) and all(isinstance(v, str) for v in x.values()) for x in m)):
+        errs.append("media must be a list of objects of strings")
+    if not isinstance(it.get("answer"), str):
+        errs.append("answer must be a string")
+    if not isinstance(it.get("accepted"), list):
+        errs.append("accepted must be a list")
+    if not isinstance(it.get("refs"), dict):
+        errs.append("refs must be an object")
+    if not isinstance(it.get("notes"), list):
+        errs.append("notes must be a list")
+    if stimulus is not None and not (isinstance(stimulus, dict) and isinstance(stimulus.get("text"), str)):
+        errs.append("a passage must be an object with a text string")
+    return errs
+
+
+def item_errors(it, stimulus, section, stimuli_ids=None, bank=BANK):
+    """Problems with one item (and the passage it points to, when given). README, "Item fields". Figures are looked
+    for in `bank`'s media folder."""
     errs = []
     if not isinstance(it, dict):
         return ["item is not an object"]
@@ -100,6 +185,9 @@ def item_errors(it, stimulus, section, stimuli_ids=None):
             errs.append(f"{k} = {it.get(k)!r}, want {v!r}")
     if not isinstance(it.get("number"), int) or isinstance(it.get("number"), bool) or it["number"] < 1:
         errs.append("number must be a positive integer")
+    types = type_errors(it, stimulus)
+    if types:
+        return errs + types
     if it.get("difficulty") not in (None, "Easy", "Medium", "Hard"):
         errs.append("difficulty must be Easy, Medium, Hard or null")
     fmt = it.get("format")
@@ -118,10 +206,10 @@ def item_errors(it, stimulus, section, stimuli_ids=None):
         if it.get("options") is not None:
             errs.append("options must be null for spr")
         acc = it.get("accepted")
-        if not isinstance(acc, list) or not acc or not all(isinstance(a, str) and a.strip() == a and a for a in acc):
-            errs.append("accepted must list each accepted answer as its own string")
-        if not isinstance(it.get("answer"), str) or not it["answer"].strip():
-            errs.append("answer must be the printed value(s)")
+        if not acc or not all(isinstance(a, str) and NUMBER.fullmatch(a) for a in acc):
+            errs.append("accepted must list each accepted answer as a number: integer, decimal or fraction (-3, .0177, 35/2)")
+        if not all(NUMBER.fullmatch(a) for a in re.split(r",\s*", it["answer"])):
+            errs.append("answer must be the printed value(s): numbers separated by commas")
     else:
         errs.append("format must be mcq or spr")
     sid = it.get("stimulus")
@@ -171,7 +259,7 @@ def item_errors(it, stimulus, section, stimuli_ids=None):
             continue
         if md["file"] != f"media/{section}/{iid}-{n}.png":
             errs.append(f"media[{n}].file must be media/{section}/{iid}-{n}.png")
-        elif not (BANK / md["file"]).is_file():
+        elif not (Path(bank) / md["file"]).is_file():
             errs.append(f"media[{n}]: bank/{md['file']} doesn't exist")
         if not isinstance(md.get("note"), str) or not md["note"].strip():
             errs.append(f"media[{n}]: note (the alt text) is empty")
@@ -204,7 +292,7 @@ def load(section, bank=BANK):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def bank_errors(data, section):
+def bank_errors(data, section, bank=BANK):
     """Problems with a whole section file (README, "Layout")."""
     errs = []
     if not isinstance(data, dict) or list(data) != ["source", "section", "stimuli", "items"]:
@@ -218,7 +306,7 @@ def bank_errors(data, section):
     for it in items:
         iid = it.get("id") if isinstance(it, dict) else None
         sid = it.get("stimulus") if isinstance(it, dict) else None
-        for e in item_errors(it, stimuli.get(sid) if sid else None, section, set(stimuli)):
+        for e in item_errors(it, stimuli.get(sid) if sid else None, section, set(stimuli), bank):
             errs.append(f"{iid}: {e}")
         if iid in ids:
             errs.append(f"{iid}: listed twice")
