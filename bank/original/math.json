@@ -2188,7 +2188,7 @@
      "kind": "figure",
      "file": "media/math/f88f27e5-1.png",
      "where": "question",
-     "note": "Three intersecting lines r, s, and t: vertical line s crosses t at an angle marked 106° and r at an angle marked x° (left of s, below r); lines r and t cross at an angle marked 23°"
+     "note": "Three intersecting lines r, s, and t: vertical line s crosses t at an angle marked 106° and r at an angle marked x° (left of s, above r); lines r and t cross at an angle marked 23°"
     }
    ],
    "refs": {
