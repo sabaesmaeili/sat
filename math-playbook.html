@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SAT Math Playbook</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: a "which card?" picker keyed to trigger words, then 7 numbered cards. Card 1 (quadratics) is full width with the discriminant drawn as traffic lights; the rest sit in a 2-column grid. Formulas are typeset with MathJax. */
+:root{
+  --paper:#F3F5F8; --card:#FFFFFF; --ink:#18202B; --muted:#627080; --line:#DCE2EA;
+  --c1:#6A2C8F; --c2:#1F5FBF; --c3:#2E7D32; --c4:#C2571A; --c5:#0E8A7A; --c6:#A2342A; --c7:#B0306A;
+  --g:#2E7D32; --g-bg:#E8F5E9; --a:#B26A00; --a-bg:#FFF3E0; --r:#C62828; --r-bg:#FDECEC;
+  --hi:#FFE066; --hi-fg:#18202B; --chip:#EEF1F6;
+  --display:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Barlow","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#10151C; --card:#19212B; --ink:#EAEFF5; --muted:#A0ADBC; --line:#2C3644;
+  --c1:#C08BE6; --c2:#7FB0FF; --c3:#8FD694; --c4:#FFA36B; --c5:#5FD4C2; --c6:#FF9A8B; --c7:#F287B8;
+  --g:#8FD694; --g-bg:#1A3220; --a:#FFC266; --a-bg:#3A2A12; --r:#FF8A80; --r-bg:#3A1C1C;
+  --hi:#6B5A00; --hi-fg:#FFF3B0; --chip:#222C38; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --paper:#10151C; --card:#19212B; --ink:#EAEFF5; --muted:#A0ADBC; --line:#2C3644;
+  --c1:#C08BE6; --c2:#7FB0FF; --c3:#8FD694; --c4:#FFA36B; --c5:#5FD4C2; --c6:#FF9A8B; --c7:#F287B8;
+  --g:#8FD694; --g-bg:#1A3220; --a:#FFC266; --a-bg:#3A2A12; --r:#FF8A80; --r-bg:#3A1C1C;
+  --hi:#6B5A00; --hi-fg:#FFF3B0; --chip:#222C38; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:22px 48px}
+.wrap{max-width:1120px;margin:0 auto;display:grid;gap:18px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+h1{font-size:38px;font-weight:800;line-height:1}
+.sub{color:var(--muted);font-weight:600;margin-top:4px}
+:target{outline:3px solid var(--ink);outline-offset:3px;border-radius:10px}
+[id]{scroll-margin-top:14px}
+mjx-container{font-size:106% !important}
+
+/* picker */
+.picker{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.picker .lab{font-family:var(--display);font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);line-height:1.15;align-self:center;padding:4px}
+.pick{display:flex;gap:10px;align-items:center;background:var(--card);border:2px solid var(--kc);border-radius:10px;padding:9px 12px;text-decoration:none;color:var(--ink);min-width:0;transition:transform .12s}
+.pick:hover{transform:translateY(-2px)}
+.pick:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.pick b{display:block;font-size:15.5px;line-height:1.15}
+.pick small{display:block;color:var(--muted);font-size:13px;font-weight:600;line-height:1.25;margin-top:2px}
+.num{width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:20px;color:var(--card);background:var(--kc);flex:none}
+.k1{--kc:var(--c1)} .k2{--kc:var(--c2)} .k3{--kc:var(--c3)} .k4{--kc:var(--c4)} .k5{--kc:var(--c5)} .k6{--kc:var(--c6)} .k7{--kc:var(--c7)}
+
+/* reference strip */
+.ref{border:2px dashed var(--line);border-radius:10px;padding:8px 14px;display:flex;flex-wrap:wrap;gap:4px 20px;align-items:center;font-size:15px}
+.ref b{font-family:var(--display);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-size:14px}
+
+/* cards */
+.card{background:var(--card);border-radius:14px;border:1px solid var(--line);border-top:6px solid var(--kc);padding:16px 18px;min-width:0}
+.ch{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.ch h2{font-size:26px;font-weight:800;color:var(--kc);line-height:1}
+.ch .q{margin-left:auto;font-family:var(--display);font-weight:700;font-size:17px;color:var(--muted);text-align:right}
+.big{font-family:var(--display);font-size:28px;font-weight:800;line-height:1.1;margin:2px 0 10px}
+.big em{font-style:normal;color:var(--kc)}
+.tip{font-size:14px;color:var(--muted);font-weight:600;margin-top:6px}
+.fx{display:inline-block;max-width:100%;overflow-x:auto;font-size:20px;background:var(--chip);border-left:4px solid var(--kc);padding:6px 14px;border-radius:0 8px 8px 0;margin:2px 0 6px}
+.ex{background:var(--chip);border-radius:8px;padding:7px 12px;font-size:15px;margin-top:8px;overflow-x:auto}
+.ex b{font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;font-size:13px;color:var(--kc);margin-right:6px}
+.hl{background:var(--hi);color:var(--hi-fg);border-radius:5px;padding:0 .25em;font-weight:800}
+
+/* lights */
+.lights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.light{border-radius:10px;padding:12px 14px;min-width:0;display:grid;grid-template-columns:minmax(0,1fr) 84px;gap:4px 10px;align-items:center}
+.light h3{font-size:22px;font-weight:800;display:flex;align-items:center;gap:8px;line-height:1}
+.light h3 i{width:16px;height:16px;border-radius:50%;flex:none;background:currentColor}
+.light p{margin:4px 0 0;font-weight:700;font-size:16px;grid-column:1}
+.light svg{grid-row:1/3;grid-column:2;width:84px;height:46px}
+.light.g{background:var(--g-bg)} .light.g h3{color:var(--g)}
+.light.a{background:var(--a-bg)} .light.a h3{color:var(--a)}
+.light.r{background:var(--r-bg)} .light.r h3{color:var(--r)}
+svg .cv{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round}
+svg .ax{fill:none;stroke:var(--muted);stroke-width:1.6}
+svg .dot{fill:var(--kc);stroke:none}
+svg .sl{fill:var(--kc);opacity:.35;stroke:none}
+
+/* three-up tiles and small rule boxes */
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.tile{border:2px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
+.tile h3{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--kc);font-weight:800}
+.tile .f{font-size:19px;margin:4px 0 6px;overflow-x:auto}
+.tile ul{margin:0;padding-left:18px;font-size:15px}
+.rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px}
+.rules.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.rules.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.rule{background:var(--chip);border-radius:10px;padding:10px 12px;min-width:0;overflow-x:auto}
+.rule h3{font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--kc)}
+.rule p{margin:4px 0 0;font-size:15px}
+
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+
+/* systems rows */
+.sysrow{display:grid;grid-template-columns:84px minmax(0,1fr) auto;gap:10px;align-items:center;padding:6px 0;border-top:1px solid var(--line)}
+.sysrow:first-of-type{border-top:0}
+.sysrow > svg{width:84px;height:40px}
+.sysrow .res{font-weight:800;font-size:15.5px;text-align:right}
+.res.one{color:var(--g)} .res.none{color:var(--r)} .res.inf{color:var(--a)}
+
+/* translate table */
+.tr{display:grid;grid-template-columns:minmax(0,1fr) auto;border:2px solid var(--kc);border-radius:10px;overflow:hidden;font-size:15.5px}
+.tr div{padding:6px 12px;border-top:1px solid var(--line)}
+.tr .h{background:var(--kc);color:var(--card);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.05em;border-top:0}
+.tr div:nth-child(even){text-align:right;font-weight:700}
+
+/* label row under a formula */
+.lbls{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14.5px;font-weight:600;margin-bottom:10px}
+.lbls span b{color:var(--kc)}
+
+/* exponent list */
+.pow{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;align-items:center;font-size:15px;margin-top:6px}
+.pow .w{color:var(--muted);font-weight:700}
+
+/* SOH CAH TOA */
+.soh{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:8px}
+.soh div{background:var(--chip);border-radius:8px;padding:8px;text-align:center;font-size:17px}
+.soh small{display:block;font-family:var(--display);font-weight:800;font-size:15px;color:var(--kc);letter-spacing:.08em}
+
+/* stats rows */
+.srow{display:grid;grid-template-columns:150px minmax(0,1fr);gap:10px;padding:7px 0;border-top:1px solid var(--line);font-size:15px;align-items:baseline}
+.srow b{font-family:var(--display);font-size:16px;color:var(--kc);text-transform:uppercase;letter-spacing:.04em}
+
+/* desmos */
+.desmos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.dcol{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.dcol h2{font-size:21px;font-weight:800;margin-bottom:6px}
+.dcol ul{margin:0;padding-left:20px;font-size:15px}
+.dcol li{margin:4px 0}
+.dcol.yes h2{color:var(--g)} .dcol.no h2{color:var(--c4)} .dcol.chk h2{color:var(--c2)}
+
+@media (max-width:900px){
+  .picker{grid-template-columns:repeat(2,minmax(0,1fr))} .picker .lab{grid-column:1/-1}
+  .lights,.tiles{grid-template-columns:1fr} .rules{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid2,.desmos{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .picker,.rules,.rules.two,.rules.three,.soh{grid-template-columns:1fr}
+  h1{font-size:30px} .big{font-size:23px} .ch .q{display:none}
+  .srow{grid-template-columns:1fr;gap:2px} .sysrow{grid-template-columns:64px minmax(0,1fr)} .sysrow .res{grid-column:2;text-align:left}
+  .sysrow > svg{width:64px}
+}
+@media (prefers-reduced-motion:reduce){.pick{transition:none}}
+@media print{
+  @page{size:letter landscape;margin:.35in}
+  body{background:#fff;font-size:12px;padding:0}
+  .wrap{gap:10px} h1{font-size:26px} .big{font-size:19px;margin-bottom:6px}
+  .card,.dcol{padding:10px 12px;break-inside:avoid}
+  .ch h2{font-size:19px} .num{width:26px;height:26px;font-size:15px}
+  .fx,.tile .f{font-size:14px} .ex,.rule p,.tile ul,.pow,.srow,.tr,.dcol ul,.ref{font-size:11.5px}
+  .card,.light,.rule,.num,.hl,.tr .h,.ex,.soh div,.fx{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .pick:hover{transform:none}
+}
+.practice{display:inline-block;margin-top:10px;font-weight:800;font-size:15px;color:var(--ink);background:var(--card);border:2px solid var(--ink);border-radius:999px;padding:6px 14px;text-decoration:none}
+.practice:hover{background:var(--ink);color:var(--card)}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)']]},svg:{fontCache:'global'}};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js" async></script>
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important} img{max-width:100%}
+.sitenav{margin:-22px calc(-1 * max(16px,env(safe-area-inset-right,0px))) 16px calc(-1 * max(16px,env(safe-area-inset-left,0px)));--n-bg:#FFFFFF;--n-fg:#18202B;--n-mu:#627080;--n-ln:#DCE2EA;background:var(--n-bg);border-bottom:1px solid var(--n-ln);
+  font-family:"Barlow","Helvetica Neue",Arial,sans-serif;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (prefers-color-scheme: dark){.sitenav{--n-bg:#19212B;--n-fg:#EAEFF5;--n-mu:#A0ADBC;--n-ln:#2C3644}}
+.sitenav .in{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;padding-block:10px}
+.sitenav a{color:var(--n-mu);text-decoration:none;font-weight:700;font-size:15px;padding:4px 2px;border-bottom:2px solid transparent}
+.sitenav a:hover{color:var(--n-fg)}
+.sitenav a[aria-current="page"]{color:var(--n-fg);border-bottom-color:currentColor}
+.sitenav .brand{color:var(--n-fg);font-family:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;font-weight:800;font-size:18px;margin-right:8px}
+</style>
+</head>
+<body>
+<nav class="sitenav" aria-label="SAT prep pages"><div class="in"><a class="brand" href="index.html">SAT Prep</a><a href="writing-playbook.html">Writing cheat sheet</a><a href="writing-drill.html">Writing drill</a><a href="math-playbook.html" aria-current="page">Math cheat sheet</a><a href="math-drill.html">Math drill</a></div></nav>
+
+
+<!-- reusable icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="para" d="M10 2 Q42 66 74 2"/>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+<header>
+  <h1>SAT Math Playbook</h1>
+  <div class="sub">Find the trigger words in the question. They tell you which card to use.</div>
+  <a class="practice" href="math-drill.html" target="_blank" rel="noopener">Practice with the SAT Math Drill: 80 questions with hints →</a>
+</header>
+
+<nav class="picker" aria-label="Pick a card">
+  <div class="lab">The question<br>says…</div>
+  <a class="pick k1" href="#m-disc"><span class="num">1</span><span><b>Quadratics</b><small>vertex · exactly one solution · k is a constant</small></span></a>
+  <a class="pick k2" href="#m-sys"><span class="num">2</span><span><b>Lines &amp; systems</b><small>slope · no solution · infinitely many · x + y</small></span></a>
+  <a class="pick k3" href="#m-exp"><span class="num">3</span><span><b>Growth &amp; percent</b><small>% each year · doubles · original price</small></span></a>
+  <a class="pick k4" href="#m-pow"><span class="num">4</span><span><b>Exponents &amp; polynomials</b><small>equivalent · remainder · shifted · |x|</small></span></a>
+  <a class="pick k5" href="#m-circ"><span class="num">5</span><span><b>Circles</b><small>center · radius · arc · sector · radians</small></span></a>
+  <a class="pick k6" href="#m-trig"><span class="num">6</span><span><b>Triangles &amp; angles</b><small>similar · sin · cos · polygon · volume</small></span></a>
+  <a class="pick k7" href="#m-mean"><span class="num">7</span><span><b>Statistics</b><small>mean · median · margin of error · random</small></span></a>
+</nav>
+
+<div class="ref"><b>Don't memorize · it's on the reference sheet:</b>
+  <span>\(A=\pi r^2\)</span><span>\(C=2\pi r\)</span><span>\(A=\tfrac12bh\)</span><span>\(a^2+b^2=c^2\)</span><span>30-60-90 &amp; 45-45-90 sides</span><span>volumes of box, cylinder, sphere, cone, pyramid</span>
+</div>
+
+<!-- CARD 1 -->
+<section class="card k1" id="m-disc">
+  <div class="ch"><span class="num">1</span><h2>Quadratics</h2><span class="q">the #1 hard-module topic</span></div>
+  <div class="big">"Exactly one", "no", or "two" solutions? → <em>\(b^2-4ac\)</em></div>
+
+  <div class="lights">
+    <div class="light g"><h3><i></i>positive</h3><p>2 solutions</p>
+      <svg viewBox="0 0 84 46" aria-hidden="true"><use href="#para" class="cv"/><line class="ax" x1="2" y1="24" x2="82" y2="24"/></svg></div>
+    <div class="light a"><h3><i></i>zero</h3><p>1 solution · "tangent"</p>
+      <svg viewBox="0 0 84 46" aria-hidden="true"><use href="#para" class="cv"/><line class="ax" x1="2" y1="34" x2="82" y2="34"/></svg></div>
+    <div class="light r"><h3><i></i>negative</h3><p>no real solutions</p>
+      <svg viewBox="0 0 84 46" aria-hidden="true"><use href="#para" class="cv"/><line class="ax" x1="2" y1="43" x2="82" y2="43"/></svg></div>
+  </div>
+  <div class="ex"><b>Example</b>\(y=x^2+6x+k\) meets \(y=2\) once &nbsp;→&nbsp; \(x^2+6x+(k-2)=0\) &nbsp;→&nbsp; \(36-4(k-2)=0\) &nbsp;→&nbsp; <span class="hl">\(k=11\)</span></div>
+  <div class="tip">Line + parabola? Set them equal first, then move everything to one side.</div>
+
+  <div class="tiles" id="m-forms">
+    <div class="tile"><h3>Standard</h3><div class="f">\(y=ax^2+bx+c\)</div><ul><li>y-intercept \(=c\)</li><li>vertex at \(x=-\dfrac{b}{2a}\)</li></ul></div>
+    <div class="tile"><h3>Factored</h3><div class="f">\(y=a(x-p)(x-q)\)</div><ul><li>zeros: \(p\) and \(q\)</li><li>vertex: halfway between them</li></ul></div>
+    <div class="tile"><h3>Vertex</h3><div class="f">\(y=a(x-h)^2+k\)</div><ul><li>vertex \((h,\,k)\)</li><li>\((x+3)^2\) means \(h=-3\)</li></ul></div>
+  </div>
+
+  <div class="rules">
+    <div class="rule" id="m-sumprod"><h3>Sum &amp; product</h3><p>sum \(=-\dfrac ba\) &nbsp; product \(=\dfrac ca\)</p><p class="tip">No solving needed.</p></div>
+    <div class="rule" id="m-cts"><h3>Complete the square</h3><p>\(x^2+bx=\left(x+\tfrac b2\right)^2-\left(\tfrac b2\right)^2\)</p><p class="tip">Half it, square it.</p></div>
+    <div class="rule" id="m-qf"><h3>Won't factor?</h3><p>\(x=\dfrac{-b\pm\sqrt{b^2-4ac}}{2a}\)</p></div>
+    <div class="rule"><h3>Up or down</h3><p>\(a&gt;0\): opens up, has a <b>min</b></p><p>\(a&lt;0\): opens down, has a <b>max</b></p></div>
+  </div>
+</section>
+
+<div class="grid2">
+
+<!-- CARD 2 -->
+<section class="card k2" id="m-sys">
+  <div class="ch"><span class="num">2</span><h2>Lines &amp; systems</h2></div>
+  <div class="big">How many solutions? <em>Compare the numbers.</em></div>
+  <div class="tip" style="margin:-4px 0 6px">Write both as \(Ax+By=C\).</div>
+  <div class="sysrow"><svg viewBox="0 0 84 40" aria-hidden="true"><line class="cv" x1="8" y1="36" x2="76" y2="4"/><line class="cv" x1="8" y1="4" x2="76" y2="36"/></svg>
+    <span>\(\dfrac{A_1}{A_2}\ne\dfrac{B_1}{B_2}\)</span><span class="res one">one</span></div>
+  <div class="sysrow"><svg viewBox="0 0 84 40" aria-hidden="true"><line class="cv" x1="8" y1="30" x2="76" y2="6"/><line class="cv" x1="8" y1="38" x2="76" y2="14"/></svg>
+    <span>\(\dfrac{A_1}{A_2}=\dfrac{B_1}{B_2}\ne\dfrac{C_1}{C_2}\)</span><span class="res none">none</span></div>
+  <div class="sysrow"><svg viewBox="0 0 84 40" aria-hidden="true"><line class="cv" x1="8" y1="34" x2="76" y2="6" style="stroke-width:7;opacity:.35"/><line class="cv" x1="8" y1="34" x2="76" y2="6"/></svg>
+    <span>all three equal</span><span class="res inf">infinitely many</span></div>
+
+  <div class="rules two">
+    <div class="rule" id="m-slope"><h3>Slope</h3><p>\(m=\dfrac{y_2-y_1}{x_2-x_1}\)</p><p>parallel: same \(m\)<br>perpendicular: flip &amp; negate, \(\tfrac23\to-\tfrac32\)</p></div>
+    <div class="rule" id="m-combo"><h3>Find \(x+y\)?</h3><p>Add or subtract the two equations. Don't solve for each one.</p></div>
+    <div class="rule" id="m-one"><h3>One equation</h3><p>\(ax+b=cx+d\)</p><p>same \(a\) &amp; \(b\) → infinitely many<br>same \(a\) only → none</p></div>
+    <div class="rule" id="m-ineq"><h3>Inequality</h3><p>× or ÷ by a negative → <b>flip</b> the sign.</p></div>
+  </div>
+</section>
+
+<!-- CARD 3 -->
+<section class="card k3" id="m-exp">
+  <div class="ch"><span class="num">3</span><h2>Growth &amp; percent</h2></div>
+  <div class="fx" style="font-size:26px">\(y=a\cdot b^{\,t}\)</div>
+  <div class="lbls"><span><b>a</b> = start</span><span><b>b</b> = multiply by each time</span><span><b>t</b> = how many times</span></div>
+  <div class="tr">
+    <div class="h">The question says</div><div class="h">Write</div>
+    <div>grows 3% each year</div><div>\(b=1.03\)</div>
+    <div>loses 12% each year</div><div>\(b=0.88\)</div>
+    <div>doubles every 8 hours</div><div>\(2^{t/8}\)</div>
+    <div>up 3% every 5 years</div><div>\(1.03^{t/5}\)</div>
+  </div>
+  <div class="rules two" id="m-pct" style="margin-top:12px">
+    <div class="rule"><h3>Percent</h3><p>\(\text{new}=\text{old}\times(1\pm r)\)</p><p>Find the original? <b>Divide.</b></p></div>
+    <div class="rule"><h3>Two changes</h3><p><b>Multiply</b>, never add.</p><p>+20% then −20%: \(1.2\times0.8=0.96\)</p></div>
+  </div>
+</section>
+
+<!-- CARD 4 -->
+<section class="card k4" id="m-pow">
+  <div class="ch"><span class="num">4</span><h2>Exponents &amp; polynomials</h2></div>
+  <div class="big">Make the <em>bases match.</em></div>
+  <div class="ex" style="margin-top:0"><b>Example</b>\(8^x=2^{12}\) → \((2^3)^x=2^{3x}\) → \(3x=12\) → <span class="hl">\(x=4\)</span></div>
+  <div class="pow">
+    <span>\(a^m\cdot a^n=a^{m+n}\)</span><span class="w">multiply → add</span>
+    <span>\(\dfrac{a^m}{a^n}=a^{m-n}\)</span><span class="w">divide → subtract</span>
+    <span>\((a^m)^n=a^{mn}\)</span><span class="w">power of power → multiply</span>
+    <span>\(a^{-n}=\dfrac1{a^n}\)</span><span class="w">negative → flip</span>
+    <span>\(a^{\frac mn}=\sqrt[n]{a^m}\)</span><span class="w">power over root</span>
+  </div>
+  <div class="rules two">
+    <div class="rule" id="m-rem"><h3>Remainder</h3><p>\(p(x)\div(x-k)\) leaves \(p(k)\).</p><p>\(p(3)=0\) → \((x-3)\) is a factor.</p></div>
+    <div class="rule" id="m-shift"><h3>Shift</h3><p>\(f(x-3)+2\)</p><p>→ right 3, up 2</p></div>
+    <div class="rule" id="m-abs"><h3>Absolute value</h3><p>\(|u|=k\) → \(u=k\) or \(u=-k\)</p></div>
+    <div class="rule" id="m-match"><h3>"For all \(x\)"</h3><p>Expand. Match the \(x^2\), \(x\), and number parts.</p></div>
+  </div>
+</section>
+
+<!-- CARD 5 -->
+<section class="card k5" id="m-circ">
+  <div class="ch"><span class="num">5</span><h2>Circles</h2></div>
+  <div class="fx" style="font-size:24px">\((x-h)^2+(y-k)^2=r^2\)</div>
+  <div class="lbls"><span>center <b>\((h,k)\)</b></span><span>radius <b>\(r\)</b></span><span>signs flip: \((x+3)^2\) → \(h=-3\)</span></div>
+  <div class="ex"><b>Messy?</b>\(x^2+6x+y^2-4y=12\) → \((x+3)^2+(y-2)^2=25\) → center \((-3,2)\), <span class="hl">\(r=5\)</span></div>
+  <div class="tip">Complete the square on \(x\) and on \(y\); add the same numbers to the right side.</div>
+  <div class="rules two">
+    <div class="rule" id="m-arc"><h3>Slice of a circle</h3>
+      <p style="display:flex;gap:10px;align-items:center"><svg viewBox="0 0 44 44" width="40" height="40" style="flex:none;width:40px;height:40px" aria-hidden="true"><circle cx="22" cy="22" r="18" class="ax"/><path class="sl" d="M22 22 L40 22 A18 18 0 0 0 22 4 Z"/><path class="cv" d="M40 22 A18 18 0 0 0 22 4" style="stroke:var(--kc)"/></svg>
+      <span>\(\dfrac{\text{angle}}{360^\circ}=\dfrac{\text{arc}}{2\pi r}=\dfrac{\text{sector}}{\pi r^2}\)</span></p>
+      <p class="tip">\(180^\circ=\pi\) radians</p></div>
+    <div class="rule" id="m-tan"><h3>Tangent</h3><p>Tangent line ⊥ radius at the touching point.</p><p class="tip">That's your right angle.</p></div>
+  </div>
+</section>
+
+<!-- CARD 6 -->
+<section class="card k6" id="m-trig">
+  <div class="ch"><span class="num">6</span><h2>Triangles &amp; angles</h2></div>
+  <div class="soh">
+    <div><small>SOH</small>\(\sin=\dfrac{\text{opp}}{\text{hyp}}\)</div>
+    <div><small>CAH</small>\(\cos=\dfrac{\text{adj}}{\text{hyp}}\)</div>
+    <div><small>TOA</small>\(\tan=\dfrac{\text{opp}}{\text{adj}}\)</div>
+  </div>
+  <div class="big" style="font-size:23px">\(\sin x^\circ=\cos y^\circ\) → <em>\(x+y=90\)</em></div>
+  <div class="rules two">
+    <div class="rule" id="m-sim"><h3>Similar</h3><p>\(\dfrac{\text{big}}{\text{small}}=\dfrac{\text{big}}{\text{small}}\)</p><p class="tip">Same shape → same ratio, same sin/cos.</p></div>
+    <div class="rule" id="m-par"><h3>Angles</h3><p>Parallel lines: small + big \(=180\)</p><p id="m-ext">Exterior angle = the two far angles</p><p id="m-poly">Polygon: \((n-2)\cdot180^\circ\)</p></div>
+    <div class="rule" id="m-scale"><h3>Scale by \(k\)</h3><p>area × \(k^2\) &nbsp; volume × \(k^3\)</p><p id="m-vol">volume = base × height (pointy: ×\(\tfrac13\))</p></div>
+    <div class="rule" id="m-special"><h3>Shortcuts</h3><p>Equilateral area \(=\dfrac{\sqrt3}{4}s^2\)</p><p id="m-pyth">3-4-5 &nbsp;·&nbsp; 5-12-13 &nbsp;·&nbsp; 8-15-17</p></div>
+  </div>
+</section>
+
+<!-- CARD 7 -->
+<section class="card k7" id="m-mean">
+  <div class="ch"><span class="num">7</span><h2>Statistics</h2></div>
+  <div class="big">Work with <em>totals.</em></div>
+  <div class="fx">\(\text{total}=\text{mean}\times\text{count}\)</div>
+  <div class="srow" id="m-median"><b>Median</b><span>Put in order. Take the middle.</span></div>
+  <div class="srow" id="m-spread"><b>Outlier</b><span>Pulls the <u>mean</u>, barely moves the median. Bigger spread → bigger SD.</span></div>
+  <div class="srow" id="m-sample"><b>Margin of error</b><span>Mean 24 ± 3 → the <u>population</u> mean is likely 21 to 27.</span></div>
+  <div class="srow"><b>Random…</b><span><b style="font-family:inherit;text-transform:none;letter-spacing:0;color:inherit">sample</b> → can generalize &nbsp;·&nbsp; <b style="font-family:inherit;text-transform:none;letter-spacing:0;color:inherit">assignment</b> → can say "causes"</span></div>
+  <div class="srow" id="m-prob"><b>"Given that"</b><span>Shrink the total to that row or column.</span></div>
+  <div class="srow" id="m-scatter"><b>Best-fit line</b><span>Predicted value = read the <u>line</u>, not the dot.</span></div>
+</section>
+
+</div>
+
+<div class="desmos">
+  <div class="dcol yes"><h2>✓ Let Desmos do it</h2><ul>
+    <li><b>Solve anything:</b> graph both sides, click where they cross.</li>
+    <li><b>Vertex / zeros:</b> graph it, click the gray dots.</li>
+    <li><b>"Equivalent?"</b> graph both; the right one sits on top.</li>
+    <li><b>"k is a constant":</b> use a slider, then confirm with \(b^2-4ac\).</li>
+    <li><b>Stats:</b> <code>mean(L)</code>, <code>median(L)</code>, <code>stdev(L)</code></li>
+  </ul></div>
+  <div class="dcol no"><h2>✋ Do it by hand</h2><ul>
+    <li>Answers with <b>letters</b> in them ("in terms of \(a\)").</li>
+    <li><b>Geometry pictures:</b> similar triangles, circles, angles.</li>
+    <li><b>Exact answers</b> like \(3\pm\sqrt7\) or \(\tfrac{2\pi}{3}\).</li>
+    <li><b>"Which must be true"</b> about samples and data.</li>
+  </ul></div>
+  <div class="dcol chk"><h2>✔ Quick checks</h2><ul>
+    <li><b>Plug-in test:</b> letters in the choices? Pick \(x=2\), compute the original and each choice. Keep the match.</li>
+    <li><b>Try the choices:</b> plug each answer back into the question.</li>
+    <li><b>Draw it:</b> sketch the triangle or circle and label every number.</li>
+    <li><b>Does it make sense?</b> A length can't be negative; a probability is 0 to 1.</li>
+  </ul></div>
+</div>
+
+</div>
+
+</body>
+</html>

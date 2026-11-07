@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SAT Writing Playbook</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: a "which card?" picker on top, then 5 numbered cards. Each card leads with a named TEST you run in your head (split, take-out, cover the middle…). Card 1 is drawn as traffic lights. Few words, big marks. */
+:root{
+  --paper:#F4F4F8; --card:#FFFFFF; --ink:#1B1B28; --muted:#646478; --line:#DEDEE8;
+  --c1:#6A2C8F; --c2:#1F5FBF; --c3:#0E8A7A; --c4:#C2571A; --c5:#B0306A;
+  --stop:#C62828; --stop-bg:#FDECEC; --half:#B26A00; --half-bg:#FFF3E0; --go:#2E7D32; --go-bg:#E8F5E9;
+  --hi:#FFE066; --hi-fg:#1B1B28; --ok:#2E7D32; --bad:#C62828; --chip:#F0F0F6;
+  --display:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Barlow","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#111118; --card:#1B1B26; --ink:#EDEDF4; --muted:#A4A4B8; --line:#30303F;
+  --c1:#C08BE6; --c2:#7FB0FF; --c3:#5FD4C2; --c4:#FFA36B; --c5:#F287B8;
+  --stop:#FF8A80; --stop-bg:#3A1C1C; --half:#FFC266; --half-bg:#3A2A12; --go:#8FD694; --go-bg:#1A3220;
+  --hi:#6B5A00; --hi-fg:#FFF3B0; --ok:#8FD694; --bad:#FF8A80; --chip:#252532; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --paper:#111118; --card:#1B1B26; --ink:#EDEDF4; --muted:#A4A4B8; --line:#30303F;
+  --c1:#C08BE6; --c2:#7FB0FF; --c3:#5FD4C2; --c4:#FFA36B; --c5:#F287B8;
+  --stop:#FF8A80; --stop-bg:#3A1C1C; --half:#FFC266; --half-bg:#3A2A12; --go:#8FD694; --go-bg:#1A3220;
+  --hi:#6B5A00; --hi-fg:#FFF3B0; --ok:#8FD694; --bad:#FF8A80; --chip:#252532; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.4;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:22px 48px}
+.wrap{max-width:1120px;margin:0 auto;display:grid;gap:18px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+h1{font-size:38px;font-weight:800;line-height:1}
+.sub{color:var(--muted);font-weight:600;margin-top:4px}
+:target{outline:3px solid var(--ink);outline-offset:3px;border-radius:10px}
+[id]{scroll-margin-top:14px}
+
+.mk{display:inline-block;min-width:1.25em;text-align:center;background:var(--hi);color:var(--hi-fg);font-weight:800;border-radius:5px;padding:0 .2em;margin:0 .05em}
+.ex{font-size:15px;margin-top:6px}
+.ex div{padding:2px 0}
+.ok,.bad{font-weight:800;display:inline-block;width:1.2em}
+.ok{color:var(--ok)} .bad{color:var(--bad)}
+s{color:var(--muted);text-decoration-thickness:2px}
+.tip{font-size:13.5px;color:var(--muted);font-weight:600;margin-top:6px}
+
+/* picker */
+.picker{display:grid;grid-template-columns:auto repeat(5,minmax(0,1fr));gap:8px;align-items:stretch}
+.picker .lab{font-family:var(--display);font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:.06em;align-self:center;color:var(--muted);line-height:1.1}
+.pick{display:flex;gap:10px;align-items:center;background:var(--card);border:2px solid var(--kc);border-radius:10px;padding:10px 12px;text-decoration:none;color:var(--ink);min-width:0;transition:transform .12s}
+.pick:hover{transform:translateY(-2px)}
+.pick:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.pick b{display:block;font-size:15px;line-height:1.15}
+.pick small{display:block;color:var(--muted);font-size:13px;font-weight:600}
+.num{width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:20px;color:var(--card);background:var(--kc);flex:none}
+.k1{--kc:var(--c1)} .k2{--kc:var(--c2)} .k3{--kc:var(--c3)} .k4{--kc:var(--c4)} .k5{--kc:var(--c5)}
+
+/* cards */
+.card{background:var(--card);border-radius:14px;border:1px solid var(--line);border-top:6px solid var(--kc);padding:16px 18px;min-width:0}
+.ch{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.ch h2{font-size:26px;font-weight:800;color:var(--kc);line-height:1}
+.ch .q{margin-left:auto;font-family:var(--display);font-weight:700;font-size:17px;color:var(--muted);text-align:right}
+
+/* TEST callout: the core of every card */
+.test{border:2px dashed var(--kc);border-radius:12px;padding:10px 14px;margin:0 0 12px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;align-items:start}
+.test .tag{grid-row:1/3;font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.1em;background:var(--kc);color:var(--card);border-radius:6px;padding:3px 8px;margin-top:4px}
+.test b{font-family:var(--display);font-size:22px;font-weight:800;line-height:1.1;color:var(--kc)}
+.test b i{font-style:normal;color:var(--ink)}
+.test p{margin:0;font-size:15px}
+.test.sm b{font-size:18px}
+.test.sm{margin:10px 0 0}
+.tests2{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:12px}
+.tests2 .test{margin:0}
+
+.sentence{display:flex;flex-wrap:wrap;gap:6px 22px;margin:0 0 12px;font-size:15px}
+.sentence b{color:var(--kc)}
+
+/* lights */
+.lights{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.light{border-radius:10px;padding:12px 14px;min-width:0}
+.light h3{font-size:24px;font-weight:800;display:flex;align-items:center;gap:8px;line-height:1}
+.light h3 i{width:18px;height:18px;border-radius:50%;flex:none;background:currentColor}
+.light.stop{background:var(--stop-bg)} .light.stop h3{color:var(--stop)}
+.light.half{background:var(--half-bg)} .light.half h3{color:var(--half)}
+.light.go{background:var(--go-bg)} .light.go h3{color:var(--go)}
+.light.none{background:var(--chip)} .light.none h3{color:var(--muted)}
+.prow{margin-top:10px} .prow .ex{margin-top:4px;font-size:14.5px}
+.marks{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+.marks span{background:var(--card);border-radius:6px;padding:2px 10px;font-weight:800;font-size:20px;line-height:1.3}
+.marks span small{font-size:14px;font-weight:700}
+.pat{display:flex;flex-wrap:wrap;align-items:center;gap:5px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.pat .s{border:2px solid currentColor;border-radius:5px;padding:1px 7px}
+.pat .p{border:2px dashed currentColor;border-radius:5px;padding:1px 7px;opacity:.8}
+.pat .m{font-size:18px}
+.mini-test{margin-top:8px;font-size:13.5px;font-weight:700;border-top:1px dashed currentColor;padding-top:6px}
+
+.never{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1fr);gap:8px 18px;align-items:center;margin-top:12px;padding:10px 14px;border-radius:10px;border:2px solid var(--bad);font-weight:700}
+.never .x{color:var(--bad);font-weight:800;font-size:20px;grid-row:1/3}
+.never .pat{color:var(--bad)}
+.never div{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.never small{font-weight:600;color:var(--muted);font-size:13.5px}
+
+.rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:14px}
+.rule{background:var(--chip);border-radius:10px;padding:10px 12px;min-width:0}
+.rule h3{font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--kc)}
+.rule p{margin:4px 0 0;font-size:15px}
+.rule .q{display:block;font-weight:700;margin-top:4px}
+
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+
+.arrow{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:15px;margin-top:8px}
+.arrow .y{background:var(--chip);border-radius:6px;padding:2px 8px;font-weight:700}
+.arrow .to{color:var(--kc);font-weight:800}
+
+.apo{display:grid;grid-template-columns:auto 1fr 1fr;border-radius:10px;overflow:hidden;border:2px solid var(--kc);text-align:center;font-size:17px}
+.apo div{padding:8px 6px;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.apo .h{background:var(--kc);color:var(--card);font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.04em;border:0}
+.apo .r{font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.04em;background:var(--chip);border-left:0}
+.apo b{font-weight:800}
+.apo .ap{color:var(--kc);font-size:1.15em}
+
+.buckets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:4px}
+.bucket{background:var(--chip);border-radius:8px;padding:8px 10px;font-size:14.5px}
+.bucket b{display:block;font-family:var(--display);font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:var(--kc)}
+
+@media (max-width:900px){
+  .picker{grid-template-columns:repeat(2,minmax(0,1fr))} .picker .lab{grid-column:1/-1}
+  .lights,.rules{grid-template-columns:repeat(2,minmax(0,1fr))} .grid2{grid-template-columns:1fr}
+  .buckets{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  .picker,.lights,.rules,.buckets,.tests2{grid-template-columns:1fr}
+  .never{grid-template-columns:auto minmax(0,1fr)} .never .x{grid-row:1/4}
+  h1{font-size:30px} .test b{font-size:19px} .ch .q{display:none}
+}
+@media (prefers-reduced-motion:reduce){.pick{transition:none}}
+.practice{display:inline-block;margin-top:10px;font-weight:800;font-size:15px;color:var(--ink);background:var(--card);border:2px solid var(--ink);border-radius:999px;padding:6px 14px;text-decoration:none}
+.practice:hover{background:var(--ink);color:var(--card)}
+</style>
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important} img{max-width:100%}
+.sitenav{margin:-22px calc(-1 * max(16px,env(safe-area-inset-right,0px))) 16px calc(-1 * max(16px,env(safe-area-inset-left,0px)));--n-bg:#FFFFFF;--n-fg:#18202B;--n-mu:#627080;--n-ln:#DCE2EA;background:var(--n-bg);border-bottom:1px solid var(--n-ln);
+  font-family:"Barlow","Helvetica Neue",Arial,sans-serif;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (prefers-color-scheme: dark){.sitenav{--n-bg:#19212B;--n-fg:#EAEFF5;--n-mu:#A0ADBC;--n-ln:#2C3644}}
+.sitenav .in{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;padding-block:10px}
+.sitenav a{color:var(--n-mu);text-decoration:none;font-weight:700;font-size:15px;padding:4px 2px;border-bottom:2px solid transparent}
+.sitenav a:hover{color:var(--n-fg)}
+.sitenav a[aria-current="page"]{color:var(--n-fg);border-bottom-color:currentColor}
+.sitenav .brand{color:var(--n-fg);font-family:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;font-weight:800;font-size:18px;margin-right:8px}
+</style>
+</head>
+<body>
+<nav class="sitenav" aria-label="SAT prep pages"><div class="in"><a class="brand" href="index.html">SAT Prep</a><a href="writing-playbook.html" aria-current="page">Writing cheat sheet</a><a href="writing-drill.html">Writing drill</a><a href="math-playbook.html">Math cheat sheet</a><a href="math-drill.html">Math drill</a></div></nav>
+
+
+<div class="wrap">
+
+<header>
+  <h1>SAT Writing Playbook</h1>
+  <div class="sub">Step 1: read the 4 answer choices. What changes between them tells you which card. Step 2: run that card's <b>TEST</b> in your head.</div>
+  <a class="practice" href="writing-drill.html" target="_blank" rel="noopener">Practice with the SAT Writing Drill: 80 questions with hints →</a>
+</header>
+
+<nav class="picker" aria-label="Pick a card">
+  <div class="lab">The choices<br>change the…</div>
+  <a class="pick k1" href="#w-engine"><span class="num">1</span><span><b>Punctuation</b><small>. ; : , —</small></span></a>
+  <a class="pick k2" href="#w-verb"><span class="num">2</span><span><b>Verb</b><small>is / are / being</small></span></a>
+  <a class="pick k3" href="#w-apos"><span class="num">3</span><span><b>Apostrophe</b><small>'s / s' / its / their</small></span></a>
+  <a class="pick k4" href="#w-mod"><span class="num">4</span><span><b>Word order</b><small>after an opening phrase</small></span></a>
+  <a class="pick k5" href="#w-trans"><span class="num">5</span><span><b>Linking word</b><small>however / thus</small></span></a>
+</nav>
+
+<!-- CARD 1 -->
+<section class="card k1" id="w-engine">
+  <div class="ch"><span class="num">1</span><h2>Punctuation</h2><span class="q">≈ 6 of every 10 grammar questions</span></div>
+
+  <div class="test"><span class="tag">TEST</span><b>Split test: <i>could you break it in two here?</i></b>
+    <p>Put a period at the blank. Are <u>both</u> sides real sentences? Then find your pattern below, left side first.</p></div>
+  <div class="sentence">
+    <span><b>✓ Real sentence</b> = who + a real verb &nbsp;(<i>runs, ran, is running</i>)</span>
+    <span><b>✗ Not one</b> = an <i>-ing</i> word alone · starts with <i>because, although, which, who</i></span>
+  </div>
+
+  <div class="lights">
+    <div class="light stop" id="w-stop">
+      <h3><i></i>STOP</h3>
+      <div class="marks"><span>.</span><span>;</span><span>, and</span><span>, but</span><span>, so</span></div>
+      <div class="prow"><div class="pat"><span class="s">Sentence</span><span class="m">■</span><span class="s">Sentence</span></div>
+        <div class="ex">The portraits look like paintings<span class="mk">;</span> up close, they're quilts.</div></div>
+    </div>
+    <div class="light half" id="w-half">
+      <h3><i></i>HALF-STOP</h3>
+      <div class="marks"><span>:</span><span>—</span><span><small>one dash</small></span></div>
+      <div class="prow"><div class="pat"><span class="s">Sentence</span><span class="m">■</span><span class="p">list</span></div>
+        <div class="ex">The recipe needs two things<span class="mk">:</span> flour and time.</div></div>
+      <div class="prow"><div class="pat"><span class="s">Sentence</span><span class="m">■</span><span class="p">explanation</span></div>
+        <div class="ex">Her plan was simple<span class="mk">:</span> she would wait.</div></div>
+      <div class="mini-test">Namely test: can you say "namely" here?</div>
+    </div>
+    <div class="light go" id="w-go">
+      <h3><i></i>COMMA</h3>
+      <div class="marks"><span>,</span></div>
+      <div class="prow"><div class="pat"><span class="p">Piece</span><span class="m">,</span><span class="s">Sentence</span></div>
+        <div class="ex">Knowing bats hunt at dusk<span class="mk">,</span> the team set up cameras.</div></div>
+      <div class="prow"><div class="pat"><span class="s">Sentence</span><span class="m">,</span><span class="p">piece</span></div>
+        <div class="ex">The team set up cameras<span class="mk">,</span> hoping to film the bats.</div></div>
+      <div class="prow"><div class="pat"><span class="s">Sent…</span><span class="m">,</span><span class="p">extra</span><span class="m">,</span><span class="s">…ence</span></div>
+        <div class="ex">The team<span class="mk">,</span> led by Ruiz<span class="mk">,</span> set up cameras.</div></div>
+    </div>
+    <div class="light none" id="w-nothing">
+      <h3><i></i>NOTHING</h3>
+      <div class="marks"><span><small>no mark</small></span></div>
+      <div class="prow"><div class="pat"><span class="s">Subject</span><span class="m">→</span><span class="s">its verb</span></div>
+        <div class="ex">Her new novel offers a twist.</div></div>
+      <div class="prow"><div class="pat"><span class="s">Title</span><span class="m">→</span><span class="s">needed name</span></div>
+        <div class="ex">biologist Yuree Lee</div></div>
+      <div class="prow"><div class="pat"><span class="s">Noun</span><span class="m">→</span><span class="s">that…</span></div>
+        <div class="ex">the plan that we chose</div></div>
+    </div>
+  </div>
+
+  <div class="never" id="w-never">
+    <span class="x">✗ NEVER</span>
+    <div><span class="pat"><span class="s">Sentence</span><span class="m">,</span><span class="s">Sentence</span></span><small>comma splice. <i>however, therefore, then</i> are not glue.</small></div>
+    <div><span class="pat"><span class="p">Piece</span><span class="m">:</span><span class="p">…</span></span><small>a colon needs a full sentence before it. "such as<span class="mk">:</span>" ✗</small></div>
+  </div>
+
+  <div class="rules">
+    <div class="rule" id="w-pairs"><h3>Pairs</h3>
+      <p><b>Take-out test:</b> remove the middle part. Still a sentence? → it's extra → <b>match the mark</b> on the other side.</p>
+      <div class="ex"><div><span class="ok">✓</span>Ruiz<span class="mk">,</span> a chemist<span class="mk">,</span> tested it.</div><div><span class="bad">✗</span>Ruiz<span class="mk">,</span> a chemist<span class="mk">—</span> tested it.</div></div></div>
+    <div class="rule" id="w-title"><h3>Names</h3>
+      <p><b>Take-out test:</b> remove the name. Still know who? → commas. Not sure who? → nothing.</p>
+      <div class="ex"><div><span class="ok">✓</span>biologist Yuree Lee</div><div><span class="ok">✓</span>the lab's director<span class="mk">,</span> <span style="white-space:nowrap">Yuree Lee<span class="mk">,</span></span></div></div></div>
+    <div class="rule" id="w-list"><h3>Lists</h3>
+      <p><b>List test:</b> do the items already have commas inside? → use <span class="mk">;</span> between items.</p>
+      <div class="ex">Lee, a chemist<span class="mk">;</span> Kim, a biologist<span class="mk">;</span> and Ruiz…</div></div>
+    <div class="rule"><h3>Twins</h3>
+      <p><b>Twins test:</b> <span class="mk">.</span> and <span class="mk">;</span> do the same job. Both in the choices? Cross out both.</p>
+      <div class="tip">There's only one right answer.</div></div>
+  </div>
+</section>
+
+<div class="grid2">
+
+<!-- CARD 2 -->
+<section class="card k2" id="w-verb">
+  <div class="ch"><span class="num">2</span><h2>Verbs</h2></div>
+  <div class="test"><span class="tag">TEST</span><b>Verb count: <i>one sentence = one main verb</i></b>
+    <p>Find the main verb. Is there already one?</p></div>
+  <div class="arrow"><span class="y">Already has one?</span><span class="to">→ blank is <i>-ing</i> / <i>to ___</i></span></div>
+  <div class="ex"><span class="ok">✓</span>The chef, <span class="mk">hoping</span> to impress the judges, <b>adds</b> saffron.</div>
+  <div class="arrow"><span class="y">No main verb at all?</span><span class="to">→ blank is a real verb</span></div>
+  <div class="ex"><span class="ok">✓</span>The goal of the new study <span class="mk">is</span> simple.</div>
+
+  <div class="test sm" id="w-sv"><span class="tag">TEST</span><b>Cover the middle</b>
+    <p>Cover everything between the subject and the blank. Swap in <b>it</b> or <b>they</b>.</p></div>
+  <div class="ex">The <b>color</b> <s>of the leaves on these old trees</s> <span class="mk">changes</span> in fall. → <i>it changes</i></div>
+  <div class="tip">Subject = the noun <u>before</u> "of". &nbsp;"each one", "every" → <b>it</b>.</div>
+
+  <div class="test sm" id="w-tense"><span class="tag">TEST</span><b>Timeline test</b>
+    <p>Copy the verbs around it. Two verbs joined by "and" match.</p></div>
+</section>
+
+<!-- CARD 3 -->
+<section class="card k3" id="w-apos">
+  <div class="ch"><span class="num">3</span><h2>Apostrophes &amp; pronouns</h2></div>
+  <div class="apo">
+    <div class="h"></div><div class="h">doesn't own</div><div class="h">owns the next word</div>
+    <div class="r">one</div><div><b>planet</b></div><div><b>planet<span class="ap">'s</span></b> orbit</div>
+    <div class="r">many</div><div><b>planets</b></div><div><b>planets<span class="ap">'</span></b> orbits</div>
+  </div>
+  <div class="test sm"><span class="tag">TEST</span><b>Flip test</b>
+    <p>Flip it to "the ___ of the ___". <i>the orbits of the planets</i> → <b>planets'</b> orbits</p></div>
+  <div class="test sm" id="w-pro"><span class="tag">TEST</span><b>Swap test</b>
+    <p>Does "<b>it is</b>" or "<b>they are</b>" fit? Yes → <i>it's / they're</i>. No → <i>its / their</i>.</p></div>
+  <div class="test sm"><span class="tag">TEST</span><b>Point test</b>
+    <p>Point at the noun it means. One → <b>it / its</b>. Many → <b>they / their</b>. Skip the extra part in dashes.</p></div>
+</section>
+
+<!-- CARD 4 -->
+<section class="card k4" id="w-mod">
+  <div class="ch"><span class="num">4</span><h2>Word order</h2></div>
+  <div class="test"><span class="tag">TEST</span><b>Who did it?</b>
+    <p>Opening phrase<span class="mk">,</span> → the first noun after the comma must be the one <b>doing</b> it.</p></div>
+  <div class="ex">
+    <div><span class="ok">✓</span>Knowing the risk, <span class="mk">the team</span> waited.</div>
+    <div><span class="bad">✗</span>Knowing the risk, <span class="mk">the team's plan</span> was to wait.</div>
+    <div><span class="bad">✗</span>Knowing the risk, <span class="mk">it</span> was decided to wait.</div>
+  </div>
+  <div class="tip">Trap: an <b>'s</b>, "it", or "there" right after the comma.</div>
+  <div class="tip">"Compared to <b>that</b> of X," → <b>that</b> = the same kind of thing (a score, an arrangement). Start with that thing.</div>
+</section>
+
+<!-- CARD 5 -->
+<section class="card k5" id="w-trans">
+  <div class="ch"><span class="num">5</span><h2>Linking words</h2></div>
+  <div class="test"><span class="tag">TEST</span><b>But / and / so test</b>
+    <p>Cover the choices. Swap in <b>but</b>, <b>and</b>, or <b>so</b>. Whichever fits picks the bucket.</p></div>
+  <div class="buckets">
+    <div class="bucket"><b>but → Opposite</b>however · still · by contrast · instead</div>
+    <div class="bucket"><b>and → More</b>moreover · also · similarly · what's more</div>
+    <div class="bucket"><b>so → Result</b>therefore · thus · then · as a result</div>
+    <div class="bucket"><b>Here's one</b>for example · specifically</div>
+    <div class="bucket"><b>Said again</b>that is · in other words</div>
+    <div class="bucket"><b>Admitting</b>of course · granted · admittedly</div>
+  </div>
+  <div class="tests2" style="margin-top:12px">
+    <div class="test sm" id="w-synth" style="margin:0"><span class="tag">TEST</span><b>Goal checklist</b><p>"The student wants to…" Split the goal into parts. The answer hits <u>every</u> part.</p></div>
+    <div class="test sm" id="w-words" style="margin:0"><span class="tag">TEST</span><b>Own-word test</b><p>"Most precise word": say your own word for the blank first, then match.</p></div>
+  </div>
+</section>
+
+</div>
+</div>
+
+</body>
+</html>
