@@ -1,0 +1,1126 @@
+{
+ "section": "math",
+ "origin": "annotation",
+ "items": {
+  "e51bf5b1": {
+   "card": 4,
+   "card_name": "Exponents & polynomials",
+   "anchor": "m-rem",
+   "label": "remainder / factor",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Match coefficients",
+    "text": "If \\((x+k)\\) is a factor, the expression is \\((x+k)(\\dots)\\). Expand and match the x-coefficient to each choice; keep the one where k is a positive integer.",
+    "anchor": "m-rem"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "bd87bc09": {
+   "card": 6,
+   "card_name": "Triangles & angles",
+   "anchor": "m-trig",
+   "label": "SOH CAH TOA",
+   "hint": {
+    "tag": "MOVE",
+    "title": "SOH, then Pythagoras",
+    "text": "Use \\(\\sin=\\dfrac{\\text{opp}}{\\text{hyp}}\\) to find one leg. Then \\(a^2+b^2=c^2\\) for the other leg.",
+    "anchor": "m-trig"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "a54753ca": {
+   "card": 1,
+   "card_name": "Quadratics",
+   "anchor": "m-disc",
+   "label": "b² − 4ac",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Touches once",
+    "text": "A horizontal line meets a parabola exactly once only at the vertex. Complete the square to get vertex form; you want the vertex's y-value.",
+    "anchor": "m-disc"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "58c26db8": {
+   "card": 6,
+   "card_name": "Triangles & angles",
+   "anchor": "m-special",
+   "label": "shortcuts",
+   "hint": {
+    "tag": "MOVE",
+    "title": "45-45-90",
+    "text": "Legs \\(x, x\\), hypotenuse \\(x\\sqrt2\\). Perimeter \\(=2x+x\\sqrt2\\). Solve for \\(x\\), then multiply by \\(\\sqrt2\\).",
+    "anchor": "m-special"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "2cb17792": {
+   "card": 1,
+   "card_name": "Quadratics",
+   "anchor": "m-disc",
+   "label": "b² − 4ac",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Discriminant = 0",
+    "text": "Subtract one equation from the other to get a single quadratic \\(=0\\). Exactly one solution → \\(b^2-4ac=0\\).",
+    "anchor": "m-disc"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "137cc6fd": {
+   "card": 4,
+   "card_name": "Exponents & polynomials",
+   "anchor": "m-pow",
+   "label": "same base",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Root → exponent",
+    "text": "Rewrite the root as a fraction exponent: \\(\\sqrt[n]{x^m}=x^{m/n}\\). Combine with exponent rules (multiply → add, divide → subtract) and match exponents.",
+    "anchor": "m-pow"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "5e9b6079": {
+   "card": 2,
+   "card_name": "Lines & systems",
+   "anchor": "m-sys",
+   "label": "compare the numbers",
+   "hint": {
+    "tag": "MOVE",
+    "title": "No solution",
+    "text": "No solution = parallel lines: same slope, different y-intercept. Put each choice in \\(y=mx+b\\) form and compare with the given line.",
+    "anchor": "m-sys"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "7bbfbe70": {
+   "card": 3,
+   "card_name": "Growth & percent",
+   "anchor": "m-exp",
+   "label": "y = a·bᵗ",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Decay model",
+    "text": "Loses r% → multiply by \\(1-r\\). 'Every N minutes' → the exponent is \\(\\dfrac tN\\).",
+    "anchor": "m-exp"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "4a422e3e": {
+   "card": 7,
+   "card_name": "Statistics",
+   "anchor": "m-sample",
+   "label": "samples",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Sample bias",
+    "text": "Who was surveyed, and where? Would families at a playground have more children than a typical household?",
+    "anchor": "m-sample"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "b5f62071": {
+   "card": 2,
+   "card_name": "Lines & systems",
+   "anchor": "m-sys",
+   "label": "compare the numbers",
+   "hint": {
+    "tag": "MOVE",
+    "title": "No solution",
+    "text": "Line both up as \\(Ax+By=C\\). Whatever multiplies one x-coefficient to get the other must also multiply the y-coefficient.",
+    "anchor": "m-sys"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "858fd1cf": {
+   "card": 5,
+   "card_name": "Circles",
+   "anchor": "m-tan",
+   "label": "tangent",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Tangent ⊥ radius",
+    "text": "Slope of the radius (center → touching point), then flip and negate for the tangent. Which point makes that slope with the touching point?",
+    "anchor": "m-tan"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "0393ba15": {
+   "card": 2,
+   "card_name": "Lines & systems",
+   "anchor": "m-one",
+   "label": "one equation",
+   "hint": {
+    "tag": "MOVE",
+    "title": "One equation",
+    "text": "Get all the x's on one side so it looks like \\(ax+b=cx+d\\). Different x-coefficients → one solution. Same → compare the constants.",
+    "anchor": "m-one"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "1429dcdf": {
+   "card": 6,
+   "card_name": "Triangles & angles",
+   "anchor": "m-trig",
+   "label": "SOH CAH TOA",
+   "hint": {
+    "tag": "MOVE",
+    "title": "SOH",
+    "text": "\\(\\sin=\\dfrac{\\text{opposite}}{\\text{hypotenuse}}\\). From the marked angle: which side is across from it, and which side is the longest?",
+    "anchor": "m-trig"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "c9417793": {
+   "card": 4,
+   "card_name": "Exponents & polynomials",
+   "anchor": "m-abs",
+   "label": "absolute value",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Absolute value",
+    "text": "Get the absolute value alone first. Then split: \\(u=k\\) or \\(u=-k\\). Solve both and add.",
+    "anchor": "m-abs"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "ebbf23ae": {
+   "card": 5,
+   "card_name": "Circles",
+   "anchor": "m-circ",
+   "label": "circle equation",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Center + radius",
+    "text": "Read the center from the equation (signs flip). The radius is the distance from the center to one end of the diameter.",
+    "anchor": "m-circ"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "7eed640d": {
+   "card": 1,
+   "card_name": "Quadratics",
+   "anchor": "m-forms",
+   "label": "the 3 forms",
+   "hint": {
+    "tag": "MOVE",
+    "title": "What does it mean?",
+    "text": "An x-intercept is where the output is 0. Here the output is height. What is happening when the height is 0?",
+    "anchor": "m-forms"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "a07ed090": {
+   "card": 6,
+   "card_name": "Triangles & angles",
+   "anchor": "m-vol",
+   "label": "volume",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Volume",
+    "text": "\\(V=\\pi r^2h\\). Plug each choice's radius and height in and compare. Doubling r multiplies V by 4.",
+    "anchor": "m-vol"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "190be2fc": {
+   "card": 7,
+   "card_name": "Statistics",
+   "anchor": "m-mean",
+   "label": "totals",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Totals",
+    "text": "Sum = mean × count. Write the full total with the missing value as a letter. The full mean is a whole number, so the total must divide evenly.",
+    "anchor": "m-mean"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "b1e1c2f5": {
+   "card": 6,
+   "card_name": "Triangles & angles",
+   "anchor": "m-sim",
+   "label": "similar",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Similar triangles",
+    "text": "A segment parallel to one side cuts off a smaller similar triangle. Set up \\(\\dfrac{\\text{big}}{\\text{small}}=\\dfrac{\\text{big}}{\\text{small}}\\) with matching sides.",
+    "anchor": "m-sim"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "7355b9d9": {
+   "card": 4,
+   "card_name": "Exponents & polynomials",
+   "anchor": "m-rem",
+   "label": "remainder / factor",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Factor",
+    "text": "Write the expression as (given factor) × (another factor), expand, and match coefficients. Or spot a difference of squares: \\(a^2-b^2=(a-b)(a+b)\\).",
+    "anchor": "m-rem"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "512bd5b4": {
+   "card": 3,
+   "card_name": "Growth & percent",
+   "anchor": "m-exp",
+   "label": "y = a·bᵗ",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Growth factor",
+    "text": "Rewrite so the exponent counts the step the question uses (\\(\\frac{x}{\\text{step}}\\)). The new base is the multiplier; turn it into a percent (e.g. \\(1.2\\to20\\%\\)).",
+    "anchor": "m-exp"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "0e61101e": {
+   "card": 4,
+   "card_name": "Exponents & polynomials",
+   "anchor": "m-pow",
+   "label": "same base",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Same base",
+    "text": "Plug \\(x+2\\) into f. Then split the exponent with \\(a^{m+n}=a^m\\cdot a^n\\) and multiply the plain numbers together.",
+    "anchor": "m-pow"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "cf2be18d": {
+   "card": 7,
+   "card_name": "Statistics",
+   "anchor": "m-mean",
+   "label": "totals",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Totals",
+    "text": "Total = mean × count. The median is the middle value (find its position). Range = biggest − smallest. You get two equations—add them.",
+    "anchor": "m-mean"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "3a84f885": {
+   "card": 2,
+   "card_name": "Lines & systems",
+   "anchor": "m-combo",
+   "label": "find x + y",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Find the combo",
+    "text": "Don't solve for x and y separately. Add the two equations and look at what appears. Then scale it to what the question asks for.",
+    "anchor": "m-combo"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "9ce8cbbe": {
+   "card": 7,
+   "card_name": "Statistics",
+   "anchor": "m-prob",
+   "label": "\"given that\"",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Probability",
+    "text": "Probability = what you want ÷ total. Count the numbers in the set, then the ones that are even AND at or below the limit.",
+    "anchor": "m-prob"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "a5ff1a96": {
+   "card": 5,
+   "card_name": "Circles",
+   "anchor": "m-circ",
+   "label": "circle equation",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Circle equation",
+    "text": "Complete the square to find the center and \\(r\\). Double the radius, then write \\((x-h)^2+(y-k)^2=r^2\\)—square the new radius.",
+    "anchor": "m-circ"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "8c5dbd3e": {
+   "card": 3,
+   "card_name": "Growth & percent",
+   "anchor": "m-pct",
+   "label": "percent",
+   "hint": {
+    "tag": "MOVE",
+    "title": "new = old × (1 ± r)",
+    "text": "'p% greater than' → multiply by \\(1+\\frac p{100}\\). 'p% less than' → multiply by \\(1-\\frac p{100}\\). Find the second number first.",
+    "anchor": "m-pct"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "e438ec3f": {
+   "card": 7,
+   "card_name": "Statistics",
+   "anchor": "m-prob",
+   "label": "\"given that\"",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Given that",
+    "text": "'Given that it's tall' → your total is only the tall trees. Tall maples ÷ all tall trees.",
+    "anchor": "m-prob"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "8383771a": {
+   "card": 2,
+   "card_name": "Lines & systems",
+   "anchor": "m-sys",
+   "label": "compare the numbers",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Compare the slopes",
+    "text": "Exactly one solution → the lines cross → different slopes. For \\(Ax+By=C\\) the slope is \\(-\\dfrac AB\\). Which choice has a different slope?",
+    "anchor": "m-sys"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "18e35375": {
+   "card": 1,
+   "card_name": "Quadratics",
+   "anchor": "m-forms",
+   "label": "the 3 forms",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Vertex",
+    "text": "The minimum is at the vertex. Use the factors: the vertex is halfway between the two zeros. (Or expand and use \\(x=-\\dfrac{b}{2a}\\).)",
+    "anchor": "m-forms"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "9d95e7ad": {
+   "card": 7,
+   "card_name": "Statistics",
+   "anchor": "m-scatter",
+   "label": "best-fit line",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Best-fit slope",
+    "text": "'Increase in fat for every 1 gram of protein' = the slope of the line. Pick two points ON the line, compute rise ÷ run.",
+    "anchor": "m-scatter"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "e6c557f9": {
+   "card": 6,
+   "card_name": "Triangles & angles",
+   "anchor": "m-scale",
+   "label": "scale by k",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Scale by k",
+    "text": "Lengths × k → areas × \\(k^2\\).",
+    "anchor": "m-scale"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "4aaa9c42": {
+   "card": 3,
+   "card_name": "Growth & percent",
+   "anchor": "m-pct",
+   "label": "percent",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Translate the words",
+    "text": "'is' → =, 'of' → ×, 'p%' → \\(\\frac p{100}\\). Write both sentences as equations, substitute one into the other, then find what percent one is of the other.",
+    "anchor": "m-pct"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "ff501705": {
+   "card": 2,
+   "card_name": "Lines & systems",
+   "anchor": "m-sys",
+   "label": "compare the numbers",
+   "hint": {
+    "tag": "MOVE",
+    "title": "No solution",
+    "text": "Write both as \\(Ax+By=C\\). No solution → \\(\\dfrac{A_1}{A_2}=\\dfrac{B_1}{B_2}\\) but the C's don't match. Set the A-ratio equal to the B-ratio and solve.",
+    "anchor": "m-sys"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "6ce95fc8": {
+   "card": 1,
+   "card_name": "Quadratics",
+   "anchor": "m-qf",
+   "label": "quadratic formula",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Quadratic formula",
+    "text": "Move everything to one side: \\(ax^2+bx+c=0\\). Then \\(x=\\dfrac{-b\\pm\\sqrt{b^2-4ac}}{2a}\\). Simplify the root and divide through by 2.",
+    "anchor": "m-qf"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "6ab30ce3": {
+   "card": 6,
+   "card_name": "Triangles & angles",
+   "anchor": "m-sim",
+   "label": "similar",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Similar → same trig",
+    "text": "Matching angles in similar triangles have the same tan. Use \\(\\tan=\\dfrac{\\text{opp}}{\\text{adj}}\\) in the second triangle.",
+    "anchor": "m-sim"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "590d662d": {
+   "card": 2,
+   "card_name": "Lines & systems",
+   "anchor": "m-slope",
+   "label": "slope",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Read the graph",
+    "text": "Distance walked during that time = (y at the end) − (y at the start). Read both y-values off the line.",
+    "anchor": "m-slope"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "48fb6483": {
+   "card": 6,
+   "card_name": "Triangles & angles",
+   "anchor": "m-par",
+   "label": "angles",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Angles",
+    "text": "Parallel lines make matching angles equal, so there's another right angle. Then use 'triangle = 180' and 'straight line = 180'.",
+    "anchor": "m-par"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "ca2235f6": {
+   "card": 5,
+   "card_name": "Circles",
+   "anchor": "m-arc",
+   "label": "slice of a circle",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Slice of a circle",
+    "text": "\\(\\dfrac{\\text{angle}}{360^\\circ}=\\dfrac{\\text{arc length}}{\\text{circumference}}\\). Solve for the circumference.",
+    "anchor": "m-arc"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "5355c0ef": {
+   "card": 4,
+   "card_name": "Exponents & polynomials",
+   "anchor": "m-match",
+   "label": "\"for all x\"",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Match coefficients",
+    "text": "Expand the given form and match the \\(x^2\\), x, and number parts to the expression. Any one match gives the constant.",
+    "anchor": "m-match"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "58477a6c": {
+   "card": 2,
+   "card_name": "Lines & systems",
+   "anchor": "m-sys",
+   "label": "compare the numbers",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Compare the numbers",
+    "text": "'At least one solution' = same line OR crossing lines. Only parallel lines (same slope, different intercept) fail. Is each equation a multiple of the given one, or a different slope?",
+    "anchor": "m-sys"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "083ef63a": {
+   "card": 1,
+   "card_name": "Quadratics",
+   "anchor": "m-cts",
+   "label": "complete the square",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Vertex",
+    "text": "Minimum = vertex. Find the two zeros from the factors and take their midpoint, or complete the square.",
+    "anchor": "m-cts"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "6d99b141": {
+   "card": 6,
+   "card_name": "Triangles & angles",
+   "anchor": "m-par",
+   "label": "angles",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Angles",
+    "text": "Two equal sides → two equal base angles. Triangle sum = 180 gives them; then straight line = 180 for the outside angle.",
+    "anchor": "m-par"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "a7a14e87": {
+   "card": 2,
+   "card_name": "Lines & systems",
+   "anchor": "m-slope",
+   "label": "slope",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Perpendicular slopes",
+    "text": "Rewrite line k as \\(y=mx+b\\) to see its slope. Perpendicular → flip and negate it. Then use the given y-intercept as \\(b\\).",
+    "anchor": "m-slope"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "a9084ca4": {
+   "card": 3,
+   "card_name": "Growth & percent",
+   "anchor": "m-exp",
+   "label": "y = a·bᵗ",
+   "hint": {
+    "tag": "MOVE",
+    "title": "y-intercept",
+    "text": "The y-intercept is the value when \\(x=0\\). Which year does \\(x=0\\) stand for here?",
+    "anchor": "m-exp"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "c4a9c94d": {
+   "card": 6,
+   "card_name": "Triangles & angles",
+   "anchor": "m-trig",
+   "label": "SOH CAH TOA",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Similar → same tan",
+    "text": "The figure has three similar right triangles, so matching angles have the same tangent. Use \\(\\tan=\\dfrac{\\text{opp}}{\\text{adj}}\\) where you know a side.",
+    "anchor": "m-trig"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "fc3d783a": {
+   "card": 1,
+   "card_name": "Quadratics",
+   "anchor": "m-disc",
+   "label": "b² − 4ac",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Discriminant = 0",
+    "text": "Solve the line for y, plug into the parabola, move everything to one side. Exactly one point → \\(b^2-4ac=0\\). Keep the positive value.",
+    "anchor": "m-disc"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "25da87f8": {
+   "card": 6,
+   "card_name": "Triangles & angles",
+   "anchor": "m-special",
+   "label": "shortcuts",
+   "hint": {
+    "tag": "MOVE",
+    "title": "30-60-90",
+    "text": "Sides are \\(x,\\ x\\sqrt3,\\ 2x\\). Add them, set equal to the perimeter, solve for \\(x\\). The longest side is \\(2x\\).",
+    "anchor": "m-special"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "1ea09200": {
+   "card": 7,
+   "card_name": "Statistics",
+   "anchor": "m-sample",
+   "label": "samples",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Random sample",
+    "text": "You can only generalize to the group the sample was randomly drawn from. Which students was it drawn from?",
+    "anchor": "m-sample"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "bba18ecb": {
+   "card": 1,
+   "card_name": "Quadratics",
+   "anchor": "m-forms",
+   "label": "the 3 forms",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Vertex is halfway",
+    "text": "The vertex's x-value is exactly halfway between the x-intercepts: \\(h=\\dfrac{p+q}{2}\\). Plug in the vertex x and the known intercept, solve for the other.",
+    "anchor": "m-forms"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "a51e6f93": {
+   "card": 3,
+   "card_name": "Growth & percent",
+   "anchor": "m-pct",
+   "label": "percent",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Translate the words",
+    "text": "'A is p% of B' → \\(A=\\frac p{100}B\\). Write both sentences this way, solve the first, plug into the second.",
+    "anchor": "m-pct"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "3e577e4a": {
+   "card": 5,
+   "card_name": "Circles",
+   "anchor": "m-tan",
+   "label": "tangent",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Tangent ⊥ radius",
+    "text": "Find the slope of the radius from the center to the touching point, then flip and negate it.",
+    "anchor": "m-tan"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "0121a235": {
+   "card": 4,
+   "card_name": "Exponents & polynomials",
+   "anchor": "m-rem",
+   "label": "remainder / factor",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Zero → factor",
+    "text": "Find the x-values in the table where \\(p(x)=0\\). Each gives a factor \\((x-k)\\)—watch the sign flip.",
+    "anchor": "m-rem"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "9cb9beec": {
+   "card": 1,
+   "card_name": "Quadratics",
+   "anchor": "m-disc",
+   "label": "b² − 4ac",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Discriminant = 0",
+    "text": "Substitute the first equation into the second to get one quadratic \\(=0\\). Exactly one solution → \\(b^2-4ac=0\\). Solve for the constant.",
+    "anchor": "m-disc"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "c8345903": {
+   "card": 5,
+   "card_name": "Circles",
+   "anchor": "m-arc",
+   "label": "slice of a circle",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Slice of a circle",
+    "text": "Arcs are in the same ratio as their central angles. Find the angle for the arc you want (angles around the center add to 360°).",
+    "anchor": "m-arc"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "f88f27e5": {
+   "card": 6,
+   "card_name": "Triangles & angles",
+   "anchor": "m-ext",
+   "label": "angles",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Exterior angle",
+    "text": "The lines form a triangle. Exterior angle = sum of the two far inside angles. Use 'straight line = 180' for any missing inside angle.",
+    "anchor": "m-ext"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "2c05d312": {
+   "card": 1,
+   "card_name": "Quadratics",
+   "anchor": "m-sumprod",
+   "label": "sum & product",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Factor by grouping",
+    "text": "Expand, then factor by grouping into two factors. Set each to 0, then multiply the two solutions. (Shortcut: product \\(=\\dfrac ca\\).)",
+    "anchor": "m-sumprod"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "8493fd10": {
+   "card": 5,
+   "card_name": "Circles",
+   "anchor": "m-circ",
+   "label": "circle equation",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Complete the square",
+    "text": "Complete the square on x and on y. The number left on the right side is \\(r^2\\). Set it equal to (given radius)\\(^2\\) and solve.",
+    "anchor": "m-circ"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "2992ac30": {
+   "card": 3,
+   "card_name": "Growth & percent",
+   "anchor": "m-exp",
+   "label": "y = a·bᵗ",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Read the exponent",
+    "text": "The base \\(b\\) is applied each time the exponent goes up by 1. How many years make the exponent go up by 1? Convert that to months.",
+    "anchor": "m-exp"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "149021da": {
+   "card": 5,
+   "card_name": "Circles",
+   "anchor": "m-arc",
+   "label": "slice of a circle",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Slice of a circle",
+    "text": "\\(\\dfrac{\\text{angle}}{360^\\circ}=\\dfrac{\\text{arc}}{2\\pi r}\\). Plug in the arc's angle and length, solve for r.",
+    "anchor": "m-arc"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "b74f2feb": {
+   "card": 4,
+   "card_name": "Exponents & polynomials",
+   "anchor": "m-pow",
+   "label": "same base",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Root → exponent",
+    "text": "Write every root as a fraction exponent. Multiply the plain numbers; add the exponents of the same base. Match to the given form.",
+    "anchor": "m-pow"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "a0369739": {
+   "card": 6,
+   "card_name": "Triangles & angles",
+   "anchor": "m-sim",
+   "label": "similar",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Similar triangles",
+    "text": "The altitude makes smaller right triangles that are similar. Match corresponding sides and set big/small = big/small.",
+    "anchor": "m-sim"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "48fb34c8": {
+   "card": 2,
+   "card_name": "Lines & systems",
+   "anchor": "m-ineq",
+   "label": "inequality",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Plug it in",
+    "text": "Plug each x-value into the inequality to find the cutoff for y. Then find the table where all three y-values land on the correct side.",
+    "anchor": "m-ineq"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "6aefc52b": {
+   "card": 1,
+   "card_name": "Quadratics",
+   "anchor": "m-disc",
+   "label": "b² − 4ac",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Discriminant < 0",
+    "text": "Substitute to get one quadratic. No real solutions → \\(b^2-4ac<0\\). Solve the inequality, then take the smallest integer that works.",
+    "anchor": "m-disc"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "d135f4bf": {
+   "card": 4,
+   "card_name": "Exponents & polynomials",
+   "anchor": "m-shift",
+   "label": "shift",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Shift",
+    "text": "Up k units → \\(g(x)=f(x)+k\\). Plug the x-value into f first, then add.",
+    "anchor": "m-shift"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "010243e6": {
+   "card": 6,
+   "card_name": "Triangles & angles",
+   "anchor": "m-special",
+   "label": "shortcuts",
+   "hint": {
+    "tag": "MOVE",
+    "title": "45-45-90",
+    "text": "Use the coordinates to get each triangle's leg lengths. Equal legs + a right angle → the other two angles are 45°. Write that in the units the choices use.",
+    "anchor": "m-special"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "9a1f1941": {
+   "card": 4,
+   "card_name": "Exponents & polynomials",
+   "anchor": "m-abs",
+   "label": "absolute value",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Absolute value",
+    "text": "Get the absolute value by itself. Can an absolute value ever equal a negative number?",
+    "anchor": "m-abs"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "e7d48c8a": {
+   "card": 7,
+   "card_name": "Statistics",
+   "anchor": "m-median",
+   "label": "median",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Median vs. mean",
+    "text": "Find the middle position before and after adding the new value. A value bigger than the mean pulls the mean up—does the middle value change?",
+    "anchor": "m-median"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "1baffbcf": {
+   "card": 3,
+   "card_name": "Growth & percent",
+   "anchor": "m-pct",
+   "label": "percent",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Percent change",
+    "text": "Decreasing by p% means multiplying by \\(1-\\frac{p}{100}\\). Simplify the expression to (number) × quantity and set that number equal to \\(1-\\frac p{100}\\).",
+    "anchor": "m-pct"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "a4c0547f": {
+   "card": 6,
+   "card_name": "Triangles & angles",
+   "anchor": "m-trig",
+   "label": "SOH CAH TOA",
+   "hint": {
+    "tag": "MOVE",
+    "title": "TOA, then Pythagoras",
+    "text": "\\(\\tan=\\dfrac{\\text{opp}}{\\text{adj}}\\) gives the missing leg. Then \\(a^2+b^2=c^2\\) for the hypotenuse. Perimeter = all three sides added.",
+    "anchor": "m-trig"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "6fca0144": {
+   "card": 7,
+   "card_name": "Statistics",
+   "anchor": "m-sample",
+   "label": "samples",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Random sample",
+    "text": "Results apply to the group the sample was randomly picked from—no bigger. What exactly were the trees picked from?",
+    "anchor": "m-sample"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "ce579859": {
+   "card": 3,
+   "card_name": "Growth & percent",
+   "anchor": "m-exp",
+   "label": "y = a·bᵗ",
+   "hint": {
+    "tag": "MOVE",
+    "title": "y = a·bᵗ",
+    "text": "Percent more each year → \\(b=1+r\\). Then use the given count in the given year to find the start value \\(a\\). Careful: t counts years after the start year.",
+    "anchor": "m-exp"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "1b2b20b9": {
+   "card": 5,
+   "card_name": "Circles",
+   "anchor": "m-circ",
+   "label": "circle equation",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Circle equation",
+    "text": "Get circle A into \\((x-h)^2+(y-k)^2=r^2\\). Moving right changes only \\(h\\); the radius stays the same.",
+    "anchor": "m-circ"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "9d935bd8": {
+   "card": 7,
+   "card_name": "Statistics",
+   "anchor": "m-median",
+   "label": "median",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Median",
+    "text": "Put the 7 percents in order and take the 4th. Then subtract.",
+    "anchor": "m-median"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "196e8e6e": {
+   "card": 5,
+   "card_name": "Circles",
+   "anchor": "m-circ",
+   "label": "circle equation",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Radius + right angle",
+    "text": "Both segments from the center are radii (equal). Find the radius with the distance formula. A right angle between two radii → hypotenuse \\(=r\\sqrt2\\).",
+    "anchor": "m-circ"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "9d0396d4": {
+   "card": 2,
+   "card_name": "Lines & systems",
+   "anchor": "m-slope",
+   "label": "slope",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Slope",
+    "text": "Read two clean points off the line: \\(m=\\dfrac{y_2-y_1}{x_2-x_1}\\). The point with the unknown is on the same line, so it gives the same slope. Set them equal and solve.",
+    "anchor": "m-slope"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "722de804": {
+   "card": 1,
+   "card_name": "Quadratics",
+   "anchor": "m-sumprod",
+   "label": "sum & product",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Undo the square",
+    "text": "\\(u^2=k\\) means \\(u=\\sqrt k\\) or \\(u=-\\sqrt k\\). Solve both, then add. (Shortcut: sum \\(=-\\dfrac ba\\).)",
+    "anchor": "m-sumprod"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "d65b9a87": {
+   "card": 7,
+   "card_name": "Statistics",
+   "anchor": "m-spread",
+   "label": "outlier / spread",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Spread",
+    "text": "Symmetric plots: the median is the middle value. For SD, which plot has more dots far from the center?",
+    "anchor": "m-spread"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "27d075d8": {
+   "card": 6,
+   "card_name": "Triangles & angles",
+   "anchor": "m-trig",
+   "label": "SOH CAH TOA",
+   "hint": {
+    "tag": "MOVE",
+    "title": "sin/cos swap",
+    "text": "For acute angles, \\(\\sin A=\\cos B\\) means \\(A+B=90\\). Add the two expressions, set equal to 90, solve.",
+    "anchor": "m-trig"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "271ffad7": {
+   "card": 1,
+   "card_name": "Quadratics",
+   "anchor": "m-forms",
+   "label": "the 3 forms",
+   "hint": {
+    "tag": "MOVE",
+    "title": "Vertex form + symmetry",
+    "text": "Use \\(y=a(x-h)^2+k\\) with the maximum as the vertex. A parabola is symmetric: the launch height comes back the same distance past the vertex.",
+    "anchor": "m-forms"
+   },
+   "by": "original drill page (math-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  }
+ }
+}

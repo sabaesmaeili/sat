@@ -1,0 +1,1126 @@
+{
+ "section": "writing",
+ "origin": "annotation",
+ "items": {
+  "e41018de": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-pairs",
+   "label": "pairs",
+   "hint": {
+    "tag": "TEST",
+    "title": "Split test",
+    "text": "Two checks. 'respectively' is a small add-on, so a comma sets it off. Then: can 'the achievement is known as winning the EGOT' stand alone? If so, sentence one needs STOP punctuation.",
+    "anchor": "w-pairs"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "e060dd6b": {
+   "card": 4,
+   "card_name": "Word order",
+   "anchor": "w-mod",
+   "label": "who did it?",
+   "hint": {
+    "tag": "TEST",
+    "title": "Who did it?",
+    "text": "'Recordings of electrical activity in the brain' is a description. Which noun in the choices IS a recording of brain activity? It must come right after the comma.",
+    "anchor": "w-mod"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "3bceeb93": {
+   "card": 3,
+   "card_name": "Apostrophes & pronouns",
+   "anchor": "w-pro",
+   "label": "pronouns",
+   "hint": {
+    "tag": "TEST",
+    "title": "Point test",
+    "text": "Whose young? Point at the owner: 'the animal' (one). Then the swap test: 'it is young'?",
+    "anchor": "w-pro"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "5ee7fb04": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-stop",
+   "label": "STOP",
+   "hint": {
+    "tag": "TEST",
+    "title": "Split test",
+    "text": "Is 'In modern plays, actors typically won't acknowledge the audience' complete? Does 'To do so breaks the fourth wall…' stand alone too?",
+    "anchor": "w-stop"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "8b017d4e": {
+   "card": 4,
+   "card_name": "Word order",
+   "anchor": "w-mod",
+   "label": "who did it?",
+   "hint": {
+    "tag": "TEST",
+    "title": "Who did it?",
+    "text": "What was 'supported by biochemical analyses'? Vegetables? Diets? Or something from the study? Put that right after the comma.",
+    "anchor": "w-mod"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "c468db1c": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-half",
+   "label": "HALF-STOP",
+   "hint": {
+    "tag": "TEST",
+    "title": "Namely test",
+    "text": "The first part is a complete sentence. What follows just names the two varieties (it's not a sentence). Can you say 'namely' there?",
+    "anchor": "w-half"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "18382e67": {
+   "card": 3,
+   "card_name": "Apostrophes & pronouns",
+   "anchor": "w-pro",
+   "label": "pronouns",
+   "hint": {
+    "tag": "TEST",
+    "title": "Point test",
+    "text": "In whose place? The thing that's 'gone': 'the types of pop culture references' (many). Owns, or 'they are'?",
+    "anchor": "w-pro"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "2dd1b8bf": {
+   "card": 4,
+   "card_name": "Word order",
+   "anchor": "w-mod",
+   "label": "who did it?",
+   "hint": {
+    "tag": "TEST",
+    "title": "Who did it?",
+    "text": "'Compared to that of alumina glass'—'that' means 'the arrangement'. So an arrangement is being compared. Which choice starts with one?",
+    "anchor": "w-mod"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "c9a677e9": {
+   "card": 2,
+   "card_name": "Verbs",
+   "anchor": "w-verb",
+   "label": "verb count",
+   "hint": {
+    "tag": "TEST",
+    "title": "Verb count",
+    "text": "Find the main verb: '…shows not only…'. The sentence already has it, so the blank only describes the analysis.",
+    "anchor": "w-verb"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "6c9f1727": {
+   "card": 5,
+   "card_name": "Linking words",
+   "anchor": "w-words",
+   "label": "own word",
+   "hint": {
+    "tag": "TEST",
+    "title": "Own-word test",
+    "text": "Until recently Theia was ____, but now people claim to have found real pieces of it. Before the evidence, it was only an idea. Which word means that?",
+    "anchor": "w-words"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "5ef9fc48": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-pairs",
+   "label": "pairs",
+   "hint": {
+    "tag": "TEST",
+    "title": "Take-out test",
+    "text": "Remove '____ some biologists believe can be used to explain…'. Do you still know which framework? Split test: can 'some biologists believe can be used to explain…' stand alone? Believe WHAT?",
+    "anchor": "w-pairs"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "99dedf36": {
+   "card": 3,
+   "card_name": "Apostrophes & pronouns",
+   "anchor": "w-pro",
+   "label": "pronouns",
+   "hint": {
+    "tag": "TEST",
+    "title": "Point test",
+    "text": "What becomes susceptible to OBI? Point at it: 'a given term' (one). Ignore the examples between the dashes.",
+    "anchor": "w-pro"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "512f0ac9": {
+   "card": 2,
+   "card_name": "Verbs",
+   "anchor": "w-verb",
+   "label": "verb count",
+   "hint": {
+    "tag": "TEST",
+    "title": "Verb count",
+    "text": "The sentence already has its verbs ('re-created and then reprogrammed'). The blank says WHY they did it. Which form means 'in order to'?",
+    "anchor": "w-verb"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "dfbf5d33": {
+   "card": 4,
+   "card_name": "Word order",
+   "anchor": "w-mod",
+   "label": "who did it?",
+   "hint": {
+    "tag": "TEST",
+    "title": "Who did it?",
+    "text": "Who recovered two years later? A person or a reign? That person goes right after the comma.",
+    "anchor": "w-mod"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "59094d87": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-engine",
+   "label": "split test",
+   "hint": {
+    "tag": "TEST",
+    "title": "Split test",
+    "text": "Put a period after 'Tribe'. Is the first part a full sentence? Can 'today, nearly a century later, it is the oldest…' stand alone too?",
+    "anchor": "w-engine"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "4d2736f0": {
+   "card": 5,
+   "card_name": "Linking words",
+   "anchor": "w-trans",
+   "label": "but / and / so",
+   "hint": {
+    "tag": "TEST",
+    "title": "But/and/so test",
+    "text": "Thomas's story is set inside a big historical event. Then Beulah's story is set inside another big historical event. Same move twice—which bucket?",
+    "anchor": "w-trans"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "4c335aea": {
+   "card": 3,
+   "card_name": "Apostrophes & pronouns",
+   "anchor": "w-apos",
+   "label": "apostrophes",
+   "hint": {
+    "tag": "TEST",
+    "title": "Flip test",
+    "text": "Flip it: 'the chorus-to-verse ratios of rock and of rap'. Each genre is one thing and owns ratios. Check the apostrophe grid: one owner + owns the next word.",
+    "anchor": "w-apos"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "8a264a54": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-engine",
+   "label": "split test",
+   "hint": {
+    "tag": "TEST",
+    "title": "Split test",
+    "text": "Read the part before the blank: 'With a blend of … windows'. Is that a full sentence, or just an opening piece? Piece + sentence is the GO light.",
+    "anchor": "w-engine"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "2784cbaf": {
+   "card": 3,
+   "card_name": "Apostrophes & pronouns",
+   "anchor": "w-apos",
+   "label": "apostrophes",
+   "hint": {
+    "tag": "TEST",
+    "title": "Flip test",
+    "text": "How many variables? (five). Do the variables own anything? Then flip the next part: 'the movement of objects'—objects in general, so how many owners?",
+    "anchor": "w-apos"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "78e978b5": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-title",
+   "label": "names",
+   "hint": {
+    "tag": "TEST",
+    "title": "Take-out test",
+    "text": "Take the names out: 'in fellow OECD nations, respectively.' Which nations? The names are needed, so nothing separates them from 'nations'.",
+    "anchor": "w-title"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "0bcb4417": {
+   "card": 3,
+   "card_name": "Apostrophes & pronouns",
+   "anchor": "w-pro",
+   "label": "pronouns",
+   "hint": {
+    "tag": "TEST",
+    "title": "Point test",
+    "text": "Whose eight panels? Point at the owner: the poems (more than one). Owns, or 'they are'?",
+    "anchor": "w-pro"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "a2816c7f": {
+   "card": 2,
+   "card_name": "Verbs",
+   "anchor": "w-verb",
+   "label": "verb count",
+   "hint": {
+    "tag": "TEST",
+    "title": "Verb count",
+    "text": "The main verb 'assembles' comes later, so the blank can't be a second main verb. And there's a comma after 'environment'—what opens that pair?",
+    "anchor": "w-verb"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "8fbf206d": {
+   "card": 5,
+   "card_name": "Linking words",
+   "anchor": "w-trans",
+   "label": "but / and / so",
+   "hint": {
+    "tag": "TEST",
+    "title": "But/and/so test",
+    "text": "Sentence 1: the book has vivid prose. Sentence 2: it also has great images. Swap in 'and' or 'but'—which fits? Then pick from that bucket.",
+    "anchor": "w-trans"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "37e5c794": {
+   "card": 4,
+   "card_name": "Word order",
+   "anchor": "w-mod",
+   "label": "who did it?",
+   "hint": {
+    "tag": "TEST",
+    "title": "Who did it?",
+    "text": "What is 'cheap, versatile, and easy to produce'? That thing must come right after the comma. Watch out for 'there are' and for 's / s' words.",
+    "anchor": "w-mod"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "1ee4485c": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-pairs",
+   "label": "pairs",
+   "hint": {
+    "tag": "TEST",
+    "title": "Take-out test",
+    "text": "Take 'however' out: 'Scott-Heron himself resisted the godfather nickname, feeling that…'. Still works, so 'however' is extra. Extra words in the middle get a matching pair.",
+    "anchor": "w-pairs"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "1c65db8f": {
+   "card": 2,
+   "card_name": "Verbs",
+   "anchor": "w-sv",
+   "label": "cover the middle",
+   "hint": {
+    "tag": "TEST",
+    "title": "Cover the middle",
+    "text": "Cover 'the organism uses to protect itself from predation'. What's left: 'the toxins … actually ____'. Toxins = it or they?",
+    "anchor": "w-sv"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "d2b81427": {
+   "card": 4,
+   "card_name": "Word order",
+   "anchor": "w-mod",
+   "label": "who did it?",
+   "hint": {
+    "tag": "TEST",
+    "title": "Who did it?",
+    "text": "Who is doing the 'assessing' of Kurosawa's films? A person. That person must come right after the comma.",
+    "anchor": "w-mod"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "1b97cce9": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-stop",
+   "label": "STOP",
+   "hint": {
+    "tag": "TEST",
+    "title": "Split test",
+    "text": "Stop after 'tombs': is that a complete sentence? Then does 'these burial chambers seem to blend…' have its own subject and verb?",
+    "anchor": "w-stop"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "772835db": {
+   "card": 4,
+   "card_name": "Word order",
+   "anchor": "w-mod",
+   "label": "who did it?",
+   "hint": {
+    "tag": "TEST",
+    "title": "Who did it?",
+    "text": "Which ice is 'defined by a disorganized molecular structure'? Reread the sentence before. That ice goes right after the comma.",
+    "anchor": "w-mod"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "6fac7f45": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-half",
+   "label": "HALF-STOP",
+   "hint": {
+    "tag": "TEST",
+    "title": "Namely test",
+    "text": "Try saying 'namely' at the blank. Does the second part show HOW the painting uses the whole light spectrum? The first part is already a full sentence.",
+    "anchor": "w-half"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "9127635a": {
+   "card": 2,
+   "card_name": "Verbs",
+   "anchor": "w-verb",
+   "label": "verb count",
+   "hint": {
+    "tag": "TEST",
+    "title": "Verb count",
+    "text": "Main verb: 'honors'. The part between 'Udé' and 'honors' is extra description, closed by a comma after 'excellence'. What opens it, and can an add-on have a main verb?",
+    "anchor": "w-verb"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "fdb16e20": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-pairs",
+   "label": "pairs",
+   "hint": {
+    "tag": "TEST",
+    "title": "Take-out test",
+    "text": "Remove 'in the process': '…alter the particles and dismantle any information…'. Still fine? Then 'in the process' is extra and needs a matching pair around it.",
+    "anchor": "w-pairs"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "e3edc138": {
+   "card": 5,
+   "card_name": "Linking words",
+   "anchor": "w-trans",
+   "label": "but / and / so",
+   "hint": {
+    "tag": "TEST",
+    "title": "But/and/so test",
+    "text": "Sentence 1: the field is split into two camps. Sentence 2: explains who the two camps are. A new point, a contrast, or the same idea said more clearly?",
+    "anchor": "w-trans"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "c49e946e": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-list",
+   "label": "lists",
+   "hint": {
+    "tag": "TEST",
+    "title": "List test",
+    "text": "Count Hayden's responsibilities. The items already contain commas ('collections, which boast…'), and there's a semicolon later. What separates items in a list like that?",
+    "anchor": "w-list"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "3a1239d2": {
+   "card": 2,
+   "card_name": "Verbs",
+   "anchor": "w-verb",
+   "label": "verb count",
+   "hint": {
+    "tag": "TEST",
+    "title": "Verb count",
+    "text": "Find the real main verb: 'scientists … adapted the test'. The blank sits inside a description of the scientists, so it can't be a second main verb.",
+    "anchor": "w-verb"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "adf210e7": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-pairs",
+   "label": "pairs",
+   "hint": {
+    "tag": "TEST",
+    "title": "Split test",
+    "text": "Can 'among them … Teju Cole, who has written…' stand alone? It has no main verb of its own. Sentence + piece = GO.",
+    "anchor": "w-pairs"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "3fa48bf3": {
+   "card": 5,
+   "card_name": "Linking words",
+   "anchor": "w-synth",
+   "label": "goal checklist",
+   "hint": {
+    "tag": "TEST",
+    "title": "Goal checklist",
+    "text": "Goal: why the 1990 discovery matters for PLOT's reputation (being first). The right choice says what was found and what it means for Plot being first. Watch for overstatements like 'disproved'.",
+    "anchor": "w-synth"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "886dc9f9": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-stop",
+   "label": "STOP",
+   "hint": {
+    "tag": "TEST",
+    "title": "Split test",
+    "text": "Find each half's main verb: 'entered' and 'set'. Two subjects, two main verbs → two sentences. The 'Having left…' piece describes the ship in the second one.",
+    "anchor": "w-stop"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "b369d54c": {
+   "card": 4,
+   "card_name": "Word order",
+   "anchor": "w-mod",
+   "label": "who did it?",
+   "hint": {
+    "tag": "TEST",
+    "title": "Who did it?",
+    "text": "What was 'woven from recycled yarn and hand tufted'? A person, or the tapestries? Put that noun right after the comma.",
+    "anchor": "w-mod"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "a75d5984": {
+   "card": 2,
+   "card_name": "Verbs",
+   "anchor": "w-verb",
+   "label": "verb count",
+   "hint": {
+    "tag": "TEST",
+    "title": "Verb count",
+    "text": "Cover the part between the dashes: 'Several advantages ____ acoustic waves as a promising alternative…'. Is there any main verb? If not, the blank has to be one.",
+    "anchor": "w-verb"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "7ce14583": {
+   "card": 5,
+   "card_name": "Linking words",
+   "anchor": "w-trans",
+   "label": "but / and / so",
+   "hint": {
+    "tag": "TEST",
+    "title": "But/and/so test",
+    "text": "Sentence 1: the poem explores time and identity. Sentence 2: it also reflects on poetry and other art. A new point added on, or an example of the old one?",
+    "anchor": "w-trans"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "f4fd123c": {
+   "card": 2,
+   "card_name": "Verbs",
+   "anchor": "w-sv",
+   "label": "cover the middle",
+   "hint": {
+    "tag": "TEST",
+    "title": "Cover the middle",
+    "text": "Cover the part between the commas ('one of over 180…'). 'The African Games Co-production Market ____ the growth…'. One market = it or they?",
+    "anchor": "w-sv"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "42e6cc83": {
+   "card": 5,
+   "card_name": "Linking words",
+   "anchor": "w-trans",
+   "label": "but / and / so",
+   "hint": {
+    "tag": "TEST",
+    "title": "But/and/so test",
+    "text": "Sentence 1: the theory was an obvious next step. Sentence 2: so maybe it wasn't a coincidence two people found it. Swap in 'so'—does it fit?",
+    "anchor": "w-trans"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "109d5bbb": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-pairs",
+   "label": "pairs",
+   "hint": {
+    "tag": "TEST",
+    "title": "Pairs: match the mark",
+    "text": "Read further along: how does the aside 'or FESTAC '77, as the event was more commonly known' end? Match the mark on the other side.",
+    "anchor": "w-pairs"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "b74f676f": {
+   "card": 6,
+   "card_name": "Tense & verb form",
+   "anchor": "w-tense",
+   "label": "timeline",
+   "hint": {
+    "tag": "TEST",
+    "title": "Timeline test",
+    "text": "The blank shares its subject with 'premiered' (Price premiered … and ____). Two verbs joined by 'and' should match in form and tense.",
+    "anchor": "w-tense"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f); card moved to 6 by Claude",
+   "date": "2026-11-06"
+  },
+  "d4fe8f03": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-title",
+   "label": "names",
+   "hint": {
+    "tag": "TEST",
+    "title": "Take-out test",
+    "text": "Take the names out: 'Paintings by the renowned US artists were featured…'. Which artists? Needed. Also: no comma between a subject and its verb ('were featured').",
+    "anchor": "w-title"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "e35d481c": {
+   "card": 5,
+   "card_name": "Linking words",
+   "anchor": "w-words",
+   "label": "own word",
+   "hint": {
+    "tag": "TEST",
+    "title": "Own-word test",
+    "text": "The text says they 'assumed' it, and the data later disproved it. Your own word: they ____ it (guessed). Then match.",
+    "anchor": "w-words"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "2cb1ee22": {
+   "card": 3,
+   "card_name": "Apostrophes & pronouns",
+   "anchor": "w-apos",
+   "label": "apostrophes",
+   "hint": {
+    "tag": "TEST",
+    "title": "Point test",
+    "text": "Whose shores? Point at the owner: 'the North Sea' (one thing). Then the swap test: does 'on it is shores' make sense?",
+    "anchor": "w-pro"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "84658166": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-half",
+   "label": "HALF-STOP",
+   "hint": {
+    "tag": "TEST",
+    "title": "Namely test",
+    "text": "Two jobs: 'though' is a little add-on word, so a comma sets it off. Then what follows explains 'more than just equations'. Which mark introduces an explanation?",
+    "anchor": "w-half"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "ee4aa2aa": {
+   "card": 2,
+   "card_name": "Verbs",
+   "anchor": "w-sv",
+   "label": "cover the middle",
+   "hint": {
+    "tag": "TEST",
+    "title": "Cover the middle",
+    "text": "What helps it survive? Look right before 'that': 'coiled branching structures'. One thing or many?",
+    "anchor": "w-sv"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "db24ecc9": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-list",
+   "label": "lists",
+   "hint": {
+    "tag": "TEST",
+    "title": "List test",
+    "text": "Look later in the list: 'research; and educating'. The first item is 'growing diverse plant species, both native and nonnative'. Match what separates the items.",
+    "anchor": "w-list"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "5fd86f4b": {
+   "card": 2,
+   "card_name": "Verbs",
+   "anchor": "w-sv",
+   "label": "cover the middle",
+   "hint": {
+    "tag": "TEST",
+    "title": "Cover the middle",
+    "text": "Cover 'of a ghazal's couplets' and the 'while…' part between commas. The subject starts with 'each one'. Is 'each one' it or they?",
+    "anchor": "w-sv"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "5aa171de": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-pairs",
+   "label": "pairs",
+   "hint": {
+    "tag": "TEST",
+    "title": "Split test",
+    "text": "'They are hardly pristine, though' is a full sentence. 'many chondrites experience aqueous alteration…' is another. 'though' belongs to the first one.",
+    "anchor": "w-pairs"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "908a76b8": {
+   "card": 3,
+   "card_name": "Apostrophes & pronouns",
+   "anchor": "w-pro",
+   "label": "pronouns",
+   "hint": {
+    "tag": "TEST",
+    "title": "Point test",
+    "text": "What consists of one or two suppliers? Point at it: 'a given industry' (one). The part between the dashes is extra—don't let 'water and electricity' fool you.",
+    "anchor": "w-pro"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "fa36d803": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-title",
+   "label": "names",
+   "hint": {
+    "tag": "TEST",
+    "title": "Take-out test",
+    "text": "Take the name out: '…the work of little-known French portrait artist (1774–1821)'. Which artist? The name is needed, so nothing goes around it.",
+    "anchor": "w-title"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "f10b7ce4": {
+   "card": 2,
+   "card_name": "Verbs",
+   "anchor": "w-sv",
+   "label": "cover the middle",
+   "hint": {
+    "tag": "TEST",
+    "title": "Cover the middle",
+    "text": "The subject is 'her book's musings on tenth-century Japanese courtly life'. Cover 'on … life'. Musings = it or they?",
+    "anchor": "w-sv"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "fba5d8d1": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-half",
+   "label": "HALF-STOP",
+   "hint": {
+    "tag": "TEST",
+    "title": "Namely test",
+    "text": "'…one trait that they scored particularly high on ____ openness to experience.' The end names the trait. Keep 'on' with 'high'. Which mark means 'namely'?",
+    "anchor": "w-half"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "fced396a": {
+   "card": 4,
+   "card_name": "Word order",
+   "anchor": "w-mod",
+   "label": "who did it?",
+   "hint": {
+    "tag": "TEST",
+    "title": "Who did it?",
+    "text": "'Compared with that of a highly concentrated market'—'that' means 'the score'. So a score is being compared. What must come right after the comma?",
+    "anchor": "w-mod"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "5670a657": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-stop",
+   "label": "STOP",
+   "hint": {
+    "tag": "TEST",
+    "title": "Split test",
+    "text": "Where does sentence one really end? 'for one' is a little tag that belongs to the first example. Then 'The Katzenbach … decision … is another such event' stands alone.",
+    "anchor": "w-stop"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "1d79a59d": {
+   "card": 5,
+   "card_name": "Linking words",
+   "anchor": "w-synth",
+   "label": "goal checklist",
+   "hint": {
+    "tag": "TEST",
+    "title": "Goal checklist",
+    "text": "The goal has 2 parts: (1) the 1821 Declaration and (2) Valle's CHANGING beliefs (before and after). Cross out any choice that skips the declaration or doesn't show a change.",
+    "anchor": "w-synth"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "9994ae0d": {
+   "card": 2,
+   "card_name": "Verbs",
+   "anchor": "w-sv",
+   "label": "cover the middle",
+   "hint": {
+    "tag": "TEST",
+    "title": "Cover the middle",
+    "text": "Cover everything between the commas: 'Barrada's pieces ____ the ways humans…'. Swap in 'it' or 'they'—which one is it?",
+    "anchor": "w-sv"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "5cc69ee1": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-pairs",
+   "label": "pairs",
+   "hint": {
+    "tag": "TEST",
+    "title": "Take-out test",
+    "text": "Remove 'however': 'Lai and Muñoz recognize the need for direct observation, recommending…'. One sentence or two? If it's one, 'however' just needs a matching pair.",
+    "anchor": "w-pairs"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "872a002e": {
+   "card": 3,
+   "card_name": "Apostrophes & pronouns",
+   "anchor": "w-apos",
+   "label": "apostrophes",
+   "hint": {
+    "tag": "TEST",
+    "title": "Point test",
+    "text": "Whose peers? Point at the owner: 'the Tajik Republic' (one). Then the swap test: does 'it is peer' make sense?",
+    "anchor": "w-pro"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "0fe5ce68": {
+   "card": 2,
+   "card_name": "Verbs",
+   "anchor": "w-sv",
+   "label": "cover the middle",
+   "hint": {
+    "tag": "TEST",
+    "title": "Cover the middle",
+    "text": "Cover 'of these plays' and the 'which include…' part. The subject is 'each one'. It or they?",
+    "anchor": "w-sv"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "2fd05c15": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-engine",
+   "label": "split test",
+   "hint": {
+    "tag": "TEST",
+    "title": "Nothing: subject → verb",
+    "text": "Find the subject and its verb: 'her 2019 novel ____ offers…'. Would you ever put a mark between a subject and its own verb?",
+    "anchor": "w-nothing"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "7d5c32e6": {
+   "card": 5,
+   "card_name": "Linking words",
+   "anchor": "w-synth",
+   "label": "goal checklist",
+   "hint": {
+    "tag": "TEST",
+    "title": "Goal checklist",
+    "text": "Goal: Einstein's argument + its historical context (when, and what happened next). Does the choice state Einstein's view correctly AND place it in time? One choice flips Bohr's view.",
+    "anchor": "w-synth"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "61160f0a": {
+   "card": 2,
+   "card_name": "Verbs",
+   "anchor": "w-verb",
+   "label": "verb count",
+   "hint": {
+    "tag": "TEST",
+    "title": "Verb count",
+    "text": "Main verb: 'begins'. Take out the words between the commas and the sentence still works. Can a describing add-on have its own main verb?",
+    "anchor": "w-verb"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "f5959727": {
+   "card": 5,
+   "card_name": "Linking words",
+   "anchor": "w-trans",
+   "label": "but / and / so",
+   "hint": {
+    "tag": "TEST",
+    "title": "But/and/so test",
+    "text": "Before: architects championed nature. After: the staircase couldn't really grow in a forest. More of the same, a result, or admitting something obvious?",
+    "anchor": "w-trans"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "e7afd0a1": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-list",
+   "label": "lists",
+   "hint": {
+    "tag": "TEST",
+    "title": "Namely test",
+    "text": "'…has detected exoplanets at vast distances from Earth' is a full sentence, and a list follows. Copy how the 2nd item is built: 'at 60 light-years away, the Neptune-like planet…'.",
+    "anchor": "w-half"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "2bca654a": {
+   "card": 4,
+   "card_name": "Word order",
+   "anchor": "w-mod",
+   "label": "who did it?",
+   "hint": {
+    "tag": "TEST",
+    "title": "Who did it?",
+    "text": "Who is 'forming extensive networks'? Not 'it', not 'transport', not 'nutrients'. Which living things form networks? They go right after the comma.",
+    "anchor": "w-mod"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "8d00cd7c": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-pairs",
+   "label": "pairs",
+   "hint": {
+    "tag": "TEST",
+    "title": "Nothing: subject → verb",
+    "text": "'The roughly 200,000 km² Puntland Desert' is one long subject and 'is classified' is its verb. Never put a mark inside a subject or between a subject and its verb.",
+    "anchor": "w-nothing"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "16740ab4": {
+   "card": 2,
+   "card_name": "Verbs",
+   "anchor": "w-sv",
+   "label": "cover the middle",
+   "hint": {
+    "tag": "TEST",
+    "title": "Cover the middle",
+    "text": "Cover 'of many fossilized microbacteria' and the 'which seem…' part. The subject is the noun before 'of': 'the presence'. It or they?",
+    "anchor": "w-sv"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "707461d8": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-stop",
+   "label": "STOP",
+   "hint": {
+    "tag": "TEST",
+    "title": "Split test",
+    "text": "Does the first part end a complete thought at 'plant)'? The second part has its own subject and verb ('she found'). Who is doing the 'researching'?",
+    "anchor": "w-stop"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "af4300b0": {
+   "card": 5,
+   "card_name": "Linking words",
+   "anchor": "w-words",
+   "label": "own word",
+   "hint": {
+    "tag": "TEST",
+    "title": "Own-word test",
+    "text": "Cover the choices. Three years, 250,000 images, 'painstakingly', inventing new tools… Say your own word: 'it was a very ____ process.' Then match it.",
+    "anchor": "w-words"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "a9e5b788": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-stop",
+   "label": "STOP",
+   "hint": {
+    "tag": "TEST",
+    "title": "Split test",
+    "text": "Both sides are full sentences ('Saville is not the protagonist…' / 'she's the occasion of it'). A comma alone can't join them, even with a word like 'rather'.",
+    "anchor": "w-stop"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "f45ae404": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-stop",
+   "label": "STOP",
+   "hint": {
+    "tag": "TEST",
+    "title": "Split test",
+    "text": "Both halves have their own subject + verb ('The city … partnered' / 'the AI algorithm determines'). The 'analyzing' piece belongs to the second half. What can separate two sentences?",
+    "anchor": "w-stop"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "05a14e18": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-list",
+   "label": "lists",
+   "hint": {
+    "tag": "TEST",
+    "title": "List test",
+    "text": "The list: spiral lines…, depictions of animals…, and enamel accents. Look at the mark right before 'and inlaid enamel accents'. Match it.",
+    "anchor": "w-list"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "80aa7690": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-title",
+   "label": "names",
+   "hint": {
+    "tag": "TEST",
+    "title": "Take-out test",
+    "text": "Take the name out: 'of keen interest to linguist of the University of Toronto.' Which linguist? Needed → no commas.",
+    "anchor": "w-title"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "4dcedc31": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-title",
+   "label": "names",
+   "hint": {
+    "tag": "TEST",
+    "title": "Take-out test",
+    "text": "Take the name out: 'chemistry professor and his colleagues…'. Which professor? You can't tell, so the name is needed. Needed info gets no commas.",
+    "anchor": "w-title"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  },
+  "4b424102": {
+   "card": 1,
+   "card_name": "Punctuation",
+   "anchor": "w-stop",
+   "label": "STOP",
+   "hint": {
+    "tag": "TEST",
+    "title": "Split test",
+    "text": "'these elected officials take turns…' is a full sentence. Is 'does not have one president but three' a full sentence too? A who-clause can't glue two sentences together.",
+    "anchor": "w-stop"
+   },
+   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "date": "2026-11-06"
+  }
+ }
+}

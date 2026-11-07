@@ -112,3 +112,18 @@ python3 tools/bands.py img/math/<id>-q.png --crop Y0 Y1 bank/media/math/<id>-1.p
 python3 tools/check.py                                     # validate the bank, annotations and pages
 python3 tools/build.py                                     # build the site into _site/
 ```
+
+## Annotations
+
+`annotations/<section>.json` holds our own additions, never the College Board's words: `{"section", "origin": "annotation", "items": {id: …}}`, one entry per item id. Every item in `original/` needs one, because the drills link each question to its cheat-sheet card; `tools/check.py` enforces it.
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| `card` | int | The cheat-sheet card the item drills (1 to 7): its colour and filter in the drill |
+| `card_name` | string | The card's name as the drill's filters show it (`Punctuation`); the same for every item of a card |
+| `anchor` | string | The id on that section's cheat sheet the card link opens (`w-pairs` → `../cheat-sheet/#w-pairs`) |
+| `label` | string | The link's words after the card name (`1 · Punctuation → pairs`) |
+| `hint` | object / absent | Optional. `{tag, title, text, anchor}`: the tag (`TEST`, `MOVE`), the hint's title, its text (plain; math as `\(…\)`), and the anchor its "See it on the cheat sheet" link opens (it can differ from `anchor`). No hint, no Hint button. |
+| `by`, `date` | string | Who wrote the entry or last changed it, and when |
+
+The first 160 entries were extracted from the original drill pages (commit `120473f`) by `tools/extract_annotations.py`, a one-off kept for the record: entries are edited by hand from then on (item `b74f676f` has since moved to card 6, so the script's `--check` no longer matches). Every anchor must exist on the cheat sheet; `tools/check.py` reads the anchors from the pages themselves.
