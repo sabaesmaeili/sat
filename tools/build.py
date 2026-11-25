@@ -221,30 +221,39 @@ MENU = (("cheat-sheet", "cheat sheet"), ("drill", "drill"))
 SUBJECT = {"writing": "english", "math": "math"}  # the subject toggle's words (the owner's); the folders stay writing/, math/
 
 
+# Where these pages sit on the website: esaba.ca's home, then the Lab, which lists SAT prep (the energy news digest's
+# address follows the same path). Saba's own sites, so these links open in the same tab (the website's links rule).
+SITE_CRUMBS = (("~", "https://esaba.ca/"), ("lab", "https://esaba.ca/lab/"))
+
+
 def header(rel):
-    """The website's header for the page at rel (a path under site/): the mark (the root), one link per segment of the
-    address, the current one marked; inside a section, its menu (the cheat sheet and the drill) and the subject
-    toggle, drawn like the French tool's language switch: the current subject, which switches to the same page of the
-    other subject (writing/drill/ to math/drill/, writing/ to math/)."""
+    """The website's header for the page at rel (a path under site/): the @esaba mark, then the address as the website
+    writes it (~/lab/sat/writing/drill), one link per segment, the current one marked: ~ and lab lead to esaba.ca,
+    sat and on stay here. Inside a section, its menu (the cheat sheet and the drill) and the subject toggle, drawn like
+    the French tool's language switch: the current subject, which switches to the same page of the other subject
+    (writing/drill/ to math/drill/, writing/ to math/)."""
     segs = rel.parent.parts
     current = ' aria-current="page"'
 
     def up(n):
         return "../" * n or "./"
-    crumbs = "".join('/<a href="%s"%s>%s</a>' % (up(len(segs) - 1 - i), current if i == len(segs) - 1 else "", seg)
-                     for i, seg in enumerate(segs))
+    here = [("sat", up(len(segs)))] + [(seg, up(len(segs) - 1 - i)) for i, seg in enumerate(segs)]
+    trail = list(SITE_CRUMBS) + here
+    crumbs = "".join('%s<a class="address-crumb" href="%s"%s>%s</a>' % (
+        '<span class="address-separator" aria-hidden="true">/</span>' if i > 0 else "", href,
+        current if i == len(trail) - 1 else "", label) for i, (label, href) in enumerate(trail))
     nav = ""
     if segs:
-        here = segs[1] if len(segs) > 1 else None
+        here_key = segs[1] if len(segs) > 1 else None
         base = "../" if len(segs) > 1 else ""
-        links = "".join('<a href="%s"%s>%s</a>' % ("./" if key == here else base + key + "/", current if key == here else "", name)
+        links = "".join('<a href="%s"%s>%s</a>' % ("./" if key == here_key else base + key + "/", current if key == here_key else "", name)
                         for key, name in MENU)
         other = next(x for x in SUBJECT if x != segs[0])
         toggle = '<a class="lang" href="%s" title="switch to %s" aria-label="subject: %s; switch to %s">%s</a>' % (
             up(len(segs)) + "/".join((other,) + segs[1:]) + "/", SUBJECT[other], SUBJECT[segs[0]], SUBJECT[other], SUBJECT[segs[0]])
-        nav = '\n  <nav class="nav" aria-label="%s pages">%s%s</nav>' % (segs[0], links, toggle)
-    return ('<header class="top frame">\n  <a class="mark" href="%s"%s>sat</a><span class="address">%s</span>%s\n</header>'
-            % (up(len(segs)), "" if segs else current, crumbs, nav))
+        nav = '\n  <nav class="site-nav" aria-label="%s pages">%s%s</nav>' % (segs[0], links, toggle)
+    return ('<header class="site-header frame">\n  <a class="site-mark" href="https://esaba.ca/" aria-label="Saba Esmaeili home">@esaba</a>'
+            '<nav class="address-path" aria-label="Current path">%s</nav>%s\n</header>' % (crumbs, nav))
 
 
 def build(bank=BANK, out=OUT, quiet=False):

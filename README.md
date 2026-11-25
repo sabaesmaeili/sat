@@ -4,7 +4,7 @@ Two cheat sheets and two drills for the SAT, built from hard College Board quest
 
 ## Layout
 
-The site is one folder tree, the French tool's way: every prefix of an address is a page, and the header shows the address (`sat/writing/drill`), one link per segment. Inside a subject the header's menu offers its cheat sheet and drill, then the subject toggle, drawn like the French tool's `fr`/`en` switch: it shows the current subject (`english` or `math`) and switches to the same page of the other one (`writing/drill/` ⇄ `math/drill/`, `writing/` ⇄ `math/`). The root list has no toggle.
+The site is one folder tree, the French tool's way: every prefix of an address is a page, and the header is the website's: the `@esaba` mark, then the address as the website writes it (`~/lab/sat/writing/drill`), one link per segment, where `~` and `lab` lead back to esaba.ca. Inside a subject the header's menu offers its cheat sheet and drill, then the subject toggle, drawn like the French tool's `fr`/`en` switch: it shows the current subject (`english` or `math`) and switches to the same page of the other one (`writing/drill/` ⇄ `math/drill/`, `writing/` ⇄ `math/`). The root list has no toggle.
 
 | Address | Page | Source |
 | --- | --- | --- |
@@ -49,7 +49,7 @@ The pages follow the esaba.ca design system (`~/Documents/GitHub/Website/docs/de
 
 - **Type**: the monospace (`--font-primary`) for everything the site says (headings, labels, buttons, navigation, scores, card titles); the serif reading face (`--font-serif`, from the French tool's tokens) only for material read at length: passages, questions, choices, rationales and cheat-sheet card prose. Website sizes (`--text-sm`, `--text-base`, `--text-lg`) and weights (400, 600).
 - **Greys and panels**: only the website's and French tool's tokens. Cards and panels are the canvas (`--color-bg`) with a 1px `--color-line` border, as the French tool draws its panels; inner fills are `--color-surface-2`. Light and dark follow the system setting; `data-theme="light"` or `"dark"` on `<html>` forces a mode.
-- **Recorded exceptions** (in `css/site.css` and the cheat sheets): the cards keep their original layout, borders, radii and size hierarchy, so they add `--text-xl` (1.5rem) and `--text-2xl` (2rem) for card and page titles, `.75rem` for the tags and pattern labels inside diagrams, and a wider frame (`--frame-wide`, 70rem; drills `--frame-drill`, 61.25rem). The drills keep their bordered buttons. On phones the card pages use a 1rem gutter. Figures are scans on white: multiplied onto the page in light mode and onto a `--color-text` panel in dark mode.
+- **Recorded exceptions** (in `css/site.css` and the cheat sheets): the cards keep their original layout, borders, radii and size hierarchy, so they add `--text-xl` (1.5rem) and `--text-2xl` (2rem) for card and page titles, `.75rem` for the tags and pattern labels inside diagrams. The drills keep their bordered buttons. Every page uses the website's one column (`--frame`, `--gutter`); the drills and cheat sheets were wider until 2026-11-24, so the page jumped on opening them. Figures are scans on white: multiplied onto the page in light mode and onto a `--color-text` panel in dark mode.
 - **Hints** are neutral toggles (the French tool's convention for anything that opens in place); right is green, wrong pink (state words in the website's `--color-pink-text`).
 - **The cheat sheets** open with the card picker, its label ("The choices change the…") a heading line above the buttons; the header's menu leads to the drill.
 
