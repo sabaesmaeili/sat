@@ -45,7 +45,7 @@ node tools/test_grading.js                          # test the grading of typed 
 
 ## Design
 
-The pages follow the esaba.ca design system (`~/Documents/GitHub/Website/docs/design-system.xml`, tokens in its `src/styles/global.css`) and the French tool's conventions (`~/Documents/GitHub/Projects/French/_Workspace/tool/DESIGN.md`): its header and address (§4), prompt line and tree rows (§5), and type rule (§1).
+The pages follow the esaba.ca design system (`~/GitHub/Website/docs/design-system.xml`, tokens in its `src/styles/global.css`) and the French tool's conventions (`~/Documents/GitHub/Projects/French/_Workspace/tool/DESIGN.md`): its header and address (§4), prompt line and tree rows (§5), and type rule (§1).
 
 - **Type**: the monospace (`--font-primary`) for everything the site says (headings, labels, buttons, navigation, scores, card titles); the serif reading face (`--font-serif`, from the French tool's tokens) only for material read at length: passages, questions, choices, rationales and cheat-sheet card prose. Website sizes (`--text-sm`, `--text-base`, `--text-lg`) and weights (400, 600).
 - **Greys and panels**: only the website's and French tool's tokens. Cards and panels are the canvas (`--color-bg`) with a 1px `--color-line` border, as the French tool draws its panels; inner fills are `--color-surface-2`. Light and dark follow the system setting; `data-theme="light"` or `"dark"` on `<html>` forces a mode.
@@ -59,7 +59,7 @@ Bank text is checked and rebuilt, never pasted. `tools/bank.py` parses each text
 
 ## Palette
 
-`tools/palette.py` writes `site/css/palette.css`: the website's blue, green and pink plus six hues built exactly as the website builds its own, so they are as lively and follow the same convention. Light mode uses the website's rule: each hue at the highest chroma the screen can show, darkened until it is exactly 4.5:1 on the light canvas (OKLCH lightness 0.53 to 0.58, with the website's light accents). Dark mode puts each hue at Blue Atoll's lightness (OKLCH 0.702) at the highest chroma in gamut (cap 0.25); indigo sits at 0.76, as the website's green also sits higher, to stay apart from violet for deuteranopia. One value per hue per mode, `--color-<hue>`, plus `--color-<hue>-rgb` for tints. Roles map onto hues: `--color-k1` violet, `k2` blue, `k3` teal, `k4` orange, `k5` magenta, `k6` indigo, `k7` red; `--color-writing` violet, `--color-math` blue; `--color-right` green, `--color-wrong` pink. Green and pink stay off the categories, which sit next to right and wrong in the drills. Coloured text is kept to headings, labels and state words; body text is `--color-text`.
+`tools/palette.py` writes `site/css/palette.css`: the website's blue, green, pink and violet plus five hues built exactly as the website builds its own, so they are as lively and follow the same convention. Light mode uses the website's rule: each hue at the highest chroma the screen can show, darkened until it is exactly 4.5:1 on the light canvas (OKLCH lightness 0.53 to 0.58, with the website's light accents). Dark mode puts each hue at Blue Atoll's lightness (OKLCH 0.702) at the highest chroma in gamut (cap 0.25); indigo sits at 0.76, as the website's green also sits higher, to stay apart from violet for deuteranopia. One value per hue per mode, `--color-<hue>`, plus `--color-<hue>-rgb` for tints. Roles map onto hues: `--color-k1` violet, `k2` blue, `k3` teal, `k4` orange, `k5` magenta, `k6` indigo, `k7` red; `--color-writing` violet, `--color-math` blue; `--color-right` green, `--color-wrong` pink. Green and pink stay off the categories, which sit next to right and wrong in the drills. Coloured text is kept to headings, labels and state words; body text is `--color-text`.
 
 The check (`tools/palette.py --check`, run by `tools/check.py`) requires every added hue at 4.5:1 on the canvas (it may colour text there) and 3:1 on bg, surface and surface-2 (marks, borders, headings); categories at least 0.07 apart in OKLab for normal vision and 0.015 for simulated deuteranopia and protanopia (Machado 2009), and 0.06 from right and wrong. Seven equally vivid hues allow little more under colour-vision deficiency, so every category also carries its number and name.
 
@@ -68,7 +68,7 @@ The check (`tools/palette.py --check`, run by `tools/check.py`) requires every a
 | blue (website) | dark | `#00b1d2` | 0.702 / 0.126 / 217 | 6.87 / 6.36 / 5.77 |
 | green (website) | dark | `#69ff47` | 0.885 / 0.253 / 140 | 13.38 / 12.38 / 11.23 |
 | pink (website) | dark | `#ff3ea5` | 0.682 / 0.241 / 353 | 5.42 / 5.02 / 4.55 |
-| violet | dark | `#b27fff` | 0.702 / 0.185 / 300 | 6.17 / 5.71 / 5.18 |
+| violet (website) | dark | `#946cf0` | 0.634 / 0.191 / 294 | 4.74 / 4.38 / 3.98 |
 | teal | dark | `#00b99a` | 0.701 / 0.132 / 175 | 7.03 / 6.51 / 5.90 |
 | orange | dark | `#f67400` | 0.701 / 0.186 / 50 | 6.20 / 5.74 / 5.21 |
 | magenta | dark | `#e358f8` | 0.702 / 0.250 / 322 | 5.87 / 5.43 / 4.93 |
@@ -77,7 +77,7 @@ The check (`tools/palette.py --check`, run by `tools/check.py`) requires every a
 | blue (website) | light | `#007a92` | 0.535 / 0.096 / 218 | 4.54 / 3.90 / 3.55 |
 | green (website) | light | `#228100` | 0.528 / 0.171 / 140 | 4.53 / 3.89 / 3.54 |
 | pink (website) | light | `#d70085` | 0.576 / 0.238 / 353 | 4.51 / 3.88 / 3.52 |
-| violet | light | `#943ef2` | 0.575 / 0.250 / 300 | 4.51 / 3.87 / 3.52 |
+| violet (website) | light | `#7546d8` | 0.531 / 0.211 / 293 | 5.27 / 4.52 / 4.11 |
 | teal | light | `#007f69` | 0.532 / 0.100 / 175 | 4.50 / 3.86 / 3.51 |
 | orange | light | `#b55400` | 0.558 / 0.147 / 50 | 4.51 / 3.87 / 3.52 |
 | magenta | light | `#b926ce` | 0.578 / 0.251 / 322 | 4.51 / 3.87 / 3.52 |

@@ -19,7 +19,7 @@ Usage (from anywhere):
   python3 tools/sync_tokens.py           write site/css/tokens.css and site/css/tool-tokens.css
   python3 tools/sync_tokens.py --check   exit 1 if either copy has drifted
 
-The website is looked for at ~/Documents/GitHub/Website (or --website PATH, or $WEBSITE_REPO),
+The website is looked for at ~/GitHub/Website (or --website PATH, or $WEBSITE_REPO),
 the French tool at ~/Documents/GitHub/Projects/French (or $FRENCH_REPO). With --check, a repo
 that is absent (as in CI) is skipped with a note.
 """
@@ -32,7 +32,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "site" / "css" / "tokens.css"
 TOOL_OUT = ROOT / "site" / "css" / "tool-tokens.css"
-DEFAULT_WEBSITE = Path.home() / "Documents" / "GitHub" / "Website"
+DEFAULT_WEBSITE = Path.home() / "GitHub" / "Website"  # moved out of iCloud on 2026-11-25
 DEFAULT_FRENCH = Path.home() / "Documents" / "GitHub" / "Projects" / "French"
 TOOL_SOURCE = Path("_Workspace") / "tool" / "tool-tokens.css"
 TOOL_HEADER = ("/* COPIED FILE. Never edit it by hand: it is the French tool's _Workspace/tool/tool-tokens.css, copied by\n"
