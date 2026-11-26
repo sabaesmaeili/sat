@@ -13,7 +13,7 @@ The site is one folder tree, the French tool's way: every prefix of an address i
 | `/<section>/cheat-sheet/` | the cheat sheet, cards with anchors (`#w-pairs`, `#m-disc`) | `site/<section>/cheat-sheet/index.html` |
 | `/<section>/drill/` | the drill, built from the bank (not indexed by search engines) | `site/<section>/drill/index.html` (a template) |
 
-- `site/`: the pages and their shared files: `css/tokens.css` (generated from the website), `css/tool-tokens.css` (copied from the French tool), `css/palette.css` (generated, below), `css/site.css` (header, prompt, type rule, tree rows), `css/drill.css`, `js/grade.js` (grading typed answers), `js/drill.js`. Every `{{…}}` in a page is filled by the build: `{{root}}` (the relative path to the site's root), `{{header}}`, the drills' questions, and the counts on the list pages. All links are relative, so the same build works under any path.
+- `site/`: the pages and their shared files: `css/tokens.css` (generated from the website), `css/tool-tokens.css` (copied from the French tool), `css/palette.css` (generated, below), `css/site.css` (header, prompt, type rule, tree rows), `css/drill.css`, `js/grade.js` (grading typed answers), `js/drill.js`, `js/header-path.js` (generated from the website's header script: on a narrow screen the menu takes its own row, then `@esaba` becomes `@` and folder names shorten from their middle, `writing` to `wri…ng`, so the address is never cut off). Every `{{…}}` in a page is filled by the build: `{{root}}` (the relative path to the site's root), `{{header}}`, the drills' questions, and the counts on the list pages. All links are relative, so the same build works under any path.
 - `bank/`: the questions as data. `original/<section>.json` holds the College Board's text verbatim; `annotations/<section>.json` holds ours (each item's card, card link and optional hint); `media/<section>/` the figure crops. Format: `bank/README.md`.
 - `img/<section>/`: the screenshots the items were typed from (`<id>-q.png`, `<id>-a.png`). They are not published.
 - `tools/`: the scripts below (Python 3, standard library only).
@@ -30,6 +30,7 @@ python3 tools/build.py                              # build the site into _site/
 python3 tools/build.py --serve                      # build, then preview at http://localhost:8000
 python3 tools/import_staging.py <section> <dir>     # merge typed items (<dir>/<id>.json) into bank/original/<section>.json
 python3 tools/sync_tokens.py                        # refresh css/tokens.css and css/tool-tokens.css from the website and the French tool
+python3 tools/sync_header.py                        # refresh js/header-path.js, the website's header script, bundled with its esbuild
 python3 tools/palette.py                            # regenerate css/palette.css; --report prints the tables below
 python3 tools/bands.py img/math/<id>-q.png          # find a figure's rows in a screenshot (--crop to cut it)
 node tools/test_grading.js                          # test the grading of typed answers (check.py runs it when node is installed)

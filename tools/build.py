@@ -239,9 +239,11 @@ def header(rel):
         return "../" * n or "./"
     here = [("sat", up(len(segs)))] + [(seg, up(len(segs) - 1 - i)) for i, seg in enumerate(segs)]
     trail = list(SITE_CRUMBS) + here
-    crumbs = "".join('%s<a class="address-crumb" href="%s"%s>%s</a>' % (
+    # data-folder marks the names the website's header script (js/header-path.js) may shorten; ~ is never shortened.
+    crumbs = "".join('%s<a class="address-crumb" href="%s"%s%s>%s</a>' % (
         '<span class="address-separator" aria-hidden="true">/</span>' if i > 0 else "", href,
-        current if i == len(trail) - 1 else "", label) for i, (label, href) in enumerate(trail))
+        ' data-folder="%s"' % label if i > 0 else "", current if i == len(trail) - 1 else "", label)
+        for i, (label, href) in enumerate(trail))
     nav = ""
     if segs:
         here_key = segs[1] if len(segs) > 1 else None
@@ -252,8 +254,10 @@ def header(rel):
         toggle = '<a class="lang" href="%s" title="switch to %s" aria-label="subject: %s; switch to %s">%s</a>' % (
             up(len(segs)) + "/".join((other,) + segs[1:]) + "/", SUBJECT[other], SUBJECT[segs[0]], SUBJECT[other], SUBJECT[segs[0]])
         nav = '\n  <nav class="site-nav" aria-label="%s pages">%s%s</nav>' % (segs[0], links, toggle)
+    # The website's header script keeps the mark and the address on one line on a narrow screen (tools/sync_header.py).
     return ('<header class="site-header frame">\n  <a class="site-mark" href="https://esaba.ca/" aria-label="Saba Esmaeili home">@esaba</a>'
-            '<nav class="address-path" aria-label="Current path">%s</nav>%s\n</header>' % (crumbs, nav))
+            '<nav class="address-path" aria-label="Current path">%s</nav>%s\n</header>\n<script src="%sjs/header-path.js" defer></script>'
+            % (crumbs, nav, up(len(segs))))
 
 
 def build(bank=BANK, out=OUT, quiet=False):

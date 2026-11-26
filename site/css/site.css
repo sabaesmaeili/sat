@@ -74,8 +74,10 @@ b, strong { font-weight: var(--weight-strong); }
 }
 .site-mark, .address-path { font-weight: var(--weight-regular); line-height: var(--leading); }
 .site-mark, .site-mark:hover { display: inline-flex; min-height: var(--control-height); align-items: center; color: var(--color-identity); white-space: nowrap; }
-/* A path too long for a phone loses its start, never the page you are on; @esaba still leads home. */
-.address-path { display: inline-flex; min-width: 0; align-items: center; justify-content: flex-end; justify-self: start; max-width: 100%; overflow: hidden; color: var(--color-muted); white-space: nowrap; }
+/* A path too long for the screen is never cut off: js/header-path.js (the website's header script) moves the menu to
+   its own row, then shortens @esaba to @ and the folder names from their middle until the line fits. overflow stays
+   hidden so the script can measure the line; the path starts at its left edge, where that measure can see it. */
+.address-path { display: inline-flex; min-width: 0; align-items: center; overflow: hidden; color: var(--color-muted); white-space: nowrap; }
 .address-crumb, .address-separator { color: var(--color-muted); }
 .address-crumb { display: inline-flex; min-height: 32px; align-items: center; }
 .address-crumb:hover, .address-crumb:focus-visible { color: var(--color-hover); }
@@ -85,10 +87,15 @@ b, strong { font-weight: var(--weight-strong); }
 .site-nav a[aria-current="page"] { color: var(--color-choice-chosen); }
 /* The subject toggle, like the French tool's language switch: the current subject in the menu's style, not marked. */
 .site-nav .lang { color: var(--color-choice); }
+/* The menu takes its own row when the full path would not fit beside it: js/header-path.js measures and sets
+   data-layout. Before it has run (or without scripts), 760px decides, as on the website. */
+.site-header[data-layout="stacked"] { grid-template-columns: auto minmax(0, 1fr); }
+.site-header[data-layout="stacked"] .site-nav { grid-column: 1 / -1; justify-content: flex-start; width: 100%; overflow-x: auto; scrollbar-width: none; }
+.site-header[data-layout="stacked"] .site-nav a { flex: 0 0 auto; }
 @media (max-width: 760px) {
-  .site-header { grid-template-columns: auto minmax(0, 1fr); }
-  .site-nav { grid-column: 1 / -1; justify-content: flex-start; width: 100%; overflow-x: auto; scrollbar-width: none; }
-  .site-nav a { flex: 0 0 auto; }
+  .site-header:not([data-layout]) { grid-template-columns: auto minmax(0, 1fr); }
+  .site-header:not([data-layout]) .site-nav { grid-column: 1 / -1; justify-content: flex-start; width: 100%; overflow-x: auto; scrollbar-width: none; }
+  .site-header:not([data-layout]) .site-nav a { flex: 0 0 auto; }
 }
 
 /* ---- the page heading: prompt, title, lead ---- */

@@ -6,8 +6,8 @@
 1. bank/original/<section>.json against bank/README.md (format, text, media files, references).
 2. bank/annotations/<section>.json: every bank item has an annotation with its card; card names
    agree; every anchor (the card link's, the hint's) exists on that section's cheat sheet.
-3. site/css/tokens.css matches the website's tokens (skipped when the Website repo is absent, as in
-   CI) and site/css/palette.css is current and passes its contrast and distance checks.
+3. site/css/tokens.css matches the website's tokens and site/js/header-path.js its header script
+   (both skipped when the Website repo is absent, as in CI), and site/css/palette.css is current and passes its contrast and distance checks.
 4. The drills' grading of typed answers (tools/test_grading.js, with node; skipped without it).
 5. The site, built into a temporary folder: no placeholder left; every internal link, stylesheet,
    script and image resolves, with its #anchor; external resources (stylesheets, scripts, images) only from cdnjs (MathJax);
@@ -106,7 +106,7 @@ def check_annotations():
 
 def check_design():
     errs = []
-    for script in ("sync_tokens.py", "palette.py"):
+    for script in ("sync_tokens.py", "sync_header.py", "palette.py"):
         r = subprocess.run([sys.executable, str(TOOLS / script), "--check"], capture_output=True, text=True)
         if r.returncode:
             errs += [line for line in (r.stderr or r.stdout).strip().splitlines() if line]
