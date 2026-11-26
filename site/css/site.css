@@ -64,7 +64,7 @@ b, strong { font-weight: var(--weight-strong); }
    math) on the right (the French tool's DESIGN.md 4) ---- */
 .site-header {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
   align-items: center;
   column-gap: 1ch;
   min-height: var(--control-height);
@@ -85,16 +85,21 @@ b, strong { font-weight: var(--weight-strong); }
 .site-nav a { display: inline-flex; min-height: var(--choice-height); align-items: center; color: var(--color-choice); white-space: nowrap; }
 .site-nav a:hover, .site-nav a:focus-visible { color: var(--color-hover); }
 .site-nav a[aria-current="page"] { color: var(--color-choice-chosen); }
-/* The subject toggle, like the French tool's language switch: the current subject in the menu's style, not marked. */
-.site-nav .lang { color: var(--color-choice); }
+/* The subject toggle, like the French tool's language switch: the header's own item after the menu, never inside it,
+   --choice-gap from the menu's last item (the design system's header toggle rule, 2026-11-25); the current subject,
+   drawn as the menu's choices, not marked. When the menu takes its own row, the toggle stays on row 1 at the right. */
+.site-header .lang { display: inline-flex; min-height: var(--choice-height); align-items: center; color: var(--color-choice); white-space: nowrap; margin-left: calc(var(--choice-gap) - 1ch); }
+.site-header .lang:hover, .site-header .lang:focus-visible { color: var(--color-hover); }
 /* The menu takes its own row when the full path would not fit beside it: js/header-path.js measures and sets
    data-layout. Before it has run (or without scripts), 760px decides, as on the website. */
-.site-header[data-layout="stacked"] { grid-template-columns: auto minmax(0, 1fr); }
-.site-header[data-layout="stacked"] .site-nav { grid-column: 1 / -1; justify-content: flex-start; width: 100%; overflow-x: auto; scrollbar-width: none; }
+.site-header[data-layout="stacked"] { grid-template-columns: auto minmax(0, 1fr) auto; }
+.site-header[data-layout="stacked"] .lang { grid-row: 1; grid-column: 3; margin-left: 0; }
+.site-header[data-layout="stacked"] .site-nav { grid-row: 2; grid-column: 1 / -1; justify-content: flex-start; width: 100%; overflow-x: auto; scrollbar-width: none; }
 .site-header[data-layout="stacked"] .site-nav a { flex: 0 0 auto; }
 @media (max-width: 760px) {
-  .site-header:not([data-layout]) { grid-template-columns: auto minmax(0, 1fr); }
-  .site-header:not([data-layout]) .site-nav { grid-column: 1 / -1; justify-content: flex-start; width: 100%; overflow-x: auto; scrollbar-width: none; }
+  .site-header:not([data-layout]) { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .site-header:not([data-layout]) .lang { grid-row: 1; grid-column: 3; margin-left: 0; }
+  .site-header:not([data-layout]) .site-nav { grid-row: 2; grid-column: 1 / -1; justify-content: flex-start; width: 100%; overflow-x: auto; scrollbar-width: none; }
   .site-header:not([data-layout]) .site-nav a { flex: 0 0 auto; }
 }
 

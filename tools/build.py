@@ -229,9 +229,10 @@ SITE_CRUMBS = (("~", "https://esaba.ca/"), ("lab", "https://esaba.ca/lab/"))
 def header(rel):
     """The website's header for the page at rel (a path under site/): the @esaba mark, then the address as the website
     writes it (~/lab/sat/writing/drill), one link per segment, the current one marked: ~ and lab lead to esaba.ca,
-    sat and on stay here. Inside a section, its menu (the cheat sheet and the drill) and the subject toggle, drawn like
-    the French tool's language switch: the current subject, which switches to the same page of the other subject
-    (writing/drill/ to math/drill/, writing/ to math/)."""
+    sat and on stay here. Inside a section, its menu (the cheat sheet and the drill), then the subject toggle after the
+    menu, never inside it (the design system's header toggle rule, 2026-11-25), drawn like the French tool's language
+    switch: the current subject, which switches to the same page of the other subject (writing/drill/ to math/drill/,
+    writing/ to math/)."""
     segs = rel.parent.parts
     current = ' aria-current="page"'
 
@@ -253,7 +254,7 @@ def header(rel):
         other = next(x for x in SUBJECT if x != segs[0])
         toggle = '<a class="lang" href="%s" title="switch to %s" aria-label="subject: %s; switch to %s">%s</a>' % (
             up(len(segs)) + "/".join((other,) + segs[1:]) + "/", SUBJECT[other], SUBJECT[segs[0]], SUBJECT[other], SUBJECT[segs[0]])
-        nav = '\n  <nav class="site-nav" aria-label="%s pages">%s%s</nav>' % (segs[0], links, toggle)
+        nav = '\n  <nav class="site-nav" aria-label="%s pages">%s</nav>%s' % (segs[0], links, toggle)
     # The website's header script keeps the mark and the address on one line on a narrow screen (tools/sync_header.py).
     return ('<header class="site-header frame">\n  <a class="site-mark" href="https://esaba.ca/" aria-label="Saba Esmaeili home">@esaba</a>'
             '<nav class="address-path" aria-label="Current path">%s</nav>%s\n</header>\n<script src="%sjs/header-path.js" defer></script>'
