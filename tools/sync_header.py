@@ -3,8 +3,8 @@
 
 The esaba.ca website owns how the header's @esaba mark and address shorten on a narrow screen
 (its docs/design-system.xml, header): the menu first moves to a row of its own, then @esaba
-becomes @, then one character at a time comes out of the middle of the longest folder name
-(writing becomes wri…ng, then wr…ng, … down to w…g). The rule is its src/lib/headerPath.ts and
+becomes @, then the address folds from its start into one … crumb (~/lab/sat/writing/drill
+becomes ~/…/sat/writing/drill, then ~/…/writing/drill; owner decision, 2026-11-25). The rule is its src/lib/headerPath.ts and
 the measuring its src/scripts/headerPath.ts. These pages run that same code: this script bundles
 the two files into one plain script with the website's own esbuild (from its node_modules), so
 the behaviour exists once, on the website, and is never retyped here.

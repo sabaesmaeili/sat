@@ -333,7 +333,7 @@ def header(rel):
         return "../" * n or "./"
     here = [("sat", up(len(segs)))] + [(seg, up(len(segs) - 1 - i)) for i, seg in enumerate(segs)]
     trail = list(SITE_CRUMBS) + here
-    # data-folder marks the names the website's header script (js/header-path.js) may shorten; ~ is never shortened.
+    # data-folder marks the folders the website's header script (js/header-path.js) may fold; ~ never folds.
     crumbs = "".join('%s<a class="address-crumb" href="%s"%s%s>%s</a>' % (
         '<span class="address-separator" aria-hidden="true">/</span>' if i > 0 else "", href,
         ' data-folder="%s"' % label if i > 0 else "", current if i == len(trail) - 1 else "", label)

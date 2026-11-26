@@ -5,22 +5,9 @@
 (() => {
   // src/lib/headerPath.ts
   var ELLIPSIS = "\u2026";
-  var FLOOR = 3;
   var markText = (short) => short ? "@" : "@esaba";
-  var middle = (name, length) => {
-    if (length >= name.length) return name;
-    const kept = length - 1;
-    return name.slice(0, Math.ceil(kept / 2)) + ELLIPSIS + name.slice(-Math.floor(kept / 2));
-  };
-  var canLoseOne = (name, length) => name.length > FLOOR && length > FLOOR;
-  var shortenOnce = (names, lengths) => {
-    let pick = -1;
-    names.forEach((name, i) => {
-      if (canLoseOne(name, lengths[i]) && (pick < 0 || lengths[i] > lengths[pick])) pick = i;
-    });
-    if (pick < 0) return null;
-    return lengths.map((length, i) => i === pick ? length - 1 : length);
-  };
+  var maxFold = (names) => Math.max(0, names.length - 1);
+  var foldLabel = (names, fold) => names.slice(0, fold).join("/");
 
   // src/scripts/headerPath.ts
   var mark = document.querySelector(".site-mark");
@@ -28,35 +15,46 @@
   var header = document.querySelector(".site-header");
   var nav = header?.querySelector(".site-nav") ?? null;
   if (mark && path) {
+    const home = path.firstElementChild;
     const folders = Array.from(path.querySelectorAll("[data-folder]"));
     const names = folders.map((folder) => folder.dataset.folder ?? "");
-    const show = (shortMark, lengths) => {
+    let added = [];
+    const show = (shortMark, fold) => {
       mark.textContent = markText(shortMark);
       folders.forEach((folder, i) => {
-        const text = middle(names[i], lengths[i]);
-        folder.textContent = text;
-        if (text === names[i]) {
-          folder.removeAttribute("aria-label");
-          folder.removeAttribute("title");
-        } else {
-          folder.setAttribute("aria-label", names[i]);
-          folder.setAttribute("title", names[i]);
-        }
+        const display = i < fold ? "none" : "";
+        folder.style.display = display;
+        if (folder.previousElementSibling instanceof HTMLElement) folder.previousElementSibling.style.display = display;
       });
+      added.forEach((node) => node.remove());
+      added = [];
+      if (!fold || !home) return;
+      const deepest = folders[fold - 1];
+      const href = deepest.getAttribute("href");
+      const crumb = document.createElement(href ? "a" : "span");
+      crumb.className = "address-crumb";
+      if (href) crumb.setAttribute("href", href);
+      crumb.textContent = ELLIPSIS;
+      crumb.setAttribute("aria-label", foldLabel(names, fold));
+      crumb.title = foldLabel(names, fold);
+      const separator = document.createElement("span");
+      separator.className = "address-separator";
+      separator.setAttribute("aria-hidden", "true");
+      separator.textContent = "/";
+      home.after(separator, crumb);
+      added = [separator, crumb];
     };
     const fits = () => path.scrollWidth <= path.clientWidth;
     const fit = () => {
-      let lengths = names.map((name) => name.length);
-      show(false, lengths);
+      show(false, 0);
       if (header && nav) {
         header.dataset.layout = "row";
         if (!fits() || header.scrollWidth > header.clientWidth) header.dataset.layout = "stacked";
       }
       if (fits()) return;
-      while (lengths) {
-        show(true, lengths);
+      for (let fold = 0; fold <= maxFold(names); fold++) {
+        show(true, fold);
         if (fits()) return;
-        lengths = shortenOnce(names, lengths);
       }
     };
     fit();
