@@ -17,12 +17,11 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
+# Two jobs, as the website's deploy has them: the build job uploads the site and ends, which finalises the artifact,
+# and only then does the deploy job publish it. In one job, deploy-pages stopped finding the artifact in November 2026.
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - run: python3 tools/check.py
@@ -31,8 +30,6 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
-      - id: deploy
-        uses: actions/deploy-pages@v4
       # Needs the secret MIRROR_DEPLOY_KEY: the private half of a deploy key with write access on the
       # tutoringwithsaba repo. Without it the copy is skipped and the Pages site still publishes.
       # Only sat/ is touched and staged there; that site's own settings (.nojekyll and the rest) stay its own.
@@ -50,3 +47,13 @@ jobs:
           git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
             commit -q -m "Copy the SAT pages from sat ${GITHUB_SHA::7}"
           git push -q
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

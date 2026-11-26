@@ -40,9 +40,13 @@ CHROMA_CAP = 0.25
 DARK_L = 0.702  # Blue Atoll's OKLCH lightness
 # name: (OKLCH hue, dark lightness). The light value keeps the hue, as the website's do. Indigo sits a little lighter
 # in dark mode (as the website's green does) so it stays apart from violet for deuteranopia.
-HUES = {"violet": (300, DARK_L), "teal": (175, DARK_L), "orange": (50, DARK_L), "magenta": (322, DARK_L),
+HUES = {"teal": (175, DARK_L), "orange": (50, DARK_L), "magenta": (322, DARK_L),
         "indigo": (265, 0.76), "red": (20, DARK_L)}
-WEBSITE = ("blue", "green", "pink")  # from tokens.css, never redefined here
+# From tokens.css, never redefined here. Violet joined on 2026-11-25: the website made it its identity color (the
+# logo and @esaba), so a violet built here as well put two violets on one page.
+WEBSITE = ("blue", "green", "pink", "violet")
+# Website hues whose -rgb the website does not publish; written here from its own value.
+WEBSITE_RGB_HERE = ("violet",)
 ROLES = {
     "k1": "violet", "k2": "blue", "k3": "teal", "k4": "orange", "k5": "magenta", "k6": "indigo", "k7": "red",
     "writing": "violet", "math": "blue",
@@ -197,6 +201,7 @@ def block(values, mode, indent):
     for name, v in values[mode].items():
         if not v["website"]:
             out.append(f"{pad}--color-{name}: {rgb2hex(v['mark'])};")
+        if not v["website"] or name in WEBSITE_RGB_HERE:
             out.append(f"{pad}--color-{name}-rgb: {rgb_channels(v['mark'])};")
     return "\n".join(out)
 

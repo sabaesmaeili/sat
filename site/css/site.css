@@ -20,11 +20,6 @@
   /* Two display sizes the cheat-sheet cards need above the website's three (sm, base, lg). */
   --text-xl: 1.5rem;
   --text-2xl: 2rem;
-  /* Card pages are wider than the website's 60rem frame: their four-column rows need it. */
-  --frame-wide: 70rem;
-  --frame-drill: 61.25rem;
-  --page-frame: var(--frame);
-  --page-gutter: var(--gutter);
   /* Figures are scans on white. Light mode: multiplied onto the page, so their white is the page's. Dark mode: on a
      panel of the text colour, the lightest grey of the palette, multiplied onto it the same way. */
   --figure-panel: var(--color-text);
@@ -59,34 +54,53 @@ b, strong { font-weight: var(--weight-strong); }
 .content { font-family: var(--font-serif); letter-spacing: 0; }
 .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
 
-/* One centred column; the header and the page share its left edge. */
-.frame { width: min(100% - 2 * var(--page-gutter), var(--page-frame)); margin-inline: auto; }
+/* One centred column, the website's (--frame, --gutter), on every page: the header and the page share its left edge,
+   and nothing moves between pages. Since 2026-11-24 (owner): the drills (61.25rem) and the cheat sheets (70rem) were
+   wider, so the page jumped wider on opening them. */
+.frame { width: min(100% - 2 * var(--gutter), var(--frame)); margin-inline: auto; }
 
-/* ---- the website's header: the mark (the root) and the address, one link per segment, on the left; inside a section,
-   its menu (cheat sheet, drill) and the subject toggle (english / math) on the right (the French tool's DESIGN.md 4) ---- */
-.top {
+/* ---- the website's header, as its src/styles/global.css draws it: the @esaba mark, the address (~/lab/sat/...), one
+   link per segment, on the left; inside a section, its menu (cheat sheet, drill) and the subject toggle (english /
+   math) on the right (the French tool's DESIGN.md 4) ---- */
+.site-header {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  column-gap: 0;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
   align-items: center;
+  column-gap: 1ch;
   min-height: var(--control-height);
   padding-top: var(--header-top-gap);
+  font-weight: var(--weight-strong);
   line-height: var(--leading-tight);
 }
-.top .mark, .top .mark:hover { color: var(--color-prompt); min-height: var(--control-height); display: inline-flex; align-items: center; }
-.top .address { color: var(--color-muted); min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; line-height: var(--leading); }
-.top .address a { color: var(--color-muted); display: inline-flex; align-items: center; min-height: 32px; vertical-align: middle; }
-.top .address a:hover { color: var(--color-hover); }
-.top .nav { display: flex; flex-wrap: wrap; gap: 0 var(--gap-inline); justify-content: flex-end; margin-left: var(--gap-inline); }
-.top .nav a { color: var(--color-choice); min-height: var(--control-height); display: inline-flex; align-items: center; white-space: nowrap; font-weight: var(--weight-strong); }
-.top .nav a:hover { color: var(--color-hover); }
-.top .nav a[aria-current] { color: var(--color-choice-chosen); }
-.top .nav a[aria-current]:hover { color: var(--color-hover); }
-/* The subject toggle, like the French tool's language switch: the current subject in the menu's style, not marked. */
-.top .nav .lang { color: var(--color-choice); }
+.site-mark, .address-path { font-weight: var(--weight-regular); line-height: var(--leading); }
+.site-mark, .site-mark:hover { display: inline-flex; min-height: var(--control-height); align-items: center; color: var(--color-identity); white-space: nowrap; }
+/* A path too long for the screen is never cut off: js/header-path.js (the website's header script) moves the menu to
+   its own row, then shortens @esaba to @ and the folder names from their middle until the line fits. overflow stays
+   hidden so the script can measure the line; the path starts at its left edge, where that measure can see it. */
+.address-path { display: inline-flex; min-width: 0; align-items: center; overflow: hidden; color: var(--color-muted); white-space: nowrap; }
+.address-crumb, .address-separator { color: var(--color-muted); }
+.address-crumb { display: inline-flex; min-height: 32px; align-items: center; }
+.address-crumb:hover, .address-crumb:focus-visible { color: var(--color-hover); }
+.site-nav { display: flex; align-items: center; justify-content: flex-end; gap: var(--choice-gap); }
+.site-nav a { display: inline-flex; min-height: var(--choice-height); align-items: center; color: var(--color-choice); white-space: nowrap; }
+.site-nav a:hover, .site-nav a:focus-visible { color: var(--color-hover); }
+.site-nav a[aria-current="page"] { color: var(--color-choice-chosen); }
+/* The subject toggle, like the French tool's language switch: the header's own item after the menu, never inside it,
+   --choice-gap from the menu's last item (the design system's header toggle rule, 2026-11-25); the current subject,
+   drawn as the menu's choices, not marked. When the menu takes its own row, the toggle stays on row 1 at the right. */
+.site-header .lang { display: inline-flex; min-height: var(--choice-height); align-items: center; color: var(--color-choice); white-space: nowrap; margin-left: calc(var(--choice-gap) - 1ch); }
+.site-header .lang:hover, .site-header .lang:focus-visible { color: var(--color-hover); }
+/* The menu takes its own row when the full path would not fit beside it: js/header-path.js measures and sets
+   data-layout. Before it has run (or without scripts), 760px decides, as on the website. */
+.site-header[data-layout="stacked"] { grid-template-columns: auto minmax(0, 1fr) auto; }
+.site-header[data-layout="stacked"] .lang { grid-row: 1; grid-column: 3; margin-left: 0; }
+.site-header[data-layout="stacked"] .site-nav { grid-row: 2; grid-column: 1 / -1; justify-content: flex-start; width: 100%; overflow-x: auto; scrollbar-width: none; }
+.site-header[data-layout="stacked"] .site-nav a { flex: 0 0 auto; }
 @media (max-width: 760px) {
-  .top { grid-template-columns: auto minmax(0, 1fr); }
-  .top .nav { grid-column: 1 / -1; justify-content: flex-start; margin-left: 0; }
+  .site-header:not([data-layout]) { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .site-header:not([data-layout]) .lang { grid-row: 1; grid-column: 3; margin-left: 0; }
+  .site-header:not([data-layout]) .site-nav { grid-row: 2; grid-column: 1 / -1; justify-content: flex-start; width: 100%; overflow-x: auto; scrollbar-width: none; }
+  .site-header:not([data-layout]) .site-nav a { flex: 0 0 auto; }
 }
 
 /* ---- the page heading: prompt, title, lead ---- */

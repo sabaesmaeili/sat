@@ -8,8 +8,8 @@
    agree; every anchor (the card link's, the hint's, the tags') exists on that section's cheat sheet;
    tags are distinct, not the item's own anchor, and each sits inside a card there (its card is read
    from the page, never from a list).
-3. site/css/tokens.css matches the website's tokens (skipped when the Website repo is absent, as in
-   CI) and site/css/palette.css is current and passes its contrast and distance checks.
+3. site/css/tokens.css matches the website's tokens and site/js/header-path.js its header script
+   (both skipped when the Website repo is absent, as in CI), and site/css/palette.css is current and passes its contrast and distance checks.
 4. The drills' grading of typed answers (tools/test_grading.js) and the students' saved progress (tools/test_progress.js:
    frozen storage keys; progress in the original format, and records for unknown ids, survive opening the page and
    saving; opening a page writes nothing). Both with node; skipped without it.
@@ -126,7 +126,7 @@ def check_annotations():
 
 def check_design():
     errs = []
-    for script in ("sync_tokens.py", "palette.py"):
+    for script in ("sync_tokens.py", "sync_header.py", "palette.py"):
         r = subprocess.run([sys.executable, str(TOOLS / script), "--check"], capture_output=True, text=True)
         if r.returncode:
             errs += [line for line in (r.stderr or r.stdout).strip().splitlines() if line]

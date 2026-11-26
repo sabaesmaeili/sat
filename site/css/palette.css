@@ -2,15 +2,14 @@
   GENERATED FILE. Never edit it by hand: edit tools/palette.py, then run it.
   The website's palette (tokens.css) extended with more hues, built as the website builds its own: light, each
   OKLCH hue at the highest chroma, darkened to exactly 4.5:1 on the canvas; dark, at Blue Atoll's lightness
-  (0.702) and the highest chroma in gamut (cap 0.25). Hues: violet 300, teal 175, orange 50, magenta 322, indigo 265, red 20.
+  (0.702) and the highest chroma in gamut (cap 0.25). Hues: teal 175, orange 50, magenta 322, indigo 265, red 20.
   One value per hue per mode, --color-<hue>, and --color-<hue>-rgb for tints. Roles map onto hues at the end.
   Values and checks: README.md, Palette.
   Load after tokens.css. The light block appears twice, so data-theme on <html> can force either mode.
 */
 
 :root {
-  --color-violet: #b27fff;
-  --color-violet-rgb: 178, 127, 255;
+  --color-violet-rgb: 148, 108, 240;
   --color-teal: #00b99a;
   --color-teal-rgb: 0, 185, 154;
   --color-orange: #f67400;
@@ -49,8 +48,7 @@
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-    --color-violet: #943ef2;
-    --color-violet-rgb: 148, 62, 242;
+    --color-violet-rgb: 117, 70, 216;
     --color-teal: #007f69;
     --color-teal-rgb: 0, 127, 105;
     --color-orange: #b55400;
@@ -65,8 +63,7 @@
 }
 
 :root[data-theme="light"] {
-  --color-violet: #943ef2;
-  --color-violet-rgb: 148, 62, 242;
+  --color-violet-rgb: 117, 70, 216;
   --color-teal: #007f69;
   --color-teal-rgb: 0, 127, 105;
   --color-orange: #b55400;

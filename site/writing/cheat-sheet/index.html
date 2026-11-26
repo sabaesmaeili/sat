@@ -18,13 +18,11 @@
   --stop:var(--color-pink); --stop-bg:rgba(var(--color-pink-rgb),.12); --half:var(--color-orange); --half-bg:rgba(var(--color-orange-rgb),.12); --go:var(--color-green); --go-bg:rgba(var(--color-green-rgb),.12);
   --hi:rgba(var(--color-blue-rgb),var(--tint-mark)); --hi-fg:var(--color-text); --ok:var(--color-green); --bad:var(--color-pink);
   --display:var(--font-primary); --body:var(--font-primary);
-  --page-frame:var(--frame-wide);
 }
 
 *{box-sizing:border-box}
 body{line-height:1.4}
 .wrap{display:grid;gap:18px}
-@media (max-width:560px){:root{--page-gutter:1rem}}
 /* Card prose is material read at length: the serif reading face (site.css, the type rule). */
 .test p,.ex,.tip,.sentence,.rule p,.bucket,.never small,.apo div:not(.h):not(.r){font-family:var(--font-serif);letter-spacing:0}
 h1,h2,h3{font-family:var(--display);font-weight:var(--weight-strong);margin:0;text-wrap:balance}
