@@ -122,7 +122,7 @@
   },
   "4a422e3e": {
    "card": 7,
-   "card_name": "Statistics",
+   "card_name": "Statistics & probability",
    "anchor": "m-sample",
    "label": "samples",
    "hint": {
@@ -131,7 +131,7 @@
     "text": "Who was surveyed, and where? Would families at a playground have more children than a typical household?",
     "anchor": "m-sample"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "by": "original drill page (math-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "b5f62071": {
@@ -251,7 +251,7 @@
   },
   "190be2fc": {
    "card": 7,
-   "card_name": "Statistics",
+   "card_name": "Statistics & probability",
    "anchor": "m-mean",
    "label": "totals",
    "hint": {
@@ -260,7 +260,7 @@
     "text": "Sum = mean × count. Write the full total with the missing value as a letter. The full mean is a whole number, so the total must divide evenly.",
     "anchor": "m-mean"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "by": "original drill page (math-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "b1e1c2f5": {
@@ -321,7 +321,7 @@
   },
   "cf2be18d": {
    "card": 7,
-   "card_name": "Statistics",
+   "card_name": "Statistics & probability",
    "anchor": "m-mean",
    "label": "totals",
    "hint": {
@@ -334,7 +334,7 @@
     "m-median",
     "m-combo"
    ],
-   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude; card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "3a84f885": {
@@ -353,7 +353,7 @@
   },
   "9ce8cbbe": {
    "card": 7,
-   "card_name": "Statistics",
+   "card_name": "Statistics & probability",
    "anchor": "m-prob",
    "label": "\"given that\"",
    "hint": {
@@ -362,7 +362,7 @@
     "text": "Probability = what you want ÷ total. Count the numbers in the set, then the ones that are even AND at or below the limit.",
     "anchor": "m-prob"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "by": "original drill page (math-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "a5ff1a96": {
@@ -395,7 +395,7 @@
   },
   "e438ec3f": {
    "card": 7,
-   "card_name": "Statistics",
+   "card_name": "Statistics & probability",
    "anchor": "m-prob",
    "label": "\"given that\"",
    "hint": {
@@ -404,7 +404,7 @@
     "text": "'Given that it's tall' → your total is only the tall trees. Tall maples ÷ all tall trees.",
     "anchor": "m-prob"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "by": "original drill page (math-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "8383771a": {
@@ -437,7 +437,7 @@
   },
   "9d95e7ad": {
    "card": 7,
-   "card_name": "Statistics",
+   "card_name": "Statistics & probability",
    "anchor": "m-scatter",
    "label": "best-fit line",
    "hint": {
@@ -449,7 +449,7 @@
    "tags": [
     "m-slope"
    ],
-   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude; card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "e6c557f9": {
@@ -551,7 +551,10 @@
     "text": "Parallel lines make matching angles equal, so there's another right angle. Then use 'triangle = 180' and 'straight line = 180'.",
     "anchor": "m-par"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-tri"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); m-tri tag added by Claude",
    "date": "2026-11-06"
   },
   "ca2235f6": {
@@ -624,7 +627,10 @@
     "text": "Two equal sides → two equal base angles. Triangle sum = 180 gives them; then straight line = 180 for the outside angle.",
     "anchor": "m-par"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-tri"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); m-tri tag added by Claude",
    "date": "2026-11-06"
   },
   "a7a14e87": {
@@ -702,7 +708,7 @@
   },
   "1ea09200": {
    "card": 7,
-   "card_name": "Statistics",
+   "card_name": "Statistics & probability",
    "anchor": "m-sample",
    "label": "samples",
    "hint": {
@@ -711,7 +717,7 @@
     "text": "You can only generalize to the group the sample was randomly drawn from. Which students was it drawn from?",
     "anchor": "m-sample"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "by": "original drill page (math-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "bba18ecb": {
@@ -812,7 +818,10 @@
     "text": "The lines form a triangle. Exterior angle = sum of the two far inside angles. Use 'straight line = 180' for any missing inside angle.",
     "anchor": "m-ext"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "tags": [
+    "m-tri"
+   ],
+   "by": "original drill page (math-drill.html, commit 120473f); m-tri tag added by Claude",
    "date": "2026-11-06"
   },
   "2c05d312": {
@@ -974,7 +983,7 @@
   },
   "e7d48c8a": {
    "card": 7,
-   "card_name": "Statistics",
+   "card_name": "Statistics & probability",
    "anchor": "m-median",
    "label": "median",
    "hint": {
@@ -986,7 +995,7 @@
    "tags": [
     "m-mean"
    ],
-   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude; card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "1baffbcf": {
@@ -1022,7 +1031,7 @@
   },
   "6fca0144": {
    "card": 7,
-   "card_name": "Statistics",
+   "card_name": "Statistics & probability",
    "anchor": "m-sample",
    "label": "samples",
    "hint": {
@@ -1031,7 +1040,7 @@
     "text": "Results apply to the group the sample was randomly picked from—no bigger. What exactly were the trees picked from?",
     "anchor": "m-sample"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "by": "original drill page (math-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "ce579859": {
@@ -1064,7 +1073,7 @@
   },
   "9d935bd8": {
    "card": 7,
-   "card_name": "Statistics",
+   "card_name": "Statistics & probability",
    "anchor": "m-median",
    "label": "median",
    "hint": {
@@ -1073,7 +1082,7 @@
     "text": "Put the 7 percents in order and take the 4th. Then subtract.",
     "anchor": "m-median"
    },
-   "by": "original drill page (math-drill.html, commit 120473f)",
+   "by": "original drill page (math-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "196e8e6e": {
@@ -1123,7 +1132,7 @@
   },
   "d65b9a87": {
    "card": 7,
-   "card_name": "Statistics",
+   "card_name": "Statistics & probability",
    "anchor": "m-spread",
    "label": "outlier / spread",
    "hint": {
@@ -1135,7 +1144,7 @@
    "tags": [
     "m-median"
    ],
-   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
+   "by": "original drill page (math-drill.html, commit 120473f); tags added from a Codex review, checked by Claude; card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "27d075d8": {

@@ -20,6 +20,10 @@ The site is one folder tree, the French tool's way: every prefix of an address i
 
 The drills keep the original pages' behaviour: first-try scoring, retries, hints, Show answer with the rationale and "Correct answer: X", filters by card (an item with extra tags also shows under each tag's card) and status, shuffle, start over, and progress saved in the browser under `sat-drill80-writing` / `sat-drill80-math`, keyed by question id (the keys of the first version, so saved progress carries over). Saved progress is read defensively: a damaged record is dropped on its own, and Start over always works. A drill shows exactly the items in its bank file, in `number` order, numbered Q1, Q2, … by position.
 
+### Saved progress
+
+A student's progress lives in their own browser, at one address: sabaesmaeili.github.io and tutoringwithsaba.ca keep separate copies, so a student should keep using the same one. The storage keys (`sat-drill80-writing`, `sat-drill80-math`, and the card-label switch's `<key>-labels`) and the record format (`{id: {tries, ok, first, last, solved, revealed, wrong}}`, the original pages') are frozen, and question ids never change. `tools/test_progress.js` guards them: it runs the real `js/drill.js` on each built drill and checks that the keys are unchanged, that progress saved in the original format, including records for ids no longer in the bank, comes back unchanged after opening the page and saving, and that opening a page writes nothing until the student acts. Rebuilding, regrouping cards, renaming them or adding tags leaves progress alone. Any future change to the format must be additive and keep reading the old one.
+
 A typed answer is right when it is one of the item's accepted values, or exactly the same number: decimals and fractions are compared as exact rationals (`0.0177` = `.0177`, `8/450` = `4/225`, `1,677` = `1677`), so a near value is wrong (`0.017`, `17.51`, `1676`). `tools/test_grading.js` tests this on every typed-answer item.
 
 ## Commands
@@ -33,6 +37,7 @@ python3 tools/sync_tokens.py                        # refresh css/tokens.css and
 python3 tools/palette.py                            # regenerate css/palette.css; --report prints the tables below
 python3 tools/bands.py img/math/<id>-q.png          # find a figure's rows in a screenshot (--crop to cut it)
 node tools/test_grading.js                          # test the grading of typed answers (check.py runs it when node is installed)
+node tools/test_progress.js                         # test that students' saved progress survives page changes (check.py runs it too)
 ```
 
 ## Add a question

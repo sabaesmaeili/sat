@@ -148,11 +148,11 @@ s{color:var(--muted);text-decoration-thickness:2px}
 <nav class="picker" aria-label="Pick a card">
   <div class="lab">The choices change the…</div>
   <a class="pick k1" href="#w-engine"><span class="num">1</span><span><b>Punctuation</b><small>. ; : , —</small></span></a>
-  <a class="pick k2" href="#w-verb"><span class="num">2</span><span><b>Verb</b><small>is / are / being</small></span></a>
+  <a class="pick k2" href="#w-verb"><span class="num">2</span><span><b>Verb</b><small>is / are · ran / running / to run</small></span></a>
   <a class="pick k3" href="#w-apos"><span class="num">3</span><span><b>Apostrophe</b><small>'s / s' / its / their</small></span></a>
   <a class="pick k4" href="#w-mod"><span class="num">4</span><span><b>Word order</b><small>after an opening phrase</small></span></a>
-  <a class="pick k5" href="#w-trans"><span class="num">5</span><span><b>Linking word</b><small>however / thus</small></span></a>
-  <a class="pick k6" href="#w-time"><span class="num">6</span><span><b>Tense &amp; form</b><small>ran / running / to run / had run</small></span></a>
+  <a class="pick k5" href="#w-trans"><span class="num">5</span><span><b>Transition, notes, word</b><small>however / thus · the student wants… · precise word</small></span></a>
+  <a class="pick k6" href="#w-time"><span class="num">6</span><span><b>Tense &amp; parallel</b><small>ran / has run / had run / will run</small></span></a>
 </nav>
 
 <!-- CARD 1 -->
@@ -201,8 +201,16 @@ s{color:var(--muted);text-decoration-thickness:2px}
         <div class="ex">biologist Yuree Lee</div></div>
       <div class="prow"><div class="pat"><span class="s">Noun</span><span class="m">→</span><span class="s">that…</span></div>
         <div class="ex">the plan that we chose</div></div>
+      <div class="prow"><div class="pat"><span class="s">Describer</span><span class="m">→</span><span class="s">noun</span></div>
+        <div class="ex">the 6,000-year-old clay tablet</div></div>
+      <div class="prow"><div class="pat"><span class="s">A and B</span><span class="m">→</span><span class="s">verb</span></div>
+        <div class="ex">Ruiz and her crew filmed the bats.</div></div>
     </div>
   </div>
+
+  <div class="arrow" style="margin-top:12px"><span class="y">Little word at the split?</span><span class="to">→ attach it to its own clause first, then pick the mark.</span></div>
+  <div class="ex"><div><span class="ok">✓</span>The plan looked simple. Building it was hard<span class="mk">, though;</span> every part was cut by hand.</div><div><span class="bad">✗</span>…Building it was hard<span class="mk">; though</span> every part was cut by hand.</div></div>
+  <div class="tip"><i>Though</i> sets <i>hard</i> against <i>simple</i>, so it closes the first sentence. <i>For one</i> goes with the first of several examples. Not sure which side? <a href="#w-trans">Card 5's but / and / so test</a>.</div>
 
   <div class="never" id="w-never">
     <span class="x">✗ NEVER</span>
@@ -230,20 +238,27 @@ s{color:var(--muted);text-decoration-thickness:2px}
 
 <!-- CARD 2 -->
 <section class="card k2" id="w-verb">
-  <div class="ch"><span class="num">2</span><h2>Verbs</h2></div>
+  <div class="ch"><span class="num">2</span><h2>Verb structure &amp; agreement</h2></div>
   <div class="test"><span class="tag">TEST</span><b>Verb count: <i>one sentence = one main verb</i></b>
     <p>Find the main verb. Is there already one?</p></div>
-  <div class="arrow"><span class="y">Already has one?</span><span class="to">→ blank is <i>-ing</i> / <i>to ___</i></span></div>
-  <div class="ex"><span class="ok">✓</span>The chef, <span class="mk">hoping</span> to impress the judges, <b>adds</b> saffron.</div>
-  <div class="arrow"><span class="y">No main verb at all?</span><span class="to">→ blank is a real verb</span></div>
+  <div class="arrow"><span class="y">No main verb at all?</span><span class="to">→ blank is a real (tensed) verb; a helper + verb counts as one.</span></div>
   <div class="ex"><span class="ok">✓</span>The goal of the new study <span class="mk">is</span> simple.</div>
+  <div class="arrow"><span class="y">Already has one, no connector?</span><span class="to">→ blank is a description: <i>-ing</i> for the doer; past participle for the receiver.</span></div>
+  <div class="ex"><span class="ok">✓</span>The chef, <span class="mk">hoping</span> to impress the judges, <b>adds</b> saffron.</div>
+
+  <div class="test sm" id="w-form"><span class="tag">TEST</span><b>Job test: <i>what does the blank do?</i></b>
+    <p>Check helpers first. Then run the verb count above <u>in this clause</u>. A <i>who/that/which</i> clause needs its own verb; <i>and</i> can join verbs.</p></div>
+  <div class="tip"><i>has/have/had</i> + past participle; <i>is/was/been</i> + <i>-ing</i> (doing) or past participle (receiving). Past participle = <i>tested / written</i>, not always <i>-ed</i>.</div>
+  <div class="arrow"><span class="y">Purpose / preposition?</span><span class="to">→ <i>to + verb</i> = “in order to”; after <i>by / without</i> → <i>-ing</i>.</span></div>
+  <div class="ex"><span class="ok">✓</span>The researchers <span class="mk">examining</span> the pottery identified a new trade route.</div>
+  <div class="tip"><i>Having + past participle</i> is also a description; it cannot supply the main verb.</div>
 
   <div class="test sm" id="w-sv"><span class="tag">TEST</span><b>Cover the middle</b>
     <p>Cover everything between the subject and the blank. Swap in <b>it</b> or <b>they</b>.</p></div>
   <div class="ex">The <b>color</b> <s>of the leaves on these old trees</s> <span class="mk">changes</span> in fall. → <i>it changes</i></div>
   <div class="tip">Subject = the noun <u>before</u> "of". &nbsp;"each one", "every" → <b>it</b>.</div>
 
-  <div class="tip">Tense or verb form choices? → Card 6: <b>Tense &amp; verb form</b>.</div>
+  <div class="tip">Tense or matching verbs? → <a href="#w-time">Card 6: <b>Tense &amp; parallelism</b></a>.</div>
 </section>
 
 <!-- CARD 3 -->
@@ -278,7 +293,7 @@ s{color:var(--muted);text-decoration-thickness:2px}
 
 <!-- CARD 5 -->
 <section class="card k5" id="w-trans">
-  <div class="ch"><span class="num">5</span><h2>Linking words</h2></div>
+  <div class="ch"><span class="num">5</span><h2>Transitions, notes &amp; vocabulary</h2></div>
   <div class="test"><span class="tag">TEST</span><b>But / and / so test</b>
     <p>Cover the choices. Swap in <b>but</b>, <b>and</b>, or <b>so</b>. Whichever fits picks the bucket.</p></div>
   <div class="buckets">
@@ -297,18 +312,9 @@ s{color:var(--muted);text-decoration-thickness:2px}
 
 <!-- CARD 6 -->
 <section class="card k6" id="w-time">
-  <div class="ch"><span class="num">6</span><h2>Tense &amp; verb form</h2></div>
+  <div class="ch"><span class="num">6</span><h2>Tense &amp; parallelism</h2></div>
 
-  <div class="test" id="w-form"><span class="tag">TEST</span><b>Job test: <i>what does the blank do?</i></b>
-    <p>Check helpers first. Then run Card 2's verb count <u>in this clause</u>. A <i>who/that/which</i> clause needs its own verb; <i>and</i> can join verbs.</p></div>
-  <div class="tip"><i>has/have/had</i> + past participle; <i>is/was/been</i> + <i>-ing</i> (doing) or past participle (receiving). Past participle = <i>tested / written</i>, not always <i>-ed</i>.</div>
-  <div class="arrow"><span class="y">Main verb missing?</span><span class="to">→ tensed verb; a helper + verb counts as one group.</span></div>
-  <div class="arrow"><span class="y">Already there, no connector?</span><span class="to">→ description: <i>-ing</i> for the doer; past participle for the receiver.</span></div>
-  <div class="arrow"><span class="y">Purpose / preposition?</span><span class="to">→ <i>to + verb</i> = “in order to”; after <i>by / without</i> → <i>-ing</i>.</span></div>
-  <div class="ex"><span class="ok">✓</span>The researchers <span class="mk">examining</span> the pottery identified a new trade route.</div>
-  <div class="tip"><i>Having + past participle</i> is also a description; it cannot supply the main verb.</div>
-
-  <div class="test sm" id="w-tense"><span class="tag">TEST</span><b>Timeline test</b>
+  <div class="test" id="w-tense"><span class="tag">TEST</span><b>Timeline test</b>
     <p>Read time clues and verbs about the <u>same event</u>. <i>In 1850</i> → past; <i>currently</i> → present; future → <i>will + verb</i>; future viewed from the past → <i>would + verb</i>. What a study or author says → usually present.</p></div>
   <div class="ex"><span class="ok">✓</span>When the dam <b>opened</b> in 1936, it <span class="mk">created</span> Lake Mead.</div>
 
@@ -319,6 +325,8 @@ s{color:var(--muted);text-decoration-thickness:2px}
   <div class="test sm" id="w-parallel"><span class="tag">TEST</span><b>Parallel test</b>
     <p>Same job in a list or joined by <i>and</i>? Match the form; match tense when the time stays the same. A shared <i>to</i> or helper can carry across.</p></div>
   <div class="ex"><span class="ok">✓</span>The team mapped the site, dated the tools, and <span class="mk">cataloged</span> the pottery.</div>
+
+  <div class="tip">Real verb, <i>-ing</i>, or <i>to ___</i>? → <a href="#w-verb">Card 2: <b>Verb structure &amp; agreement</b></a>.</div>
 </section>
 
 </div>

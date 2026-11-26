@@ -120,7 +120,7 @@
   },
   "c9a677e9": {
    "card": 2,
-   "card_name": "Verbs",
+   "card_name": "Verb structure & agreement",
    "anchor": "w-verb",
    "label": "verb count",
    "hint": {
@@ -129,12 +129,12 @@
     "text": "Find the main verb: '…shows not only…'. The sentence already has it, so the blank only describes the analysis.",
     "anchor": "w-verb"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "6c9f1727": {
    "card": 5,
-   "card_name": "Linking words",
+   "card_name": "Transitions, notes & vocabulary",
    "anchor": "w-words",
    "label": "own word",
    "hint": {
@@ -143,7 +143,7 @@
     "text": "Until recently Theia was ____, but now people claim to have found real pieces of it. Before the evidence, it was only an idea. Which word means that?",
     "anchor": "w-words"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "5ef9fc48": {
@@ -179,7 +179,7 @@
   },
   "512f0ac9": {
    "card": 2,
-   "card_name": "Verbs",
+   "card_name": "Verb structure & agreement",
    "anchor": "w-verb",
    "label": "verb count",
    "hint": {
@@ -191,7 +191,7 @@
    "tags": [
     "w-form"
    ],
-   "by": "original drill page (writing-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
+   "by": "original drill page (writing-drill.html, commit 120473f); tags added from a Codex review, checked by Claude; card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "dfbf5d33": {
@@ -227,7 +227,7 @@
   },
   "4d2736f0": {
    "card": 5,
-   "card_name": "Linking words",
+   "card_name": "Transitions, notes & vocabulary",
    "anchor": "w-trans",
    "label": "but / and / so",
    "hint": {
@@ -236,7 +236,7 @@
     "text": "Thomas's story is set inside a big historical event. Then Beulah's story is set inside another big historical event. Same move twice—which bucket?",
     "anchor": "w-trans"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "4c335aea": {
@@ -314,7 +314,7 @@
   },
   "a2816c7f": {
    "card": 2,
-   "card_name": "Verbs",
+   "card_name": "Verb structure & agreement",
    "anchor": "w-verb",
    "label": "verb count",
    "hint": {
@@ -323,12 +323,12 @@
     "text": "The main verb 'assembles' comes later, so the blank can't be a second main verb. And there's a comma after 'environment'—what opens that pair?",
     "anchor": "w-verb"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "8fbf206d": {
    "card": 5,
-   "card_name": "Linking words",
+   "card_name": "Transitions, notes & vocabulary",
    "anchor": "w-trans",
    "label": "but / and / so",
    "hint": {
@@ -337,7 +337,7 @@
     "text": "Sentence 1: the book has vivid prose. Sentence 2: it also has great images. Swap in 'and' or 'but'—which fits? Then pick from that bucket.",
     "anchor": "w-trans"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "37e5c794": {
@@ -370,7 +370,7 @@
   },
   "1c65db8f": {
    "card": 2,
-   "card_name": "Verbs",
+   "card_name": "Verb structure & agreement",
    "anchor": "w-sv",
    "label": "cover the middle",
    "hint": {
@@ -379,7 +379,7 @@
     "text": "Cover 'the organism uses to protect itself from predation'. What's left: 'the toxins … actually ____'. Toxins = it or they?",
     "anchor": "w-sv"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "d2b81427": {
@@ -440,7 +440,7 @@
   },
   "9127635a": {
    "card": 2,
-   "card_name": "Verbs",
+   "card_name": "Verb structure & agreement",
    "anchor": "w-verb",
    "label": "verb count",
    "hint": {
@@ -449,7 +449,7 @@
     "text": "Main verb: 'honors'. The part between 'Udé' and 'honors' is extra description, closed by a comma after 'excellence'. What opens it, and can an add-on have a main verb?",
     "anchor": "w-verb"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "fdb16e20": {
@@ -468,7 +468,7 @@
   },
   "e3edc138": {
    "card": 5,
-   "card_name": "Linking words",
+   "card_name": "Transitions, notes & vocabulary",
    "anchor": "w-trans",
    "label": "but / and / so",
    "hint": {
@@ -477,7 +477,7 @@
     "text": "Sentence 1: the field is split into two camps. Sentence 2: explains who the two camps are. A new point, a contrast, or the same idea said more clearly?",
     "anchor": "w-trans"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "c49e946e": {
@@ -496,7 +496,7 @@
   },
   "3a1239d2": {
    "card": 2,
-   "card_name": "Verbs",
+   "card_name": "Verb structure & agreement",
    "anchor": "w-verb",
    "label": "verb count",
    "hint": {
@@ -505,7 +505,7 @@
     "text": "Find the real main verb: 'scientists … adapted the test'. The blank sits inside a description of the scientists, so it can't be a second main verb.",
     "anchor": "w-verb"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "adf210e7": {
@@ -527,7 +527,7 @@
   },
   "3fa48bf3": {
    "card": 5,
-   "card_name": "Linking words",
+   "card_name": "Transitions, notes & vocabulary",
    "anchor": "w-synth",
    "label": "goal checklist",
    "hint": {
@@ -536,7 +536,7 @@
     "text": "Goal: why the 1990 discovery matters for PLOT's reputation (being first). The right choice says what was found and what it means for Plot being first. Watch for overstatements like 'disproved'.",
     "anchor": "w-synth"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "886dc9f9": {
@@ -569,7 +569,7 @@
   },
   "a75d5984": {
    "card": 2,
-   "card_name": "Verbs",
+   "card_name": "Verb structure & agreement",
    "anchor": "w-verb",
    "label": "verb count",
    "hint": {
@@ -578,12 +578,12 @@
     "text": "Cover the part between the dashes: 'Several advantages ____ acoustic waves as a promising alternative…'. Is there any main verb? If not, the blank has to be one.",
     "anchor": "w-verb"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "7ce14583": {
    "card": 5,
-   "card_name": "Linking words",
+   "card_name": "Transitions, notes & vocabulary",
    "anchor": "w-trans",
    "label": "but / and / so",
    "hint": {
@@ -592,12 +592,12 @@
     "text": "Sentence 1: the poem explores time and identity. Sentence 2: it also reflects on poetry and other art. A new point added on, or an example of the old one?",
     "anchor": "w-trans"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "f4fd123c": {
    "card": 2,
-   "card_name": "Verbs",
+   "card_name": "Verb structure & agreement",
    "anchor": "w-sv",
    "label": "cover the middle",
    "hint": {
@@ -606,12 +606,12 @@
     "text": "Cover the part between the commas ('one of over 180…'). 'The African Games Co-production Market ____ the growth…'. One market = it or they?",
     "anchor": "w-sv"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "42e6cc83": {
    "card": 5,
-   "card_name": "Linking words",
+   "card_name": "Transitions, notes & vocabulary",
    "anchor": "w-trans",
    "label": "but / and / so",
    "hint": {
@@ -620,7 +620,7 @@
     "text": "Sentence 1: the theory was an obvious next step. Sentence 2: so maybe it wasn't a coincidence two people found it. Swap in 'so'—does it fit?",
     "anchor": "w-trans"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "109d5bbb": {
@@ -639,7 +639,7 @@
   },
   "b74f676f": {
    "card": 6,
-   "card_name": "Tense & verb form",
+   "card_name": "Tense & parallelism",
    "anchor": "w-tense",
    "label": "timeline",
    "hint": {
@@ -651,7 +651,7 @@
    "tags": [
     "w-parallel"
    ],
-   "by": "original drill page (writing-drill.html, commit 120473f); card moved to 6 by Claude; tags added from a Codex review, checked by Claude",
+   "by": "original drill page (writing-drill.html, commit 120473f); card moved to 6 by Claude; tags added from a Codex review, checked by Claude; card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "d4fe8f03": {
@@ -673,7 +673,7 @@
   },
   "e35d481c": {
    "card": 5,
-   "card_name": "Linking words",
+   "card_name": "Transitions, notes & vocabulary",
    "anchor": "w-words",
    "label": "own word",
    "hint": {
@@ -682,7 +682,7 @@
     "text": "The text says they 'assumed' it, and the data later disproved it. Your own word: they ____ it (guessed). Then match.",
     "anchor": "w-words"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "2cb1ee22": {
@@ -721,7 +721,7 @@
   },
   "ee4aa2aa": {
    "card": 2,
-   "card_name": "Verbs",
+   "card_name": "Verb structure & agreement",
    "anchor": "w-sv",
    "label": "cover the middle",
    "hint": {
@@ -733,7 +733,7 @@
    "tags": [
     "w-form"
    ],
-   "by": "original drill page (writing-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
+   "by": "original drill page (writing-drill.html, commit 120473f); tags added from a Codex review, checked by Claude; card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "db24ecc9": {
@@ -755,7 +755,7 @@
   },
   "5fd86f4b": {
    "card": 2,
-   "card_name": "Verbs",
+   "card_name": "Verb structure & agreement",
    "anchor": "w-sv",
    "label": "cover the middle",
    "hint": {
@@ -764,7 +764,7 @@
     "text": "Cover 'of a ghazal's couplets' and the 'while…' part between commas. The subject starts with 'each one'. Is 'each one' it or they?",
     "anchor": "w-sv"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "5aa171de": {
@@ -816,7 +816,7 @@
   },
   "f10b7ce4": {
    "card": 2,
-   "card_name": "Verbs",
+   "card_name": "Verb structure & agreement",
    "anchor": "w-sv",
    "label": "cover the middle",
    "hint": {
@@ -825,7 +825,7 @@
     "text": "The subject is 'her book's musings on tenth-century Japanese courtly life'. Cover 'on … life'. Musings = it or they?",
     "anchor": "w-sv"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "fba5d8d1": {
@@ -876,7 +876,7 @@
   },
   "1d79a59d": {
    "card": 5,
-   "card_name": "Linking words",
+   "card_name": "Transitions, notes & vocabulary",
    "anchor": "w-synth",
    "label": "goal checklist",
    "hint": {
@@ -885,12 +885,12 @@
     "text": "The goal has 2 parts: (1) the 1821 Declaration and (2) Valle's CHANGING beliefs (before and after). Cross out any choice that skips the declaration or doesn't show a change.",
     "anchor": "w-synth"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "9994ae0d": {
    "card": 2,
-   "card_name": "Verbs",
+   "card_name": "Verb structure & agreement",
    "anchor": "w-sv",
    "label": "cover the middle",
    "hint": {
@@ -902,7 +902,7 @@
    "tags": [
     "w-form"
    ],
-   "by": "original drill page (writing-drill.html, commit 120473f); tags added from a Codex review, checked by Claude",
+   "by": "original drill page (writing-drill.html, commit 120473f); tags added from a Codex review, checked by Claude; card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "5cc69ee1": {
@@ -938,7 +938,7 @@
   },
   "0fe5ce68": {
    "card": 2,
-   "card_name": "Verbs",
+   "card_name": "Verb structure & agreement",
    "anchor": "w-sv",
    "label": "cover the middle",
    "hint": {
@@ -947,7 +947,7 @@
     "text": "Cover 'of these plays' and the 'which include…' part. The subject is 'each one'. It or they?",
     "anchor": "w-sv"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "2fd05c15": {
@@ -969,7 +969,7 @@
   },
   "7d5c32e6": {
    "card": 5,
-   "card_name": "Linking words",
+   "card_name": "Transitions, notes & vocabulary",
    "anchor": "w-synth",
    "label": "goal checklist",
    "hint": {
@@ -978,12 +978,12 @@
     "text": "Goal: Einstein's argument + its historical context (when, and what happened next). Does the choice state Einstein's view correctly AND place it in time? One choice flips Bohr's view.",
     "anchor": "w-synth"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "61160f0a": {
    "card": 2,
-   "card_name": "Verbs",
+   "card_name": "Verb structure & agreement",
    "anchor": "w-verb",
    "label": "verb count",
    "hint": {
@@ -992,12 +992,12 @@
     "text": "Main verb: 'begins'. Take out the words between the commas and the sentence still works. Can a describing add-on have its own main verb?",
     "anchor": "w-verb"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "f5959727": {
    "card": 5,
-   "card_name": "Linking words",
+   "card_name": "Transitions, notes & vocabulary",
    "anchor": "w-trans",
    "label": "but / and / so",
    "hint": {
@@ -1006,7 +1006,7 @@
     "text": "Before: architects championed nature. After: the staircase couldn't really grow in a forest. More of the same, a result, or admitting something obvious?",
     "anchor": "w-trans"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "e7afd0a1": {
@@ -1060,7 +1060,7 @@
   },
   "16740ab4": {
    "card": 2,
-   "card_name": "Verbs",
+   "card_name": "Verb structure & agreement",
    "anchor": "w-sv",
    "label": "cover the middle",
    "hint": {
@@ -1069,7 +1069,7 @@
     "text": "Cover 'of many fossilized microbacteria' and the 'which seem…' part. The subject is the noun before 'of': 'the presence'. It or they?",
     "anchor": "w-sv"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "707461d8": {
@@ -1088,7 +1088,7 @@
   },
   "af4300b0": {
    "card": 5,
-   "card_name": "Linking words",
+   "card_name": "Transitions, notes & vocabulary",
    "anchor": "w-words",
    "label": "own word",
    "hint": {
@@ -1097,7 +1097,7 @@
     "text": "Cover the choices. Three years, 250,000 images, 'painstakingly', inventing new tools… Say your own word: 'it was a very ____ process.' Then match it.",
     "anchor": "w-words"
    },
-   "by": "original drill page (writing-drill.html, commit 120473f)",
+   "by": "original drill page (writing-drill.html, commit 120473f); card renamed (owner-approved card proposal) by Claude",
    "date": "2026-11-06"
   },
   "a9e5b788": {

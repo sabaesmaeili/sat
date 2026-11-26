@@ -10,13 +10,16 @@
    from the page, never from a list).
 3. site/css/tokens.css matches the website's tokens (skipped when the Website repo is absent, as in
    CI) and site/css/palette.css is current and passes its contrast and distance checks.
-4. The drills' grading of typed answers (tools/test_grading.js, with node; skipped without it).
+4. The drills' grading of typed answers (tools/test_grading.js) and the students' saved progress (tools/test_progress.js:
+   frozen storage keys; progress in the original format, and records for unknown ids, survive opening the page and
+   saving; opening a page writes nothing). Both with node; skipped without it.
 5. The site, built into a temporary folder: no placeholder left; every internal link, stylesheet,
    script and image resolves, with its #anchor; external resources (stylesheets, scripts, images) only from cdnjs (MathJax);
    the drill pages, and only they, carry <meta name="robots" content="noindex">.
 Standard library only.
 """
 import html.parser
+import os
 import shutil
 import subprocess
 import sys
@@ -132,13 +135,21 @@ def check_design():
     return errs
 
 
-def check_grading():
+def run_node(test):
     node = shutil.which("node")
     if not node:
-        print("grading: node isn't installed; skipping tools/test_grading.js.")
+        print(f"node isn't installed; skipping tools/{test}.")
         return []
-    r = subprocess.run([node, str(TOOLS / "test_grading.js")], capture_output=True, text=True)
+    r = subprocess.run([node, str(TOOLS / test)], capture_output=True, text=True, env=dict(os.environ, PYTHON=sys.executable))
     return [line for line in (r.stderr or r.stdout).strip().splitlines() if line] if r.returncode else []
+
+
+def check_grading():
+    return run_node("test_grading.js")
+
+
+def check_progress():
+    return run_node("test_progress.js")
 
 
 def check_site():
@@ -187,7 +198,7 @@ def check_site():
 
 def main():
     problems = []
-    for name, fn in (("bank", check_bank), ("annotations", check_annotations), ("design", check_design), ("grading", check_grading), ("site", check_site)):
+    for name, fn in (("bank", check_bank), ("annotations", check_annotations), ("design", check_design), ("grading", check_grading), ("progress", check_progress), ("site", check_site)):
         errs = fn()
         print(f"{name}: {'ok' if not errs else f'{len(errs)} problem(s)'}")
         problems += errs

@@ -99,7 +99,7 @@ def read_sheet(section):
 
 
 # Short tag labels where the cheat-sheet title doesn't shorten well (anchor → label); see tag_labels.
-TAG_LABEL = {"w-form": "verb form", "m-pyth": "3-4-5 triples"}
+TAG_LABEL = {"w-form": "verb form", "m-pyth": "Pythagoras"}
 
 
 def tag_labels(notes, sheet):

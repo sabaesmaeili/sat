@@ -186,7 +186,7 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']]},svg:{fontCache:'global'}};
   <a class="pick k4" href="#m-pow"><span class="num">4</span><span><b>Exponents &amp; polynomials</b><small>equivalent · remainder · shifted · |x|</small></span></a>
   <a class="pick k5" href="#m-circ"><span class="num">5</span><span><b>Circles</b><small>center · radius · arc · sector · radians</small></span></a>
   <a class="pick k6" href="#m-trig"><span class="num">6</span><span><b>Triangles &amp; angles</b><small>similar · sin · cos · polygon · volume</small></span></a>
-  <a class="pick k7" href="#m-mean"><span class="num">7</span><span><b>Statistics</b><small>mean · median · margin of error · random</small></span></a>
+  <a class="pick k7" href="#m-mean"><span class="num">7</span><span><b>Statistics &amp; probability</b><small>mean · median · margin of error · random · probability</small></span></a>
 </nav>
 
 <div class="ref"><b>Don't memorize · it's on the reference sheet:</b>
@@ -289,14 +289,15 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']]},svg:{fontCache:'global'}};
   <div class="fx" style="font-size:24px">\((x-h)^2+(y-k)^2=r^2\)</div>
   <div class="lbls"><span>center <b>\((h,k)\)</b></span><span>radius <b>\(r\)</b></span><span>signs flip: \((x+3)^2\) → \(h=-3\)</span></div>
   <div class="ex"><b>Messy?</b>\(x^2+6x+y^2-4y=12\) → \((x+3)^2+(y-2)^2=25\) → center \((-3,2)\), <span class="hl">\(r=5\)</span></div>
-  <div class="tip">Complete the square on \(x\) and on \(y\); add the same numbers to the right side.</div>
+  <div class="tip">Complete the square on \(x\) and on \(y\); add the same numbers to the right side. Same move as <a href="#m-cts">Card 1: complete the square</a>.</div>
   <div class="rules two">
     <div class="rule" id="m-arc"><h3>Slice of a circle</h3>
       <p style="display:flex;gap:10px;align-items:center"><svg viewBox="0 0 44 44" width="40" height="40" style="flex:none;width:40px;height:40px" aria-hidden="true"><circle cx="22" cy="22" r="18" class="ax"/><path class="sl" d="M22 22 L40 22 A18 18 0 0 0 22 4 Z"/><path class="cv" d="M40 22 A18 18 0 0 0 22 4" style="stroke:var(--kc)"/></svg>
       <span>\(\dfrac{\text{angle}}{360^\circ}=\dfrac{\text{arc}}{2\pi r}=\dfrac{\text{sector}}{\pi r^2}\)</span></p>
       <p class="tip">\(180^\circ=\pi\) radians</p></div>
-    <div class="rule" id="m-tan"><h3>Tangent</h3><p>Tangent line ⊥ radius at the touching point.</p><p class="tip">That's your right angle.</p></div>
+    <div class="rule" id="m-tan"><h3>Tangent</h3><p>Tangent line ⊥ radius at the touching point.</p><p class="tip">That's your right angle.</p><p class="tip">Tangent's slope: radius slope, then flip &amp; negate (<a href="#m-slope">Card 2: slope</a>).</p></div>
   </div>
+  <div class="tip">Radius to a point: \(r^2=(\Delta x)^2+(\Delta y)^2\). Two radii at a right angle → chord \(=r\sqrt2\). See <a href="#m-pyth">Card 6: Pythagoras</a>.</div>
 </section>
 
 <!-- CARD 6 -->
@@ -309,24 +310,26 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']]},svg:{fontCache:'global'}};
   </div>
   <div class="big" style="font-size:23px">\(\sin x^\circ=\cos y^\circ\) → <em>\(x+y=90\)</em></div>
   <div class="rules two">
-    <div class="rule" id="m-sim"><h3>Similar</h3><p>\(\dfrac{\text{big}}{\text{small}}=\dfrac{\text{big}}{\text{small}}\)</p><p class="tip">Same shape → same ratio, same sin/cos.</p></div>
-    <div class="rule" id="m-par"><h3>Angles</h3><p>Parallel lines: small + big \(=180\)</p><p id="m-ext">Exterior angle = the two far angles</p><p id="m-poly">Polygon: \((n-2)\cdot180^\circ\)</p></div>
+    <div class="rule" id="m-sim"><h3>Similar</h3><p>\(\dfrac{\text{big}}{\text{small}}=\dfrac{\text{big}}{\text{small}}\)</p><p class="tip">Same shape → same ratio, same sin/cos.</p><p class="tip">Spot it: two equal angles (AA), or an altitude to the hypotenuse → three similar right triangles.</p></div>
+    <div class="rule" id="m-par"><h3>Angles</h3><p>Parallel lines: small + big \(=180\)</p><p id="m-tri">Triangle: \(180^\circ\) · straight line: \(180^\circ\) · isosceles: equal sides ↔ equal base angles</p><p id="m-ext">Exterior angle = the two far angles</p><p id="m-poly">Polygon: \((n-2)\cdot180^\circ\)</p></div>
     <div class="rule" id="m-scale"><h3>Scale by \(k\)</h3><p>area × \(k^2\) &nbsp; volume × \(k^3\)</p><p id="m-vol">volume = base × height (pointy: ×\(\tfrac13\))</p></div>
-    <div class="rule" id="m-special"><h3>Shortcuts</h3><p>Equilateral area \(=\dfrac{\sqrt3}{4}s^2\)</p><p id="m-pyth">3-4-5 &nbsp;·&nbsp; 5-12-13 &nbsp;·&nbsp; 8-15-17</p></div>
+    <div class="rule" id="m-special"><h3>Shortcuts</h3><p>45-45-90: \(x : x : x\sqrt2\) <span class="tip">(leg, leg, hyp)</span></p><p>30-60-90: \(x : x\sqrt3 : 2x\) <span class="tip">(short, long, hyp)</span></p><p>Equilateral area \(=\dfrac{\sqrt3}{4}s^2\)</p><p id="m-pyth">\(a^2+b^2=c^2\) · distance \(=\sqrt{(\Delta x)^2+(\Delta y)^2}\)<br>3-4-5 &nbsp;·&nbsp; 5-12-13 &nbsp;·&nbsp; 8-15-17</p></div>
   </div>
 </section>
 
 <!-- CARD 7 -->
 <section class="card k7" id="m-mean">
-  <div class="ch"><span class="num">7</span><h2>Statistics</h2></div>
+  <div class="ch"><span class="num">7</span><h2>Statistics &amp; probability</h2></div>
   <div class="big">Work with <em>totals.</em></div>
   <div class="fx">\(\text{total}=\text{mean}\times\text{count}\)</div>
+  <div class="tip">Range \(=\) max \(-\) min. Mean and range with unknowns → write the equations, then add or subtract (<a href="#m-combo">Card 2: find \(x+y\)</a>).</div>
   <div class="srow" id="m-median"><b>Median</b><span>Put in order. Take the middle.</span></div>
   <div class="srow" id="m-spread"><b>Outlier</b><span>Pulls the <u>mean</u>, barely moves the median. Bigger spread → bigger SD.</span></div>
   <div class="srow" id="m-sample"><b>Margin of error</b><span>Mean 24 ± 3 → the <u>population</u> mean is likely 21 to 27.</span></div>
   <div class="srow"><b>Random…</b><span><b style="font-family:inherit;text-transform:none;letter-spacing:0;color:inherit">sample</b> → can generalize &nbsp;·&nbsp; <b style="font-family:inherit;text-transform:none;letter-spacing:0;color:inherit">assignment</b> → can say "causes"</span></div>
-  <div class="srow" id="m-prob"><b>"Given that"</b><span>Shrink the total to that row or column.</span></div>
+  <div class="srow" id="m-prob"><b>Probability</b><span>\(\dfrac{\text{favorable}}{\text{all possible}}\). "Given that" → all possible = only that row or column.</span></div>
   <div class="srow" id="m-scatter"><b>Best-fit line</b><span>Predicted value = read the <u>line</u>, not the dot.</span></div>
+  <div class="tip">Best-fit slope = predicted change in \(y\) for each 1 more \(x\) (<a href="#m-slope">Card 2: slope</a>).</div>
 </section>
 
 </div>
@@ -349,7 +352,7 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']]},svg:{fontCache:'global'}};
     <li><b>Plug-in test:</b> letters in the choices? Pick \(x=2\), compute the original and each choice. Keep the match.</li>
     <li><b>Try the choices:</b> plug each answer back into the question.</li>
     <li><b>Draw it:</b> sketch the triangle or circle and label every number.</li>
-    <li><b>Does it make sense?</b> A length can't be negative; a probability is 0 to 1.</li>
+    <li><b>Does it make sense?</b> Check: integer? positive? within the bounds? right units? A length can't be negative; a probability is 0 to 1.</li>
   </ul></div>
 </div>
 
